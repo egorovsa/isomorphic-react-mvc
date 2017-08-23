@@ -1,0 +1,40 @@
+{
+	"pages": [
+		{
+			"id": "0",
+			"name": "Simple page",
+			"slug": "simple",
+			"seo_title": "seo_title",
+			"seo_description": "seo_description",
+			"seo_keywords": "seo_keywords",
+			"content": "content"
+		},
+		{
+			"id": "1",
+			"name": "Stores",
+			"slug": "stores",
+			"seo_title": "seo_title",
+			"seo_description": "seo_description",
+			"seo_keywords": "seo_keywords",
+			"content": "content"
+		},
+		{
+			"id": "2",
+			"name": "View",
+			"slug": "view",
+			"seo_title": "seo_title1",
+			"seo_description": "seo_description1",
+			"seo_keywords": "seo_keywords1",
+			"content": "content1"
+		},
+		{
+			"id": "3",
+			"name": "Controllers",
+			"slug": "controllers",
+			"seo_title": "seo_title2",
+			"seo_description": "seo_description2",
+			"seo_keywords": "seo_keywords2",
+			"content": "content2"
+		}
+	]
+}

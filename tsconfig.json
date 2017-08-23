@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"jsx": "react",
+		"target": "es5",
+		"outDir": "dist",
+		"moduleResolution": "node",
+		"sourceMap": true,
+//		"emitDecoratorMetadata": true,
+//		"experimentalDecorators": false,
+		"noImplicitAny": false,
+		"typeRoots": [
+			"./node_modules/@types/"
+		],
+		"noEmitOnError": true,
+		"declarationFiles": false,
+		"removeComments": false,
+		"diagnostics": true,
+		"lib": [
+			"es2015",
+			"dom"
+		]
+	},
+	"exclude": [
+		"node_modules"
+	]
+}

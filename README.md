@@ -42,7 +42,7 @@ http://localhost:4001
 
 4001 is default port, you might change in in config file 
 
-##Creating to simple page
+## reating to simple page
 
 When you do a request to for instance : http://yourSite.com/pages/simple/param1/param2
 it means that you have to have a public method is named as *simple* in a the *PagesController*.
@@ -60,7 +60,7 @@ Open PagesController
 ```
 and create a new method
 
-####Sync methods:
+#### Sync methods:
 
 ```typescript
 public simple(firstParam, secondParam) {
@@ -91,7 +91,7 @@ public simple() {
 	});
 }
 ```
-####Async methods:
+#### Async methods:
 
 ```typescript
 public index(slug) {

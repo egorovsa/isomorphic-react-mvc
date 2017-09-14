@@ -1,6 +1,6 @@
 {
-  "name": "Metallapriem.ru",
-  "short_name": "Metallapriem",
+  "name": "mysite.ru",
+  "short_name": "mysite",
   "icons": [{
     "src": "img/icons/icon-128x128.png",
       "sizes": "128x128",
@@ -22,7 +22,7 @@
       "sizes": "256x256",
       "type": "image/png"
     }],
-  "start_url": "//metallapriem.ru",
+  "start_url": "//mysite.ru",
   "display": "standalone",
   "background_color": "#000",
   "theme_color": "#000"

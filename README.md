@@ -43,6 +43,17 @@ http://localhost:4001
 4001 is default port, you might change in in config file 
 
 ##Creating to simple page
+
+When you do a request to for instance : http://yourSite.com/pages/simple/param1/param2
+it means that you have to have a public method is named as *simple* in a the *PagesController*.
+At the time your url params will be available like the arguments of the method.
+
+```typescript
+public simple(param1, param2) {
+	// method's code here...
+}
+```
+
 Open PagesController
 ```
 /ts/app/controllers/page-controller.tsx 

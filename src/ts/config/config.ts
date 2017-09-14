@@ -21,7 +21,7 @@ const config = {
 	CUSTOM_ROUTES: CUSTOM_ROUTES
 };
 
-if (window["developmentMode"]) {
+if (global && global["developmentMode"]) {
 	config.SITE_URL = config.DEV_SITE_URL;
 	config.API_URL = config.DEV_API_URL;
 }

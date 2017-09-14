@@ -1,14 +1,16 @@
 # react-isomorphic-boilerplate
 React-SVC-(like MVC)-isomorphic-boilerplate
 
+This is a simple React isomorphic framework to make a simple websites with React technologies.
+
 ## How to install and start
 
 ```
 yarn 
 yarn dev
-```
-or
-```
+
+//or
+
 npm i
 npm run dev
 ```
@@ -19,11 +21,9 @@ http://localhost:3000
 
 ```
 yarn build
-```
 
-or 
+//or 
 
-```
 npm run build
 ```
 
@@ -31,11 +31,9 @@ and run server.js as
 
 ```
 node dist/server/server.js
-```
 
-or if you have pm2
+//or if you have pm2
 
-```
 pm2 start pm2.json
 ```
 

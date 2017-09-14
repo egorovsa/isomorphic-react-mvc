@@ -1,6 +1,6 @@
 {
 	"name": "react-isomorphic-boilerplate",
-	"version": "1.0.0",
+	"version": "0.0.1",
 	"description": "React-SVC-(like MVC)-isomorphic-boilerplate",
 	"main": "index.js",
 	"scripts": {

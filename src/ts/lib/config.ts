@@ -12,7 +12,7 @@ const config = {
 	TITLE: 'Isomorphic react ts',
 	KEYWORDS: 'KEYWORDS',
 	DESCRIPTION: 'DESCRIPTION',
-	API_URL: '/',
+	API_URL: 'http://127.0.0.1:4001/',
 	CUSTOM_ROUTES: [
 		{
 			path: '/',

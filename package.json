@@ -1,19 +1,20 @@
 {
-	"name": "React SVC (like MVC) isomorphic boilerplate",
-	"version": "1.0",
-	"description": "",
+	"name": "react-isomorphic-boilerplate",
+	"version": "1.0.0",
+	"description": "React-SVC-(like MVC)-isomorphic-boilerplate",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node_modules/.bin/webpack-dev-server",
 		"dev": "node_modules/.bin/webpack-dev-server",
-		"build-server": "webpack --colors --config configs/webpack.server.js",
-		"build-client": "webpack --colors --config configs/webpack.client.js",
-		"build": "concurrently \"npm run build-server\" \"npm run build-client\""
+		"server": "webpack --colors --config webpack.server.js",
+		"client": "webpack --colors --config webpack.prod.js",
+		"build": "concurrently \"npm run server\" \"npm run client\""
 	},
 	"engines": {
 		"node": "6.4.0"
 	},
+	"license": "ISC",
 	"author": "EgorovSa",
 	"devDependencies": {
 		"browser-sync": "^2.11.1",
@@ -64,6 +65,7 @@
 		"browserify": "^13.1.1",
 		"clean-webpack-plugin": "^0.1.16",
 		"colors": "^1.1.2",
+		"concurrently": "^3.5.0",
 		"copy-webpack-plugin": "^4.0.1",
 		"css-loader": "^0.28.4",
 		"extract-text-webpack-plugin": "^3.0.0",

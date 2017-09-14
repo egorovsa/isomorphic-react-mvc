@@ -13,44 +13,28 @@ export class PagesController extends AppController {
 	}
 
 	public main() {
-		this.showMainLoading();
-
-		CommonStore.store.setState({
-			mainPage: true
-		} as CommonStore.State);
-
-		let dataProm = Promise.all([
-			AppApi.pages.getPageDataById(1),
-		]).then((data) => {
-
-			PagesStore.store.setState({
-				currentPage: data[0],
-			}  as PagesStore.State);
-
-			this.setMetaData({
-				title: data[0].seo_title,
-				description: data[0].seo_description,
-				keywords: data[0].seo_keywords
-			});
-
-			this.hideMainLoading();
-			return data;
+		return this.render(MainPageComponent, {
+			title: 'React SVC (like MVC) isomorphic boilerplate v0.0.1',
+			keywords: '',
+			description: 'React isomorphic boilerplate'
 		});
-
-		return this.render(MainPageComponent, dataProm);
 	}
 
 	public index(slug) {
+		// slug is taken from url /pages/index/slug
+
 		this.showMainLoading();
 
 		let curApi = slug ? AppApi.pages.getPageDataBySlug(slug) : AppApi.pages.getPageDataById(1);
 
+		// create a primise
 		let dataPromise = curApi.then((page) => {
 
 			PagesStore.store.setState({
 				currentPage: page
 			} as PagesStore.State);
 
+			//set meta data after promise success
 			this.setMetaData({
 				title: page.seo_title,
 				description: page.seo_description,
@@ -58,9 +42,12 @@ export class PagesController extends AppController {
 			});
 
 			this.hideMainLoading();
+
+			//REQUIRED: return promise data
 			return page;
 		});
 
+		// set render (renderComponent, yourAsyncDataPromise)
 		return this.render(PagesComponent, dataPromise);
 	}
 

@@ -13,10 +13,10 @@
 			"id": "1",
 			"name": "Stores",
 			"slug": "stores",
-			"seo_title": "seo_title",
-			"seo_description": "seo_description",
-			"seo_keywords": "seo_keywords",
-			"content": "content"
+			"seo_title": "Stores",
+			"seo_description": "Stores",
+			"seo_keywords": "Stores",
+			"content": "<h1>Stores</h1> <span class=\"list-item\">The boilerplate uses <a href=\"https://www.npmjs.com/package/react-stores\">React-stores</a> module. Please use documentation of this module</span>"
 		},
 		{
 			"id": "2",

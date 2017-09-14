@@ -135,18 +135,6 @@ module.exports = {
                 description: '{{{description}}}',
                 initialState: '',
             }
-        }),
-        new HandlebarsPlugin({
-            entry: './src/index.hbs',
-            output: './dist/indexServer.hbs',
-            data: {
-                version: '0',
-                componentHtml: '{{{componentHtml}}}',
-                title: '{{{title}}}',
-                keywords: '{{{keywords}}}',
-                description: '{{{description}}}',
-                initialState: '<script>window["_INITIAL_STATE_"] = {{{initialState}}}</script>'
-            }
         })
     ]
 }

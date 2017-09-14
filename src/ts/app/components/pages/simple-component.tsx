@@ -34,6 +34,8 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 						{"/ts/app/controllers/page-controller.tsx "}
 					</SyntaxHighlighter>
 					<span className="list-item">and create a new method</span>
+
+					<h2>Sync methods:</h2>
 					<SyntaxHighlighter language='javascript' style={docco}>
 						{
 							'public simple(firstParam, secondParam) {\n' +
@@ -63,7 +65,48 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 							'}'
 						}
 					</SyntaxHighlighter>
-					<span className="list-item">Then you have to make a View part for the method </span>
+
+					<h2>Async methods:</h2>
+					<SyntaxHighlighter language='javascript' style={docco}>
+						{
+							'public index(slug) {\n' +
+							'\t// slug is taken from url /pages/index/slug\n' +
+							'\t\n' +
+							'\tthis.showMainLoading();\n' +
+							'\n' +
+							'\tlet curApi = slug ? AppApi.pages.getPageDataBySlug(slug) : AppApi.pages.getPageDataById(1);\n' +
+							'\t\n' +
+							'\t\n' +
+							'\t// create a primise\t\n' +
+							'\tlet dataPromise = curApi.then((page) => {\n' +
+							'\n' +
+							'\t\tPagesStore.store.setState({\n' +
+							'\t\t\tcurrentPage: page\n' +
+							'\t\t} as PagesStore.State);\n' +
+							'\n' +
+							'\t\t//set meta data after promise success\n' +
+							'\t\tthis.setMetaData({\n' +
+							'\t\t\ttitle: page.seo_title,\n' +
+							'\t\t\tdescription: page.seo_description,\n' +
+							'\t\t\tkeywords: page.seo_keywords\n' +
+							'\t\t});\n' +
+							'\n' +
+							'\t\tthis.hideMainLoading();\n' +
+							'\t\t\n' +
+							'\t\t//REQUIRED: return promise data\n' +
+							'\t\treturn page;\n' +
+							'\t});\n' +
+							'\n' +
+							'\t// set render (renderComponent, yourAsyncDataPromise)\n' +
+							'\treturn this.render(PagesComponent, dataPromise);\n' +
+							'}'
+						}
+					</SyntaxHighlighter>
+
+					<span className="list-item">
+						Then you have to make a View part for the method <br/>
+						just make a simple react component
+					</span>
 				</div>
 			</div>
 		);

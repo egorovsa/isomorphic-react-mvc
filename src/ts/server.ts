@@ -1,23 +1,17 @@
 import * as express from 'express';
-import * as React  from 'react';
+import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as handlebars from 'handlebars';
 import {match, RouterContext} from 'react-router';
-import {ControllersList} from "./app/controllers/controllers-list";
 import {AppRouter} from "./lib/router";
 import * as serialize from "serialize-javascript";
 import {CONFIG} from "./lib/config";
 import {AppStore} from "./lib/stores/app";
-import {RouteUtils} from "./lib/utils/route-utils";
 
-const templateHtml = require("../indexServer.hbs");
-
+const templateHtml = require("../index.hbs");
 
 const app = express();
-
-console.log(__dirname);
 
 app.use(express.static(path.join(__dirname, './../') + '/webroot'));
 
@@ -77,17 +71,26 @@ function getServerHtml(nextState: any, component: React.ComponentClass<any> = Ro
 		})
 	}
 
+	// console.log(templateHtml(
+	// 	{
+	// 		componentHtml: componentHTML,
+	// 		title: AppStore.store.state.metadata.title,
+	// 		description: AppStore.store.state.metadata.description,
+	// 		keywords: AppStore.store.state.metadata.keywords,
+	// 		initialState: '<script>window["_INITIAL_STATE_"] = ' + initialState + '</script>'
+	// 	}
+	// ));
+
 	return templateHtml(
 		{
 			componentHtml: componentHTML,
 			title: AppStore.store.state.metadata.title,
 			description: AppStore.store.state.metadata.description,
 			keywords: AppStore.store.state.metadata.keywords,
-			initialState: initialState
+			initialState: '<script>window["_INITIAL_STATE_"] = ' + initialState + '</script>'
 		}
 	);
 }
-
 
 function isControllerWebroot(controller: string) {
 	let dir = fs.readdirSync(path.resolve(__dirname, './../webroot'));

@@ -9,7 +9,7 @@ const jeet = require('jeet');
 
 module.exports = {
 	entry: {
-		client: ['./src/ts/client.tsx'],
+		client: ['./src/ts/lib/client.tsx'],
 		vendor: [
 			'react',
 			'react-dom',

@@ -11,7 +11,7 @@ const port = 3000;
 
 module.exports = {
     entry: {
-        client: ['./src/ts/client.tsx'],
+        client: ['./src/ts/lib/client.tsx'],
         vendor: [
             'react',
             'react-dom',
@@ -133,7 +133,7 @@ module.exports = {
                 title: '{{{title}}}',
                 keywords: '{{{keywords}}}',
                 description: '{{{description}}}',
-                initialState: '',
+                initialState: '<script>window["developmentMode"] = true;</script>',
             }
         })
     ]

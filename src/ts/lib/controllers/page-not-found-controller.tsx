@@ -1,6 +1,6 @@
 import * as React from "react";
 import {AppController} from "../../app/controllers/app-controller";
-import {CONFIG} from "../config";
+import {CONFIG} from "../../config/config";
 
 export class PageNotFoundController extends AppController {
 	constructor(data) {

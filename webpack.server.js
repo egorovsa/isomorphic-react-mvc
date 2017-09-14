@@ -11,7 +11,7 @@ module.exports = {
 	},
 	watch: false,
 	entry: {
-		server: ['./src/ts/server.ts']
+		server: ['./src/ts/lib/server.ts']
 	},
 
 	output: {

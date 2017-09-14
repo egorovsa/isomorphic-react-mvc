@@ -1,5 +1,5 @@
 import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-router';
-import {CONFIG} from "../config";
+import {CONFIG} from "../../config/config";
 import {ControllersList} from "../../app/controllers/controllers-list";
 import objectAssign = require("object-assign");
 

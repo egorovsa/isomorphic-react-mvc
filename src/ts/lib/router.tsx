@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-router';
 import {ControllersList} from "../app/controllers/controllers-list";
 import {ControllerRender} from "./controllers/controller";
-import {CONFIG} from "./config";
+import {CONFIG} from "../config/config";
 import objectAssign = require("object-assign");
 import {AppStore} from "./stores/app";
 import {RouteUtils} from "./utils/route-utils";
@@ -20,8 +20,6 @@ export class AppRouter {
 
 					let controllers = new ControllersList(data);
 					let parsedParams = RouteUtils.parseParams(controllers, data);
-
-					console.log(parsedParams);
 
 					if (!parsedParams.controller) {
 						parsedParams.controller = CONFIG.DEFAULT_PAGE_NOT_FOUND_CONTROLLER;
@@ -51,32 +49,19 @@ export class AppRouter {
 
 						next();
 					}
-
 				}}
 				/>
 			</Route>
 		);
 	}
 
-
-	private test(){
-		return ( <PageNotFoundComponent isAuthenticated="123"/>);
-	}
-	
 	public router() {
-		let props = {
-			test:'123'
-		};
-
 		return (
 			<Router history={browserHistory}>
 				<Route path="/page_not_found" component={CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT} onEnter={() => {
 					AppStore.store.setState({
 						appLoading: false
 					} as AppStore.State);
-				}}/>
-				<Route path="/login" component={() => <PageNotFoundComponent isAuthenticated="123"/>} onEnter={(data) => {
-					console.log(data);
 				}}/>
 
 				{this.mainRoute()}

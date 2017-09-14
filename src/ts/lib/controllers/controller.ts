@@ -1,5 +1,5 @@
 import * as React from "react";
-import {CONFIG} from "../config";
+import {CONFIG} from "../../config/config";
 import objectAssign = require("object-assign");
 import {AppStore} from "../stores/app";
 

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {AppRouter} from './lib/router';
+import {AppRouter} from './router';
 import {Store, StoreComponent} from "react-stores";
-import {AppStore} from "./lib/stores/app";
-import {CONFIG} from "./lib/config";
-import '../styl/style.styl';
+import {AppStore} from "./stores/app";
+import {CONFIG} from "../config/config";
+import '../../styl/style.styl';
 
 let routing = new AppRouter;
 

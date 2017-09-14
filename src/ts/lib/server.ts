@@ -4,13 +4,12 @@ import * as ReactDOMServer from 'react-dom/server';
 import * as fs from 'fs';
 import * as path from 'path';
 import {match, RouterContext} from 'react-router';
-import {AppRouter} from "./lib/router";
+import {AppRouter} from "./router";
 import * as serialize from "serialize-javascript";
-import {CONFIG} from "./lib/config";
-import {AppStore} from "./lib/stores/app";
+import {CONFIG} from "../config/config";
+import {AppStore} from "./stores/app";
 
-const templateHtml = require("../index.hbs");
-
+const templateHtml = require("../../index.hbs");
 const app = express();
 
 app.use(express.static(path.join(__dirname, './../') + '/webroot'));
@@ -71,22 +70,13 @@ function getServerHtml(nextState: any, component: React.ComponentClass<any> = Ro
 		})
 	}
 
-	// console.log(templateHtml(
-	// 	{
-	// 		componentHtml: componentHTML,
-	// 		title: AppStore.store.state.metadata.title,
-	// 		description: AppStore.store.state.metadata.description,
-	// 		keywords: AppStore.store.state.metadata.keywords,
-	// 		initialState: '<script>window["_INITIAL_STATE_"] = ' + initialState + '</script>'
-	// 	}
-	// ));
-
 	return templateHtml(
 		{
 			componentHtml: componentHTML,
 			title: AppStore.store.state.metadata.title,
 			description: AppStore.store.state.metadata.description,
 			keywords: AppStore.store.state.metadata.keywords,
+			styleLink: '<link rel="stylesheet" href="/css/style.css">',
 			initialState: '<script>window["_INITIAL_STATE_"] = ' + initialState + '</script>'
 		}
 	);

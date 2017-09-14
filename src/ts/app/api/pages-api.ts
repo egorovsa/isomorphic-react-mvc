@@ -1,6 +1,6 @@
 import {PagesStore} from "../stores/pages";
 import {Api} from "../../lib/api/api";
-import {CONFIG} from "../../lib/config";
+import {CONFIG} from "../../config/config";
 
 export class PagesApi extends Api {
 
@@ -17,8 +17,8 @@ export class PagesApi extends Api {
 		}
 
 		return new Promise((resolve, reject) => {
-			this.request(CONFIG.API_URL + 'local-data/pages.json', 'pages').then((data) => {
-				let page:PagesStore.Page = {} as PagesStore.Page;
+			this.request(CONFIG.SITE_URL + 'local-data/pages.json', 'pages').then((data) => {
+				let page: PagesStore.Page = {} as PagesStore.Page;
 
 				data.pages.forEach((item) => {
 					if (item.slug === slug) {
@@ -32,9 +32,11 @@ export class PagesApi extends Api {
 	}
 
 	public getPageDataById(id: number): Promise<PagesStore.Page> {
+
+		console.log('getPageDataById', document.location);
 		return new Promise((resolve, reject) => {
-			this.request(CONFIG.API_URL + 'local-data/pages.json', 'pages').then((data) => {
-				let page:PagesStore.Page = {} as PagesStore.Page;
+			this.request(CONFIG.SITE_URL + 'local-data/pages.json', 'pages').then((data) => {
+				let page: PagesStore.Page = {} as PagesStore.Page;
 
 				data.pages.forEach((item) => {
 					if (item.id === id) {
@@ -49,7 +51,7 @@ export class PagesApi extends Api {
 
 	public getMainMenu(): Promise<PagesStore.Page> {
 		return new Promise((resolve, reject) => {
-			this.request(CONFIG.API_URL + 'local-data/pages.json', 'pagesMenu').then((data) => {
+			this.request(CONFIG.SITE_URL + 'local-data/pages.json', 'pagesMenu').then((data) => {
 				resolve(data);
 			});
 		});

@@ -88,7 +88,7 @@ function isControllerWebroot(controller: string) {
 	return dir.indexOf(controller) >= 0;
 }
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || CONFIG.PRODUCTION_PORT;
 
 app.listen(PORT, () => {
 	console.log(`Server listening on: ${PORT}`);

@@ -4,6 +4,7 @@ import {AppLoadingComponent} from "../lib/components/app-loading-component";
 import {CUSTOM_ROUTES} from './routes';
 
 const config = {
+	PRODUCTION_PORT: 4001,
 	DEFAULT_CONTROLLER: 'pages',
 	DEFAULT_ACTION: 'index',
 	DEFAULT_LAYOUT_COMPONENT: AppComponent,

@@ -42,7 +42,7 @@ http://localhost:4001
 
 4001 is default port, you might change in in config file 
 
-## reating to simple page
+## Creating to simple page
 
 When you do a request to for instance : http://yourSite.com/pages/simple/param1/param2
 it means that you have to have a public method is named as *simple* in a the *PagesController*.

@@ -45,7 +45,7 @@ http://localhost:4001
 ## Creating to simple page
 
 When you do a request to for instance : http://yourSite.com/pages/simple/param1/param2
-it means that you have to have a public method is named as *simple* in a the *PagesController*.
+it means that you have to have a public method is named as *simple* in your *PagesController*.
 At the time your url params will be available like the arguments of the method.
 
 ```typescript
@@ -68,6 +68,8 @@ public simple(firstParam, secondParam) {
 		params: firstParam,
 		a: secondParam,
 	};
+	
+	//some code here...
 
 	return this.render(() => <SimplePageComponent {...params}/>, {
 		title: 'This is a simple page',
@@ -75,13 +77,14 @@ public simple(firstParam, secondParam) {
 		description: 'This is a simple page description'
 	});
 }
+
 ```
 By the way firstParam and secondParam went from the url 
 ```
 "/pages/simple/1/a/param"
 ``` 
 
-Or if you don't want to pass sync params to the view component just use
+If you don't want to pass sync params to the view component just use
 ```typescript
 public simple() {
 	return this.render(SimplePageComponent, {
@@ -90,6 +93,7 @@ public simple() {
 		description: 'This is a simple page description'
 	});
 }
+
 ```
 #### Async methods:
 

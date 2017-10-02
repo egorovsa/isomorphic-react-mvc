@@ -6,7 +6,7 @@ This is a simple React isomorphic framework to make a simple websites with React
 ## How to install and start
 
 ```
-//Install moules
+//Install modules
 yarn 
 
 //run dev

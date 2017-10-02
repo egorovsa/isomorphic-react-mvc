@@ -6,12 +6,15 @@ This is a simple React isomorphic framework to make a simple websites with React
 ## How to install and start
 
 ```
+//Install moules
 yarn 
+
+//run dev
+
 yarn dev
 
 //or
 
-npm i
 npm run dev
 ```
 and then just open your favorite browser 

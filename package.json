@@ -5,8 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node_modules/.bin/webpack-dev-server",
-		"dev": "node_modules/.bin/webpack-dev-server",
+		"start": "webpack-dev-server",
+		"dev": "webpack-dev-server",
 		"server": "webpack --colors --config webpack.server.js",
 		"client": "webpack --colors --config webpack.prod.js",
 		"build": "concurrently \"npm run server\" \"npm run client\""

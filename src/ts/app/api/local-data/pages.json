@@ -1,6 +1,15 @@
 [
 	{
 		"id": "0",
+		"name": "Home",
+		"slug": "main",
+		"seo_title": "seo_title",
+		"seo_description": "seo_description",
+		"seo_keywords": "seo_keywords",
+		"content": "content"
+	},
+	{
+		"id": "1",
 		"name": "Simple page",
 		"slug": "simple",
 		"seo_title": "seo_title",
@@ -9,7 +18,7 @@
 		"content": "content"
 	},
 	{
-		"id": "1",
+		"id": "2",
 		"name": "Stores",
 		"slug": "stores",
 		"seo_title": "Stores",
@@ -18,7 +27,7 @@
 		"content": "<h1>Stores</h1> <span class=\"list-item\">The boilerplate uses <a href=\"https://www.npmjs.com/package/react-stores\">React-stores</a> module. Please use documentation of this module</span>"
 	},
 	{
-		"id": "2",
+		"id": "3",
 		"name": "View",
 		"slug": "view",
 		"seo_title": "seo_title1",
@@ -27,12 +36,12 @@
 		"content": "content1"
 	},
 	{
-		"id": "3",
+		"id": "4",
 		"name": "Controllers",
 		"slug": "controllers",
 		"seo_title": "seo_title2",
 		"seo_description": "seo_description2",
 		"seo_keywords": "seo_keywords2",
-		"content": "content2"
+		"content": "<h1>Controllers</h1> <span class=\"list-item\">Under construction documentations</span>"
 	}
 ]

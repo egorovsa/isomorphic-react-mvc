@@ -34,6 +34,8 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 			<div>
 				<div className="container">
 					<div className="page-content">
+						<h1>Overview</h1>
+
 						<div className="list-item">
 							This is a simple React isomorphic framework to make a simple websites with React
 							technologies.
@@ -41,6 +43,50 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 							<br/>
 							It uses a standart Model View Controller pattern, but here is using a FLUX method for model.
 						</div>
+
+						<h1>How to install and start</h1>
+
+						<h3>With Yarn</h3>
+						<SyntaxHighlighter language='bash' style={docco}>
+							{
+								'//Install packages\n' +
+								'$ yarn\n' +
+								'\n' +
+								'//Start to run development\n' +
+								'$ yarn dev\n'
+							}
+						</SyntaxHighlighter>
+						<br/><br/>
+
+						<h3>With npm</h3>
+						<SyntaxHighlighter language='bash' style={docco}>
+							{
+								'//Install packages\n' +
+								'$ npm i\n' +
+								'\n' +
+								'//Start to run development\n' +
+								'$ npm run dev\n'
+							}
+						</SyntaxHighlighter>
+
+						<h1>How to build</h1>
+
+						<h3>With Yarn</h3>
+						<SyntaxHighlighter language='bash' style={docco}>
+							{
+								'$ yarn build\n'
+							}
+						</SyntaxHighlighter>
+						<br/><br/>
+
+						<h3>With npm</h3>
+						<SyntaxHighlighter language='bash' style={docco}>
+							{
+								'$ npm run build\n'
+							}
+						</SyntaxHighlighter>
+
+						<h1>How it works</h1>
 
 						<div className="list-item">
 							When you do a request to for instance : <span
@@ -52,8 +98,6 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 							<br/>
 							At the time your url params will be available like the arguments of the method.
 						</div>
-
-						<span className="list-item">PagesController</span>
 
 						<SyntaxHighlighter language='javascript' style={docco}>
 							{"/ts/app/controllers/page-controller.tsx "}
@@ -82,7 +126,7 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 								'\t\t\ttitle: "some SEO title",\n' +
 								'\t\t\tdescription: "some SEO description",\n' +
 								'\t\t\tkeywords: "some SEO keywords"\n' +
-								'\t\t});'+
+								'\t\t});' +
 								'\n' +
 								'\t}' +
 								'\n' +

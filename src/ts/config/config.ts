@@ -18,7 +18,7 @@ const config = {
 	KEYWORDS: 'Isomorphic react ts',
 	DESCRIPTION: 'Isomorphic react ts',
 	SITE_URL: '/',
-	API_URL: '/',
+	API_URL: 'http://localhost:4002/',
 	DEV_SITE_URL: '/',
 	DEV_API_URL: '/',
 	CUSTOM_ROUTES: CUSTOM_ROUTES,

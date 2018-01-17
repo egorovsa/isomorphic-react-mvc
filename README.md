@@ -1,10 +1,9 @@
-icons here
-https://linearicons.com/free
-
 # react-isomorphic-boilerplate
 isomorphic React MVC framework
 
 This is a simple React isomorphic framework to make simple websites with React technologies.
+
+Demo site: ([Demo](http://isomorph-react.egorov.pw/))
 
 ## How to install and start
 

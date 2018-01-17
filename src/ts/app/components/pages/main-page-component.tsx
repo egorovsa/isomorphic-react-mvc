@@ -69,6 +69,10 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 							}
 						</SyntaxHighlighter>
 
+						<div className="list-item">
+							After that just open http://localhost:3000 in your favorite browser
+						</div>
+
 						<h1>How to build</h1>
 
 						<h3>With Yarn</h3>
@@ -85,6 +89,25 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 								'$ npm run build\n'
 							}
 						</SyntaxHighlighter>
+
+						<div className="list-item">
+							Than you may run:
+						</div>
+
+						<SyntaxHighlighter language='bash' style={docco}>
+							{
+								'$ node dist/server/server.js\n' +
+								'\n' +
+								'//or if you have pm2\n' +
+								'\n' +
+								'$ pm2 start pm2.json\n'
+							}
+						</SyntaxHighlighter>
+
+						<div className="list-item">
+							and open your browser http://localhost:4002 where
+							4002 is default server port, you might change in in config file
+						</div>
 
 						<h1>How it works</h1>
 

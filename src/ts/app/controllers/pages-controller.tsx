@@ -23,6 +23,10 @@ export class PagesController extends AppController {
 
 	public async view() {
 		this.component = ViewPageComponent;
+
+		this.setMetaData({
+			title: 'Creating view layer'
+		});
 	}
 
 	public async simple(test) {
@@ -31,6 +35,10 @@ export class PagesController extends AppController {
 		this.set({
 			params: test
 		});
+
+		this.setMetaData({
+			title: 'How to create a simple page'
+		})
 	}
 
 	public async index(slug) {

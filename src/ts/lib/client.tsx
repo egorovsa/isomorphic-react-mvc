@@ -5,6 +5,7 @@ import {Store, StoreComponent} from "react-stores";
 import {AppStore} from "./stores/app";
 import {CONFIG} from "../config/config";
 import '../../styl/style.styl';
+import './utils/objectassign/object-assign';
 
 let routing = new AppRouter;
 
@@ -19,25 +20,19 @@ class MainComponent extends StoreComponent<any, any, StoresState> {
 		});
 	}
 
-	getLoadindPage(): JSX.Element {
+	getLoadingPage(): JSX.Element {
 		return React.createElement(this.stores.app.state.appLoadingComponent, {active: this.stores.app.state.appLoading})
 	}
 
 	getLayout(): JSX.Element {
-
 		return (
-			<span>
-				{this.getLoadindPage()}
-			</span>
+			<span> {this.getLoadingPage()} </span>
 		)
-
 	}
 
 	public render() {
 		return (
-			<div>
-				{this.getLayout()}
-			</div>
+			<div> {this.getLayout()} </div>
 		);
 	}
 }

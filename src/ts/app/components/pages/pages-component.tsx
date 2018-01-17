@@ -1,30 +1,20 @@
 import * as React from 'react';
-import {Store, StoreComponent} from "react-stores";
 import {PagesStore} from "../../stores/pages";
 
 export interface Props {
-	params?: any
+	page: PagesStore.Page
 }
 
 export interface State {
 
 }
 
-export interface StoresState {
-	pages: Store<PagesStore.State>
-}
-
-export class PagesComponent extends StoreComponent<Props, State, StoresState> {
-	constructor() {
-		super({
-			pages: PagesStore.store
-		});
-	}
-
+export class PagesComponent extends React.Component<Props, State> {
 	public render() {
 		return (
-			<div className="container">
-				<div className="page-content" dangerouslySetInnerHTML={{__html: this.stores.pages.state.currentPage.content}}></div>
+			<div className="container pages-container">
+				<h1>{this.props.page.name}</h1>
+				<div className="page-content" dangerouslySetInnerHTML={{__html: this.props.page.content}}></div>
 			</div>
 		);
 	}

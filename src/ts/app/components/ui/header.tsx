@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {Link} from "react-router";
-import {NavComponent} from "./nav";
-import {PricesSliderComponent} from "./prices-slider";
 import {CommonStore} from "../../stores/common";
+import {NavComponent} from "./nav";
 
 export interface Props {
 	mainPage: boolean,
 	headMenu: any[],
+	scrollTop: number,
 }
 
 export interface State {
@@ -16,9 +15,7 @@ export interface State {
 export class HeaderComponent extends React.Component<Props, State> {
 
 	static defaultProps = {
-		staticData: {
-			company_name: ''
-		}
+		staticData: {}
 	};
 
 	render() {
@@ -27,7 +24,7 @@ export class HeaderComponent extends React.Component<Props, State> {
 				<div
 					className={this.props.mainPage ? "container main-page-header" : "container main-page-header header-simple"}>
 					<div className="main-head">
-						<h1>React SVC (like MVC) isomorphic boilerplate v0.0.1</h1>
+						<h1>Isomorphic React MVC framework</h1>
 						<div className="description">
 							Tech: React, React-stores, TypeScript, Stylus, Webpack, Express
 						</div>

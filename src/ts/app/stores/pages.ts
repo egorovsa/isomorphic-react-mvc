@@ -9,10 +9,19 @@ export namespace PagesStore {
 		seo_description: string,
 		seo_keywords: string,
 		content: string,
+		slug: string
+	}
+
+	export interface PagesMenu {
+		id: number,
+		name: string,
+		slug: string,
+		redirect: string
 	}
 
 	export interface State {
 		currentPage: Page,
+		mainMenu: PagesMenu[]
 	}
 
 	let initialState: State = {
@@ -23,7 +32,9 @@ export namespace PagesStore {
 			seo_description: '',
 			seo_keywords: '',
 			content: '',
-		}
+			slug: ''
+		},
+		mainMenu: []
 	};
 
 	export let store: Store<State> = new Store<State>(initialState);

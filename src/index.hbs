@@ -1,35 +1,39 @@
 <!doctype html>
 <html language="en">
 <head>
-    <title>{{title}}</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=no">
-    <meta name="description" content="{{description}}">
-    <meta name="Keywords" content="{{keywords}}">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<title>{{title}}</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=no">
+	<meta name="description" content="{{description}}">
+	<meta name="Keywords" content="{{keywords}}">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+	<link rel="shortcut icon" href="/favicon.ico"/>
 	{{{styleLink}}}
-    <link rel="manifest" href="/manifest.json">
-    <!--<script type="text/javascript" src="//api-maps.yandex.ru/2.1/?key=AOo7BlkBAAAAp73eMQIAFU3V3TkMnpTjCllmx8f6YMR8CPIAAAAAAAAAAAAanUSuK5pEWPBRT0aB5xl0SF5xFw==&modules=regions~metro" charset="utf-8"></script>-->
-    <script type="text/javascript" src="//api-maps.yandex.ru/2.1/?lang=ru_RU" charset="utf-8"></script>
+	<link rel="manifest" href="/manifest.json">
+	<script type="text/javascript" src="//api-maps.yandex.ru/2.1/?lang=ru_RU" charset="utf-8"></script>
+	<!-- Add to home screen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" href="/img/icons/icon-152x152.png">
+	<meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+	<meta name="msapplication-TileColor" content="#2F3BA2">
 
-    <!-- Add to home screen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Weather PWA">
-    <link rel="apple-touch-icon" href="/img/icons/icon-152x152.png">
-    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#2F3BA2">
+	<meta name="yandex-verification" content="9c57117c8d09cb11"/>
 </head>
 <body>
 
 <div id="app">
-    <div>{{{componentHtml}}}</div>
+	<div>{{{componentHtml}}}</div>
 </div>
 
 {{{initialState}}}
-<script src="/js/vendor.js?v={{version}}"></script>
-<script src="/js/client.js?v={{version}}"></script>
+<script src="/js/vendor.js?v={{vendorVersion}}"></script>
+<script src="/js/client.js?v={{appVersion}}"></script>
 
+{{#if server}}
+
+{{/if}}
 </body>
 </html>

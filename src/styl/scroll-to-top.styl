@@ -1,0 +1,26 @@
+.scroll-to-top
+	position fixed
+	width 50px
+	height 40px
+	background $main-red-color
+	border-radius 5px
+	right 20px
+	bottom 20px
+	opacity 0.3
+	transform translateY(100px)
+	transition 500ms transform, 500ms opacity, 0.3s background-color
+	cursor pointer
+	color #fff
+	text-align center
+	font-size: 16px;
+	box-sizing: border-box;
+	padding-top: 10px;
+	pointer-events none
+
+	&:hover
+		background-color $main-red-color+ 10
+
+	&.active
+		opacity 1
+		transform translateY(0)
+		pointer-events auto

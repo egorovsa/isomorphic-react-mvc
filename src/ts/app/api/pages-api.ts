@@ -3,58 +3,20 @@ import {Api} from "../../lib/api/api";
 import {CONFIG} from "../../config/config";
 
 export class PagesApi extends Api {
+	public async getPageDataBySlug(slug: string): Promise<PagesStore.Page> {
+		let pages = await this.request(CONFIG.SITE_URL + 'local-data/pages.json', 'pages');
+		let page = null;
 
-	public getPageDataBySlug(slug: string): Promise<PagesStore.Page> {
-
-		let existsData = this.getExistState('pages');
-
-		if (existsData) {
-			if (existsData.slug === slug) {
-				return new Promise((resolve) => {
-					resolve(existsData)
-				})
+		pages.forEach((item: PagesStore.Page) => {
+			if (item.slug === slug) {
+				page = item;
 			}
-		}
-
-		return new Promise((resolve, reject) => {
-			this.request(CONFIG.SITE_URL + 'local-data/pages.json', 'pages').then((data) => {
-				let page: PagesStore.Page = {} as PagesStore.Page;
-
-				data.pages.forEach((item) => {
-					if (item.slug === slug) {
-						page = item;
-					}
-				});
-
-				resolve(page);
-			});
 		});
+
+		return page;
 	}
 
-	public getPageDataById(id: number): Promise<PagesStore.Page> {
-
-		console.log('getPageDataById', document.location);
-		return new Promise((resolve, reject) => {
-			this.request(CONFIG.SITE_URL + 'local-data/pages.json', 'pages').then((data) => {
-				let page: PagesStore.Page = {} as PagesStore.Page;
-
-				data.pages.forEach((item) => {
-					if (item.id === id) {
-						page = item;
-					}
-				});
-
-				resolve(page);
-			});
-		});
+	public async getPagesMenu(): Promise<PagesStore.Page[]> {
+		return await this.request(CONFIG.SITE_URL + 'local-data/pages.json', 'pages');
 	}
-
-	public getMainMenu(): Promise<PagesStore.Page> {
-		return new Promise((resolve, reject) => {
-			this.request(CONFIG.SITE_URL + 'local-data/pages.json', 'pagesMenu').then((data) => {
-				resolve(data);
-			});
-		});
-	}
-
 }

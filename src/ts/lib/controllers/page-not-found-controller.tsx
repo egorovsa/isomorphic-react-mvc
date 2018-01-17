@@ -8,7 +8,13 @@ export class PageNotFoundController extends AppController {
 	}
 
 	public index() {
-		return this.render(CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT);
+		this.setMetaData({
+			title: CONFIG.NOT_FOUND_TITLE,
+			keywords: CONFIG.KEYWORDS,
+			description: CONFIG.DESCRIPTION
+		});
+
+		this.pageNotFound();
 	}
 
 }

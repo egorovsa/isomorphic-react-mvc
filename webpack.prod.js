@@ -3,22 +3,18 @@ const webpack = require("webpack");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HandlebarsPlugin = require('handlebars-webpack-plugin');
 const nib = require('nib');
-const jeet = require('jeet');
+const vendors = require('./webpack.vendors');
 
 module.exports = {
 	entry: {
 		client: ['./src/ts/lib/client.tsx'],
-		vendor: [
-			'react',
-			'react-dom',
-			'react-router'
-		]
+		vendor: vendors
 	},
 	output: {
 		path: path.resolve(__dirname, './dist/webroot/'),
-		filename: 'js/[name].js'
+		filename: 'js/[name].js',
+		publicPath: '/'
 	},
 	devtool: false,
 	resolve: {
@@ -44,7 +40,6 @@ module.exports = {
 							loader: 'stylus-loader',
 							options: {
 								use: [
-									jeet(),
 									nib()
 								]
 							}
@@ -53,30 +48,44 @@ module.exports = {
 				})
 			},
 			{
+				test: /\.(woff|ttf|eot)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/,
+				loaders:
+					['file-loader']
+			},
+			{
 				test: /\.(gif|png|jpe?g|svg)$/i,
-				loaders: [
-					{
-						loader: 'file-loader',
-						query: {
-							context: './src',
-							name: '[path][name].[ext]'
-						}
-					},
-					{
-						loader: 'image-webpack-loader',
-						query: {
-							quality: 90,
-							progressive: true,
-							gifsicle: {
-								interlaced: false
-							},
-							pngquant: {
-								quality: "95-100",
-								speed: 1
+				loaders:
+					[
+						{
+							loader: 'file-loader',
+							query: {
+								context: './src',
+								name: '[path][name].[ext]'
 							}
-						}
-					}
-				]
+						},
+						{
+							loader: 'image-webpack-loader',
+							options: {
+								mozjpeg: {
+									progressive: true,
+									quality: 65
+								},
+								optipng: {
+									enabled: false,
+								},
+								pngquant: {
+									quality: '65-90',
+									speed: 4
+								},
+								gifsicle: {
+									interlaced: false,
+								},
+								webp: {
+									quality: 75
+								}
+							}
+						},
+					]
 			}
 		]
 	}, plugins: [
@@ -95,6 +104,10 @@ module.exports = {
 		], {
 			debug: false,
 			copyUnmodified: false
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'vendor',
+			minChunks: Infinity
 		}),
 		new ExtractTextPlugin({
 			filename: '/css/style.css',

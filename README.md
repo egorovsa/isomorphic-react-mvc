@@ -1,3 +1,6 @@
+icons here
+https://linearicons.com/free
+
 # react-isomorphic-boilerplate
 React-SVC-(like MVC)-isomorphic-boilerplate
 
@@ -41,9 +44,9 @@ pm2 start pm2.json
 ```
 
 and then just open your favorite browser 
-http://localhost:4001
+http://localhost:4002
 
-4001 is default port, you might change in in config file 
+4002 is default port, you might change in in config file
 
 ## Creating to simple page
 
@@ -66,19 +69,29 @@ and create a new method
 #### Sync methods:
 
 ```typescript
-public simple(firstParam, secondParam) {
-	let params = {
-		params: firstParam,
-		a: secondParam,
-	};
-	
-	//some code here...
+import * as React from "react";
+import {AppController} from "./app-controller";
+import {SimplePageComponent} from "../components/pages/simple-component";
 
-	return this.render(() => <SimplePageComponent {...params}/>, {
-		title: 'This is a simple page',
-		keywords: 'This is a simple page keywords',
-		description: 'This is a simple page description'
-	});
+export class PagesController extends AppController {
+	constructor(data) {
+		super(data);
+	}
+
+	public simple(test) {
+		this.component = SimplePageComponent;
+
+		this.set({
+			params: test
+		});
+
+
+		this.setMetaData({
+			title: "some SEO title",
+			description: "some SEO description",
+			keywords: "some SEO keywords"
+		});
+	}
 }
 
 ```
@@ -87,52 +100,72 @@ By the way firstParam and secondParam went from the url
 "/pages/simple/1/a/param"
 ``` 
 
-If you don't want to pass sync params to the view component just use
-```typescript
-public simple() {
-	return this.render(SimplePageComponent, {
-		title: 'This is a simple page',
-		keywords: 'This is a simple page keywords',
-		description: 'This is a simple page description'
-	});
-}
-
-```
 #### Async methods:
 
 ```typescript
-public index(slug) {
-	// slug is taken from url /pages/index/slug
-	
-	this.showMainLoading();
+import * as React from "react";
+import {AppController} from "./app-controller";
+import {PagesComponent} from "../components/pages/pages-component";
 
-	let curApi = slug ? AppApi.pages.getPageDataBySlug(slug) : AppApi.pages.getPageDataById(1);
-	
-	
-	// create a primise	
-	let dataPromise = curApi.then((page) => {
+export class PagesController extends AppController {
+	constructor(data) {
+		super(data);
+	}
 
-		PagesStore.store.setState({
-			currentPage: page
-		} as PagesStore.State);
+	public async index(slug) {
+		UtilsService.scrollToTop();
+		this.showMainLoading();
 
-		//set meta data after promise success
-		this.setMetaData({
-			title: page.seo_title,
-			description: page.seo_description,
-			keywords: page.seo_keywords
-		});
+		if (slug) {
+			this.component = PagesComponent;
+
+			try {
+				const page = await AppApi.pages.getPageDataBySlug(slug);
+
+				this.set({
+					page: page
+				});
+
+				this.setMetaData({
+					title: page.seo_title,
+					description: page.seo_description,
+					keywords: page.seo_keywords
+				});
+			} catch (e) {
+				this.pageNotFound();
+			}
+		} else {
+			this.pageNotFound();
+		}
 
 		this.hideMainLoading();
-		
-		//REQUIRED: return promise data
-		return page;
-	});
-
-	// set render (renderComponent, yourAsyncDataPromise)
-	return this.render(PagesComponent, dataPromise);
+	}
 }
 ```
 Then you have to make a View part for the method 
 
 just make a simple react component
+
+```typescript
+import * as React from 'react';
+import {PagesStore} from "../../stores/pages";
+
+export interface Props {
+	page: PagesStore.Page
+}
+
+export interface State {
+
+}
+
+export class PagesComponent extends React.Component<Props, State> {
+	public render() {
+		return (
+			<div className="container pages-container">
+				<h1>{this.props.page.name}</h1>
+				<div className="page-content" dangerouslySetInnerHTML={{__html: this.props.page.content}}></div>
+			</div>
+		);
+	}
+}
+```

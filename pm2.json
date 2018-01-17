@@ -1,7 +1,9 @@
 {
-  "apps" : [{
-    "name"        : "Isomorphic react1 ",
-    "script"      : "./dist/server/server.js",
-    "watch"       : true
-  }]
+	"apps": [
+		{
+			"name": "React isomorphic framework",
+			"script": "./dist/server/server.js",
+			"watch": false
+		}
+	]
 }

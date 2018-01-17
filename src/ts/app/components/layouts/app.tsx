@@ -1,24 +1,26 @@
 import * as React from 'react';
 import {HeaderComponent} from "../ui/header";
-import {FooterComponent} from "../ui/footer";
-import {SideNavComponent} from "../ui/sidenav";
 import {CommonStore} from "../../stores/common";
 import {Store, StoreComponent} from "react-stores";
 import {PagesStore} from "../../stores/pages";
+import {FooterComponent} from "../ui/common/footer";
+import {UIScrollToTop} from "../ui/scroll-to-top";
+import {SideNavComponent} from "../ui/common/sidenav";
+
+const NotificationContainer = require('react-notifications').NotificationContainer;
 
 export interface Props {
 
 }
 
 export interface State {
-
+	scrollTop: number
 }
 
 export interface StoresState {
-	common: Store<CommonStore.State>,
+	common: Store<CommonStore.State>
 	pages: Store<PagesStore.State>
 }
-
 
 export class AppComponent extends StoreComponent<Props, State, StoresState> {
 	constructor() {
@@ -28,9 +30,37 @@ export class AppComponent extends StoreComponent<Props, State, StoresState> {
 		});
 	}
 
+	state: State = {
+		scrollTop: 0
+	};
+
+	private updateDimensions = (e) => {
+		this.stores.common.setState({
+			windowSize: e.target.innerWidth
+		} as CommonStore.State);
+	};
+
+	private updateScrollTop = (e) => {
+		this.setState({
+			scrollTop: window.scrollY
+		});
+	};
+
+	storeComponentDidMount() {
+		window.addEventListener("resize", this.updateDimensions);
+		window.addEventListener("scroll", this.updateScrollTop);
+	}
+
+	storeComponentWillUnmount() {
+		window.removeEventListener("resize", this.updateDimensions);
+		window.removeEventListener("scroll", this.updateScrollTop);
+	}
+
 	render() {
 		return (
 			<div>
+				{!this.stores.common.state.server && <NotificationContainer/>}
+
 				<SideNavComponent
 					active={this.stores.common.state.sideNav}
 					headMenu={this.stores.common.state.mainMenu}
@@ -44,10 +74,19 @@ export class AppComponent extends StoreComponent<Props, State, StoresState> {
 				<HeaderComponent
 					mainPage={this.stores.common.state.mainPage}
 					headMenu={this.stores.common.state.mainMenu}
+					scrollTop={this.state.scrollTop}
 				/>
 
-				{this.props.children}
+				<section className="main-content-section">
+					{this.props.children}
+				</section>
 
+				<FooterComponent
+					mainPage={false}
+					mainMenu={this.stores.pages.state.mainMenu}
+				/>
+
+				<UIScrollToTop currentScroll={this.state.scrollTop}/>
 			</div>
 		);
 	}

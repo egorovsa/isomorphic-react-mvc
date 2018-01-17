@@ -7,5 +7,4 @@ export class ControllersList extends Controllers {
 		super(data);
 
 	}
-
 }

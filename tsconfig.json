@@ -6,8 +6,6 @@
 		"outDir": "dist",
 		"moduleResolution": "node",
 		"sourceMap": true,
-//		"emitDecoratorMetadata": true,
-//		"experimentalDecorators": false,
 		"noImplicitAny": false,
 		"typeRoots": [
 			"./node_modules/@types/"
@@ -17,8 +15,8 @@
 		"removeComments": false,
 		"diagnostics": true,
 		"lib": [
-			"es2015",
-			"dom"
+			"dom",
+			"es6"
 		]
 	},
 	"exclude": [

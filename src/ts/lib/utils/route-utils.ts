@@ -1,7 +1,6 @@
 import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-router';
 import {CONFIG} from "../../config/config";
 import {ControllersList} from "../../app/controllers/controllers-list";
-import objectAssign = require("object-assign");
 
 export class RouteUtils {
 
@@ -57,11 +56,10 @@ export class RouteUtils {
 	}
 
 	static parseParams(controllers: ControllersList, data: RouterState) {
-
-		let controller = '';
+		let controller = CONFIG.DEFAULT_CONTROLLER;
 		let action = CONFIG.DEFAULT_ACTION;
 		let customRoutes = this.parseCustomRoutes(data);
-		let params: Router.Params = objectAssign({}, data.params);
+		let params = {...{}, ...data.params};
 
 		if (customRoutes.controller) {
 			controller = customRoutes.controller;
@@ -76,7 +74,6 @@ export class RouteUtils {
 
 				if (controllers.isAction(params['param0'], params['param1'])) {
 					action = params['param1'];
-
 					delete params['param1'];
 				}
 
@@ -91,7 +88,7 @@ export class RouteUtils {
 		}
 	}
 
-	static paramsToArray(params: Router.Params): string[] {
+	static paramsToArray(params): string[] {
 		let paramsArray: string[] = [];
 
 		for (let key in params) {

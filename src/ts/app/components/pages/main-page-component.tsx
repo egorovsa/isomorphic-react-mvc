@@ -37,6 +37,10 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 						<h1>Overview</h1>
 
 						<div className="list-item">
+							<a href="https://github.com/egorovsa/react-isomorphic-boilerplate">View on the GitHub</a>
+						</div>
+
+						<div className="list-item">
 							This is a simple React isomorphic framework to make a simple websites with React
 							technologies.
 							<br/>

@@ -1,12 +1,17 @@
 import * as React from 'react';
 import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-router';
 import {ControllersList} from "../app/controllers/controllers-list";
-import {CONFIG} from "../config/config";
+import CONFIG from "../config/config";
 import {AppStore} from "./stores/app";
-import {RouteUtils} from "./utils/route-utils";
+import {RouteUtils} from "./services/route-utils";
 import {CommonStore} from "../app/stores/common";
+import {InitialStateUtils} from "./services/initial-state-utils";
+import {Controller} from "./controllers/controller";
 
 export class AppRouter {
+	constructor(readonly initialStateInstance: InitialStateUtils) {
+	}
+
 	public router() {
 		return (
 			<Router history={browserHistory}>
@@ -16,7 +21,7 @@ export class AppRouter {
 					} as AppStore.State);
 				}}/>
 
-				{this.mainRoute()}
+				{this.mainRoute(false)}
 			</Router>
 		)
 	}
@@ -41,7 +46,7 @@ export class AppRouter {
 	};
 
 	private async mainProcess(data: RouterState) {
-		const controllers = new ControllersList(data);
+		const controllers = new ControllersList(data, this.initialStateInstance);
 		const parsedParams = RouteUtils.parseParams(controllers, data);
 
 		if (!parsedParams.controller) {
@@ -49,16 +54,19 @@ export class AppRouter {
 			parsedParams.action = 'index';
 		}
 
-		let controller = controllers[parsedParams.controller];
-		await controller.beforeFilter(...parsedParams.params);
-		await controller[parsedParams.action](...parsedParams.params);
-		data.routes[0].component = controller.layout;
-		data.routes[1].component = controller.component;
-		data.routes[1].component = () => <controller.component {...controller.componentData}/> ;
-		data.params['notFound'] = controller.notFound.toString();
-		data.params['responseStatus'] = controller.responseStatus;
+		try {
+			let controller: Controller = controllers.getController(parsedParams.controller);
+			await controller.beforeFilter(...parsedParams.params);
+			await controller[parsedParams.action](...parsedParams.params);
+			data.routes[0].component = controller.layout;
+			data.routes[1].component = () => <controller.component {...controller.componentData}/>;
+			data.params['notFound'] = controller.notFound.toString();
+			data.params['responseStatus'] = controller.responseStatus.toString();
 
-		return data;
+			return data;
+		} catch (e) {
+			return e;
+		}
 	}
 }
 

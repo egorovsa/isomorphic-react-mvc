@@ -46,8 +46,10 @@
 		"webpack-node-externals": "^1.6.0"
 	},
 	"dependencies": {
+		"@types/cookie-parser": "^1.4.1",
 		"colors": "^1.1.2",
 		"compression": "^1.7.1",
+		"cookie-parser": "^1.4.3",
 		"es6-promise": "^4.1.1",
 		"history": "3.0.0",
 		"js-cookie": "^2.2.0",

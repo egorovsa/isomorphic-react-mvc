@@ -1,5 +1,5 @@
 import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-router';
-import {CONFIG} from "../../config/config";
+import CONFIG from "../../config/config";
 import {ControllersList} from "../../app/controllers/controllers-list";
 
 export class RouteUtils {
@@ -75,6 +75,9 @@ export class RouteUtils {
 				if (controllers.isAction(params['param0'], params['param1'])) {
 					action = params['param1'];
 					delete params['param1'];
+				} else if (!controllers.isAction(params['param0'], action)) {
+					controller = CONFIG.DEFAULT_CONTROLLER;
+					action = CONFIG.DEFAULT_ACTION;
 				}
 
 				delete params['param0'];
@@ -92,7 +95,7 @@ export class RouteUtils {
 		let paramsArray: string[] = [];
 
 		for (let key in params) {
-			paramsArray.push(params[key])
+			paramsArray.push(params[key]);
 		}
 
 		return paramsArray;

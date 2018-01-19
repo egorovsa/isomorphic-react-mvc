@@ -1,11 +1,10 @@
 import {PagesApi} from "./pages-api";
+import {InitialStateUtils} from "../../lib/services/initial-state-utils";
 
-class ApiClass {
-	constructor() {
-		this.pages = new PagesApi;
+export class ApiEndpoints {
+	constructor(initialStateInstance: InitialStateUtils) {
+		this.pages = new PagesApi(initialStateInstance);
 	}
 
 	public pages: PagesApi;
 }
-
-export let AppApi = new ApiClass();

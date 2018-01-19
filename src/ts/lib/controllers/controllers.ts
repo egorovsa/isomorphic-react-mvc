@@ -1,22 +1,57 @@
 import {PagesController} from "../../app/controllers/pages-controller";
 import {PageNotFoundController} from "./page-not-found-controller";
+import {Controller} from "./controller";
+import {InitialStateUtils} from "../services/initial-state-utils";
+
+interface ControllerInterface {
+	name: string,
+	controller: Controller
+}
 
 export class Controllers {
-	public data;
-	public pages;
-	public pageNotFound;
+	public controllers: ControllerInterface[] = [];
 
-	constructor(data) {
+	constructor(readonly data, readonly initialStateInstance: InitialStateUtils) {
 		this.data = data;
-		this.pages = new PagesController(data);
-		this.pageNotFound = new PageNotFoundController(data);
+
+		this.setController('pages', new PagesController(data));
+		this.setController('pageNotFound', new PageNotFoundController(data));
 	}
 
 	public isAction(controller: string, action: string): boolean {
-		return !!this[controller][action];
+		return !!this.getController(controller)[action];
 	}
 
-	public isController(controller: string): boolean {
-		return !!this[controller];
+	public isController(name: string): boolean {
+		let isController = false;
+
+		this.controllers.forEach((controller: ControllerInterface) => {
+			if (controller.name === name) {
+				isController = true;
+			}
+		});
+
+		return isController;
+	}
+
+	public getController(name: string): Controller {
+		let foundController: Controller = null;
+
+		this.controllers.forEach((controller: ControllerInterface) => {
+			if (controller.name === name) {
+				foundController = controller.controller;
+			}
+		});
+
+		return foundController;
+	}
+
+	public setController(name: string, controller: Controller) {
+		controller.initAppApi(this.initialStateInstance);
+
+		this.controllers.push({
+			name: name,
+			controller: controller
+		});
 	}
 }

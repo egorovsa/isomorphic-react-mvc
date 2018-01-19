@@ -3,11 +3,11 @@ import * as ReactDOM from 'react-dom';
 import {AppRouter} from './router';
 import {Store, StoreComponent} from "react-stores";
 import {AppStore} from "./stores/app";
-import {CONFIG} from "../config/config";
 import '../../styl/style.styl';
-import './utils/objectassign/object-assign';
+import './services/objectassign/object-assign';
+import {InitialStateUtils} from "./services/initial-state-utils";
 
-let routing = new AppRouter;
+let routing = new AppRouter(new InitialStateUtils);
 
 export interface StoresState {
 	app: Store<AppStore.State>
@@ -24,15 +24,9 @@ class MainComponent extends StoreComponent<any, any, StoresState> {
 		return React.createElement(this.stores.app.state.appLoadingComponent, {active: this.stores.app.state.appLoading})
 	}
 
-	getLayout(): JSX.Element {
-		return (
-			<span> {this.getLoadingPage()} </span>
-		)
-	}
-
 	public render() {
 		return (
-			<div> {this.getLayout()} </div>
+			<div> {this.getLoadingPage()} </div>
 		);
 	}
 }

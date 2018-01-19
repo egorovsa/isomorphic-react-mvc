@@ -1,14 +1,19 @@
-import {InitialStateUtils} from "../utils/initial-state-utils";
+import {InitialStateUtils} from "../services/initial-state-utils";
 import * as request from "superagent";
 
 export class Api {
+	protected initialStateInstance: InitialStateUtils;
+
+	constructor(initialStateInstance: InitialStateUtils) {
+		this.initialStateInstance = initialStateInstance;
+	}
 
 	protected async request(url: string, nameOfData?: string, checkExist: boolean = true): Promise<any> {
 		if (nameOfData) {
 			let existsData = '';
 
 			if (checkExist) {
-				existsData = InitialStateUtils.getDataByName(nameOfData);
+				existsData = this.initialStateInstance.getDataByName(nameOfData);
 			}
 
 			if (existsData) {
@@ -18,7 +23,7 @@ export class Api {
 					const response = await request.get(url);
 
 					if (response.body) {
-						InitialStateUtils.setData(nameOfData, response.body);
+						this.initialStateInstance.setData(nameOfData, response.body);
 					}
 
 					return response.body;

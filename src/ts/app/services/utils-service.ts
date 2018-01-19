@@ -1,4 +1,3 @@
-import {InitialStateUtils} from "../../lib/utils/initial-state-utils";
 
 export class UtilsService {
 	static scrollToTop() {
@@ -18,21 +17,21 @@ export class UtilsService {
 	}
 
 
-	static isMobile() {
-		let userAgent = InitialStateUtils.getDataByName('serverUserAgent');
-
-		if (typeof window !== 'undefined') {
-			userAgent = userAgent || navigator.userAgent;
-		}
-
-		if (userAgent) {
-			return !!userAgent.match(/Android/i)
-				|| !!userAgent.match(/webOS/i)
-				|| !!userAgent.match(/iPhone/i)
-				|| !!userAgent.match(/iPad/i)
-				|| !!userAgent.match(/iPod/i)
-				|| !!userAgent.match(/BlackBerry/i)
-				|| !!userAgent.match(/Windows Phone/i);
-		}
-	}
+	// static isMobile() {
+	// 	let userAgent = InitialStateUtils.getDataByName('serverUserAgent');
+	//
+	// 	if (typeof window !== 'undefined') {
+	// 		userAgent = userAgent || navigator.userAgent;
+	// 	}
+	//
+	// 	if (userAgent) {
+	// 		return !!userAgent.match(/Android/i)
+	// 			|| !!userAgent.match(/webOS/i)
+	// 			|| !!userAgent.match(/iPhone/i)
+	// 			|| !!userAgent.match(/iPad/i)
+	// 			|| !!userAgent.match(/iPod/i)
+	// 			|| !!userAgent.match(/BlackBerry/i)
+	// 			|| !!userAgent.match(/Windows Phone/i);
+	// 	}
+	// }
 }

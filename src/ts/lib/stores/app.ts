@@ -1,7 +1,7 @@
 // store.ts
 import * as React from "react";
 import {Store} from "react-stores";
-import {CONFIG} from "../../config/config";
+import CONFIG from "../../config/config";
 
 export namespace AppStore {
 

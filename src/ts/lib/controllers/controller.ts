@@ -1,6 +1,8 @@
 import * as React from "react";
-import {CONFIG} from "../../config/config";
+import CONFIG from "../../config/config";
 import {AppStore} from "../stores/app";
+import {ApiEndpoints} from "../../app/api/app-api";
+import {InitialStateUtils} from "../services/initial-state-utils";
 
 export class Controller {
 	constructor(data) {
@@ -28,6 +30,11 @@ export class Controller {
 	public layout: React.ComponentClass<any>;
 	public component: React.ComponentClass<any> | any;
 	public componentData: { [id: string]: any };
+	public apiRequest: ApiEndpoints;
+
+	public initAppApi(initialStateInstance: InitialStateUtils) {
+		this.apiRequest = new ApiEndpoints(initialStateInstance);
+	}
 
 	protected setMetaData(metaData: AppStore.MetaData): void {
 		let newMetaData: AppStore.MetaData = {...{}, ...AppStore.store.state.metadata};
@@ -53,8 +60,12 @@ export class Controller {
 		} as AppStore.State);
 	}
 
-	protected async beforeFilter(dataFromController?: any): Promise<any> {
-		return true;
+	public async beforeFilter(dataFromController?: any): Promise<any> {
+		try {
+			return true;
+		} catch (e) {
+			return e;
+		}
 	}
 
 	protected hideMainLoading(): void {

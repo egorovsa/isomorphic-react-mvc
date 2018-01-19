@@ -1,8 +1,12 @@
 import {PagesStore} from "../stores/pages";
 import {Api} from "../../lib/api/api";
-import {CONFIG} from "../../config/config";
+import CONFIG from "../../config/config";
 
 export class PagesApi extends Api {
+	constructor(data) {
+		super(data)
+	}
+
 	public async getPageDataBySlug(slug: string): Promise<PagesStore.Page> {
 		let pages = await this.request(CONFIG.API_URL + 'local-data/pages.json', 'pages');
 		let page = null;

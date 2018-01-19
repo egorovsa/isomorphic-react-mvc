@@ -9,17 +9,19 @@ import * as path from 'path';
 import {match, RouterContext} from 'react-router';
 import {AppRouter} from "./router";
 import * as serialize from "serialize-javascript";
-import {CONFIG} from "../config/config";
+import CONFIG from "../config/config";
 import {AppStore} from "./stores/app";
-import {InitialStateUtils} from "./utils/initial-state-utils";
+import {InitialStateUtils} from "./services/initial-state-utils";
+import cookieParser = require('cookie-parser');
 
 const templateHtml = require("../../index.hbs");
 const app = express();
 app.use(compression());
+app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, './../') + '/webroot'));
 
-app.use((req, res, next) => {
+app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
 	if (req.path.indexOf('.') >= 0) {
 		return res.status(500).send();
 	}
@@ -27,10 +29,11 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use((req, res) => {
-	let userAgent = req.headers['user-agent'];
-	let routing = new AppRouter();
-	let routes = routing.mainRoute(true);
+app.use((req: express.Request, res: express.Response) => {
+	const userAgent = req.headers['user-agent'];
+	const initialStateInstance = new InitialStateUtils();
+	const routing = new AppRouter(initialStateInstance);
+	const routes = routing.mainRoute(true);
 
 	CONFIG.USER_AGENT_BLOCK.map((uaBlock) => {
 		if (uaBlock.userAgent && userAgent.indexOf(uaBlock.userAgent) > -1) {
@@ -54,7 +57,7 @@ app.use((req, res) => {
 
 			if (nextState) {
 				res.writeHead(nextState.params['responseStatus'], {'Content-Type': 'text/html'});
-				return res.end(getServerHtml(req, nextState));
+				return res.end(getServerHtml(req, nextState, initialStateInstance));
 			} else {
 				return get404(req, res);
 			}
@@ -64,31 +67,19 @@ app.use((req, res) => {
 	});
 });
 
-function get404(req, res, nextState = {}, layout = CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT) {
-	AppStore.store.setState({
-		metadata: {
-			title: CONFIG.NOT_FOUND_TITLE,
-			keywords: CONFIG.KEYWORDS,
-			description: CONFIG.DESCRIPTION
-		}
-	} as AppStore.State);
-
-	return res.status(404).send(getServerHtml(req, nextState, layout));
+function get404(req: express.Request, res: express.Response, nextState = {}, layout = CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT) {
+	return res.status(404).send('Page not found');
 }
 
-function getServerHtml(req: any, nextState: any, component: React.ComponentClass<any> = RouterContext): string {
-	InitialStateUtils.setData('serverUserAgent', req.headers['user-agent']);
-	let componentHTML: string = ReactDOMServer.renderToString(React.createElement(component, nextState));
+function getServerHtml(req: express.Request, nextState: any, initialStateInstance: InitialStateUtils, component: React.ComponentClass<any> = RouterContext): string {
+	// console.log(req.cookies['language'], req.headers["accept-language"]);
 
-	let initialState: string = serialize({}, {
+	initialStateInstance.setData('serverUserAgent', req.headers['user-agent']);
+	const componentHTML: string = ReactDOMServer.renderToString(React.createElement(component, nextState));
+
+	const initialState = serialize(initialStateInstance.initialState, {
 		isJSON: true
 	});
-
-	if (global['_INITIAL_STATE_']) {
-		initialState = serialize(global['_INITIAL_STATE_'], {
-			isJSON: true
-		})
-	}
 
 	return templateHtml(
 		{

@@ -33,4 +33,4 @@ if (global && global["developmentMode"]) {
 	config.API_URL = config.DEV_API_URL;
 }
 
-export let CONFIG = config;
+export default config;

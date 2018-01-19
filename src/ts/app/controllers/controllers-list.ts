@@ -1,10 +1,9 @@
 import {Controllers} from "../../lib/controllers/controllers";
+import {InitialStateUtils} from "../../lib/services/initial-state-utils";
+
 
 export class ControllersList extends Controllers {
-	public data;
-
-	constructor(data) {
-		super(data);
-
+	constructor(readonly data, initialStateInstance: InitialStateUtils) {
+		super(data, initialStateInstance);
 	}
 }

@@ -4,7 +4,8 @@ import {AppRouter} from './router';
 import {Store, StoreComponent} from "react-stores";
 import {AppStore} from "./stores/app";
 import '../../styl/style.styl';
-import './services/objectassign/object-assign';
+import './services/polyfills/object-assign';
+import './services/polyfills/promise';
 import {InitialStateUtils} from "./services/initial-state-utils";
 
 let routing = new AppRouter(new InitialStateUtils);
@@ -40,5 +41,3 @@ window.onload = () => {
 		document.getElementById('app')
 	);
 };
-
-

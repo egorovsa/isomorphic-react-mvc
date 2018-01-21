@@ -35,15 +35,19 @@ app.use((req: express.Request, res: express.Response) => {
 	const routing = new AppRouter(initialStateInstance);
 	const routes = routing.mainRoute(true);
 
-	CONFIG.USER_AGENT_BLOCK.map((uaBlock) => {
-		if (uaBlock.userAgent && userAgent.indexOf(uaBlock.userAgent) > -1) {
-			if (uaBlock.block) {
-				return res.status(404).send("404");
-			} else {
-				return res.status(301).redirect(uaBlock.redirectTo);
+	if (userAgent) {
+		for (let item in CONFIG.USER_AGENT_BLOCK) {
+			let uaBlock = CONFIG.USER_AGENT_BLOCK[item];
+
+			if (uaBlock.userAgent && userAgent.indexOf(uaBlock.userAgent) > -1) {
+				if (uaBlock.block) {
+					return res.status(404).send("404");
+				} else {
+					return res.status(301).redirect(uaBlock.redirectTo);
+				}
 			}
 		}
-	});
+	}
 
 	match({routes, location: req.url}, (error, nextLocation, nextState) => {
 		if (!error && nextState && nextState['params']) {
@@ -56,6 +60,11 @@ app.use((req: express.Request, res: express.Response) => {
 			}
 
 			if (nextState) {
+				if (!nextState.params['responseStatus']) {
+					console.log('ERROR STATUS: ', req.url);
+					nextState.params['responseStatus'] = 404;
+				}
+
 				res.writeHead(nextState.params['responseStatus'], {'Content-Type': 'text/html'});
 				return res.end(getServerHtml(req, nextState, initialStateInstance));
 			} else {
@@ -71,11 +80,11 @@ function get404(req: express.Request, res: express.Response, nextState = {}, lay
 	return res.status(404).send('Page not found');
 }
 
-function getServerHtml(req: express.Request, nextState: any, initialStateInstance: InitialStateUtils, component: React.ComponentClass<any> = RouterContext): string {
+function getServerHtml(req: express.Request, nextState: any, initialStateInstance: InitialStateUtils): string {
 	// console.log(req.cookies['language'], req.headers["accept-language"]);
 
 	initialStateInstance.setData('serverUserAgent', req.headers['user-agent']);
-	const componentHTML: string = ReactDOMServer.renderToString(React.createElement(component, nextState));
+	const componentHTML: string = ReactDOMServer.renderToString(React.createElement(RouterContext, nextState));
 
 	const initialState = serialize(initialStateInstance.initialState, {
 		isJSON: true
@@ -106,4 +115,9 @@ const PORT = process.env.PORT || CONFIG.PRODUCTION_PORT;
 
 app.listen(PORT, () => {
 	console.log(`Server listening on: ${PORT}`);
+});
+
+process.on('unhandledRejection', (reason, p) => {
+	console.log('Unhandled Rejection at: PROMISE \n\n', p, '\n\n\n REASON: \n\n', reason);
+	// application specific logging, throwing an error, or other logic here
 });

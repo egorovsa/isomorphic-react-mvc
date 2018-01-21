@@ -16,5 +16,4 @@ export class PageNotFoundController extends AppController {
 
 		this.pageNotFound();
 	}
-
 }

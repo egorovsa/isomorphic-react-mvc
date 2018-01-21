@@ -3,6 +3,7 @@ import CONFIG from "../../config/config";
 import {AppStore} from "../stores/app";
 import {ApiEndpoints} from "../../app/api/app-api";
 import {InitialStateUtils} from "../services/initial-state-utils";
+import {I18nService} from "../services/i18n-service";
 
 export class Controller {
 	constructor(data) {
@@ -60,8 +61,9 @@ export class Controller {
 		} as AppStore.State);
 	}
 
-	public async beforeFilter(dataFromController?: any): Promise<any> {
+	public async beforeFilter(...data): Promise<any> {
 		try {
+			await I18nService.initService();
 			return true;
 		} catch (e) {
 			return e;
@@ -80,7 +82,8 @@ export class Controller {
 		} as AppStore.State);
 	}
 
-	protected pageNotFound(): void {
+	protected pageNotFound(status: number = 404): void {
+		this.hideMainLoading();
 		this.notFound = true;
 		this.responseStatus = 404;
 		this.component = CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT;

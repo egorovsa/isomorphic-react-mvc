@@ -6,7 +6,7 @@ import {AppStore} from "./stores/app";
 import {RouteUtils} from "./services/route-utils";
 import {CommonStore} from "../app/stores/common";
 import {InitialStateUtils} from "./services/initial-state-utils";
-import {Controller} from "./controllers/controller";
+import {AppController} from "../app/controllers/app-controller";
 
 export class AppRouter {
 	constructor(readonly initialStateInstance: InitialStateUtils) {
@@ -54,20 +54,27 @@ export class AppRouter {
 			parsedParams.action = 'index';
 		}
 
-		try {
-			let controller: Controller = controllers.getController(parsedParams.controller);
-			await controller.beforeFilter(...parsedParams.params);
-			await controller[parsedParams.action](...parsedParams.params);
-			data.routes[0].component = controller.layout;
-			data.routes[1].component = () => <controller.component {...controller.componentData}/>;
-			data.params['notFound'] = controller.notFound.toString();
-			data.params['responseStatus'] = controller.responseStatus.toString();
+		let controller: AppController = controllers.getController(parsedParams.controller);
 
-			return data;
+		try {
+			await controller.beforeFilter(...parsedParams.params);
 		} catch (e) {
-			return e;
+			controller = controllers.getController(CONFIG.DEFAULT_PAGE_NOT_FOUND_CONTROLLER);
+			parsedParams.action = 'index';
+			await controller[parsedParams.action](...parsedParams.params);
+			return this.responseData(data, controller);
 		}
+
+		await controller[parsedParams.action](...parsedParams.params);
+		return this.responseData(data, controller);
+	}
+
+	private responseData(data: RouterState, controller: AppController, responseStatus?: number) {
+		data.routes[0].component = controller.layout;
+		data.routes[1].component = () => <controller.component {...controller.componentData}/>;
+		data.params['notFound'] = controller.notFound.toString();
+		data.params['responseStatus'] = responseStatus ? responseStatus.toString() : controller.responseStatus.toString();
+
+		return data;
 	}
 }
-
-

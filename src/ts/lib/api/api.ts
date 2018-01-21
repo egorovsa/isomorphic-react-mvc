@@ -33,7 +33,9 @@ export class Api {
 			}
 		} else {
 			try {
-				return await request.get(url);
+				const response = await request.get(url);
+
+				return response.body;
 			} catch (e) {
 				return Promise.reject(e);
 			}

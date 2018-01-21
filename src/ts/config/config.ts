@@ -25,7 +25,9 @@ const config = {
 	USER_AGENT_BLOCK: USER_AGENT_BLOCK,
 	SERVER_REWRITE: [],
 	APP_VERSION: 1,
-	VENDOR_VERSION: 1
+	VENDOR_VERSION: 1,
+	defaultLanguage: 'en',
+	languages: require('../../../languages.json'),
 };
 
 if (global && global["developmentMode"]) {

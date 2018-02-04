@@ -3,6 +3,8 @@ body
 
 	.main-head
 		margin-bottom 25px
+		position relative
+		padding-left 70px
 
 		h1
 			font-size 25px
@@ -14,6 +16,17 @@ body
 
 		.description
 			color: dimgray
+
+		&:before
+			content ''
+			position absolute
+			background-image url("../webroot/logo.png")
+			background-repeat no-repeat
+			width 60px
+			height 53px
+			background-size 100%
+			left 0
+			top 20px
 
 	.main-menu
 		display flex

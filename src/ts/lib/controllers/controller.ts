@@ -3,6 +3,7 @@ import CONFIG from "../../config/config";
 import {AppStore} from "../stores/app";
 import {ApiEndpoints} from "../../app/api/app-api";
 import {InitialStateUtils} from "../services/initial-state-utils";
+import {I18nService} from "../services/i18n-service";
 
 export interface MetaData {
 	title: string,
@@ -42,7 +43,6 @@ export class Controller {
 	public componentData: { [id: string]: any };
 	public apiRequest: ApiEndpoints;
 	public metaData: MetaData;
-
 
 	public initAppApi(initialStateInstance: InitialStateUtils) {
 		this.apiRequest = new ApiEndpoints(initialStateInstance);
@@ -94,6 +94,11 @@ export class Controller {
 	}
 
 	public async beforeFilter(...data): Promise<any> {
-		return true;
+		try {
+			await I18nService.initService();
+			return true;
+		} catch (e) {
+			return e;
+		}
 	}
 }

@@ -5,7 +5,8 @@ import {I18nService} from "../services/i18n-service";
 
 export interface Props {
 	id: string,
-	data?: any
+	data?: any,
+	className?: string,
 }
 
 export interface State {
@@ -15,7 +16,7 @@ interface StoresState {
 	locale: Store<LocaleStore.State>
 }
 
-export class UII18Text extends StoreComponent<Props, State, StoresState> {
+export class UII18nText extends StoreComponent<Props, State, StoresState> {
 	constructor() {
 		super({
 			locale: LocaleStore.store
@@ -30,7 +31,7 @@ export class UII18Text extends StoreComponent<Props, State, StoresState> {
 
 	public render() {
 		return (
-			<span dangerouslySetInnerHTML={this.createMarkup()}></span>
+			<span dangerouslySetInnerHTML={this.createMarkup()} className={this.props.className}></span>
 		);
 	}
 }

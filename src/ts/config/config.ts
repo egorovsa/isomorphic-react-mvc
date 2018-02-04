@@ -6,6 +6,7 @@ import {USER_AGENT_BLOCK} from "./user-agent-blocks";
 
 const config = {
 	PRODUCTION_PORT: 4002,
+	GZIP_BY_EXPRESS: false,
 	DEFAULT_CONTROLLER: 'pageNotFound',
 	DEFAULT_ACTION: 'index',
 	DEFAULT_LAYOUT_COMPONENT: AppComponent,

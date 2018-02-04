@@ -1,12 +1,11 @@
 import * as i18next from 'i18next';
-import {StorageService} from "../../lib/services/storage-service";
 import {LocaleService} from "./locale-service";
 import {TranslationFunction} from "i18next";
 import CONFIG from "../../config/config";
-import {InitialStateUtils} from "../../lib/services/initial-state-utils";
 import {ApiEndpoints} from "../../app/api/app-api";
 import {LocaleStore} from "../stores/locale";
-import Language = LocaleStore.Language;
+import {StorageService} from "./storage-service";
+import {InitialStateUtils} from "./initial-state-utils";
 
 class Service {
 	private t: TranslationFunction;
@@ -46,12 +45,10 @@ class Service {
 
 	public async changeLanguage(lng: string, manual?: boolean) {
 		if (manual) {
-			StorageService.cookie.set('language', this.getLocaleObjectByLang(lng));
+			StorageService.cookie.set('language', lng);
 		}
 
 		const AppApi = new ApiEndpoints(new InitialStateUtils());
-
-		console.log(AppApi);
 
 		try {
 			const translations = await AppApi.locales.getLocaleByLocale(lng);
@@ -66,18 +63,6 @@ class Service {
 		} catch (e) {
 			console.trace('ERROR', e);
 		}
-	}
-
-	private getLocaleObjectByLang(lng: string) {
-		let lang: Language = CONFIG.languages[0];
-
-		CONFIG.languages.forEach((itemLang: Language) => {
-			if (itemLang.value === lng) {
-				lang = itemLang;
-			}
-		});
-
-		return lang;
 	}
 
 	public async initService() {

@@ -28,6 +28,7 @@ module.exports = {
 			path.join(__dirname, "dist"),
 			path.join(__dirname, "dist/webroot")
 		],
+		hot:true,
 		overlay: {
 			warnings: true,
 			errors: true
@@ -101,6 +102,8 @@ module.exports = {
 		new CleanWebpackPlugin(['dist/webroot'], {
 			verbose: true
 		}),
+		new webpack.NamedModulesPlugin(),
+		new webpack.HotModuleReplacementPlugin(),
 		new CopyWebpackPlugin([
 			{
 				from: 'src/webroot',
@@ -114,16 +117,8 @@ module.exports = {
 			copyUnmodified: false
 		}),
 		new HandlebarsPlugin({
-			entry: './src/index.hbs',
+			entry: './src/hbs/develop.hbs',
 			output: './dist/index.html',
-			data: {
-				version: '0',
-				componentHtml: '{{{componentHtml}}}',
-				title: '{{{title}}}',
-				keywords: '{{{keywords}}}',
-				description: '{{{description}}}',
-				initialState: '<script>window["developmentMode"] = true;</script>',
-			}
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {CommonStore} from "../../stores/common";
 import {NavComponent} from "./nav";
+import {I18nService} from "../../../lib/services/i18n-service";
 
 export interface Props {
 	mainPage: boolean,
@@ -42,6 +43,22 @@ export class HeaderComponent extends React.Component<Props, State> {
 						</div>
 
 						<NavComponent headMenu={this.props.headMenu}/>
+
+						<div className="grow"/>
+
+						<span className="desktop-menu lang-selection">
+							<a href="javascript:void(0);" onClick={() => {
+								I18nService.changeLanguage('en', true);
+							}}>
+								En
+							</a>
+
+							<a href="javascript:void(0);" onClick={() => {
+								I18nService.changeLanguage('ru', true);
+							}}>
+								Ru
+							</a>
+						</span>
 					</div>
 				</div>
 			</header>

@@ -18,4 +18,8 @@ export class InitialStateUtils {
 			return false
 		}
 	}
+
+	public cleanInitialState() {
+		this.initialState = null;
+	}
 }

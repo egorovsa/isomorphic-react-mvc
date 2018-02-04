@@ -1,11 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import {AppStore} from "./stores/app";
 import {AppRouter} from './router';
 import {Store, StoreComponent} from "react-stores";
-import {AppStore} from "./stores/app";
 import '../../styl/style.styl';
 import './services/polyfills/object-assign';
 import './services/polyfills/promise';
+
 import {InitialStateUtils} from "./services/initial-state-utils";
 
 let routing = new AppRouter(new InitialStateUtils);
@@ -20,20 +21,14 @@ class MainComponent extends StoreComponent<any, any, StoresState> {
 			app: AppStore.store
 		});
 	}
-
-	getLoadingPage(): JSX.Element {
-		return React.createElement(this.stores.app.state.appLoadingComponent, {active: this.stores.app.state.appLoading})
-	}
-
+	
 	public render() {
-		return (
-			<div> {this.getLoadingPage()} </div>
-		);
+		return React.createElement(this.stores.app.state.appLoadingComponent, {active: this.stores.app.state.appLoading})
 	}
 }
 
 window.onload = () => {
-	ReactDOM.render(
+	ReactDOM.hydrate(
 		<div>
 			<MainComponent/>
 			{routing.router()}

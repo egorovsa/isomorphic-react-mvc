@@ -1,4 +1,4 @@
-import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-router';
+import {RouterState} from 'react-router';
 import CONFIG from "../../config/config";
 import {ControllersList} from "../../app/controllers/controllers-list";
 
@@ -114,5 +114,4 @@ export class RouteUtils {
 
 		return params;
 	}
-
 }

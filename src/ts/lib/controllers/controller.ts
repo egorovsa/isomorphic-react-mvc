@@ -3,10 +3,15 @@ import CONFIG from "../../config/config";
 import {AppStore} from "../stores/app";
 import {ApiEndpoints} from "../../app/api/app-api";
 import {InitialStateUtils} from "../services/initial-state-utils";
-import {I18nService} from "../services/i18n-service";
+
+export interface MetaData {
+	title: string,
+	keywords?: string,
+	description?: string
+}
 
 export class Controller {
-	constructor(data) {
+	constructor(public data) {
 		this.data = data;
 		this.location = data.location;
 		this.query = data.location.query;
@@ -18,9 +23,13 @@ export class Controller {
 		this.notFound = false;
 		this.responseStatus = 200;
 		this.componentData = {};
+		this.metaData = {
+			title: CONFIG.TITLE,
+			keywords: CONFIG.KEYWORDS,
+			description: CONFIG.DESCRIPTION
+		}
 	}
 
-	public data;
 	public location;
 	public query;
 	public hash;
@@ -32,13 +41,15 @@ export class Controller {
 	public component: React.ComponentClass<any> | any;
 	public componentData: { [id: string]: any };
 	public apiRequest: ApiEndpoints;
+	public metaData: MetaData;
+
 
 	public initAppApi(initialStateInstance: InitialStateUtils) {
 		this.apiRequest = new ApiEndpoints(initialStateInstance);
 	}
 
-	protected setMetaData(metaData: AppStore.MetaData): void {
-		let newMetaData: AppStore.MetaData = {...{}, ...AppStore.store.state.metadata};
+	protected setMetaData(metaData: MetaData): void {
+		let newMetaData: MetaData = metaData;
 
 		if (metaData.title) {
 			newMetaData.title = metaData.title;
@@ -56,18 +67,7 @@ export class Controller {
 			newMetaData.keywords = metaData.keywords
 		}
 
-		AppStore.store.setState({
-			metadata: newMetaData
-		} as AppStore.State);
-	}
-
-	public async beforeFilter(...data): Promise<any> {
-		try {
-			await I18nService.initService();
-			return true;
-		} catch (e) {
-			return e;
-		}
+		this.metaData = newMetaData;
 	}
 
 	protected hideMainLoading(): void {
@@ -91,5 +91,9 @@ export class Controller {
 
 	protected set(data: { [id: string]: any }) {
 		this.componentData = data;
+	}
+
+	public async beforeFilter(...data): Promise<any> {
+		return true;
 	}
 }

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-router';
-import {ControllersList} from "../app/controllers/controllers-list";
 import CONFIG from "../config/config";
+import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-router';
 import {AppStore} from "./stores/app";
-import {RouteUtils} from "./services/route-utils";
 import {CommonStore} from "../app/stores/common";
-import {InitialStateUtils} from "./services/initial-state-utils";
+import {ControllersList} from "../app/controllers/controllers-list";
+import {RouteUtils} from "./services/route-utils";
 import {AppController} from "../app/controllers/app-controller";
+import {InitialStateUtils} from "./services/initial-state-utils";
 
 export class AppRouter {
 	constructor(readonly initialStateInstance: InitialStateUtils) {
@@ -72,6 +72,7 @@ export class AppRouter {
 	private responseData(data: RouterState, controller: AppController, responseStatus?: number) {
 		data.routes[0].component = controller.layout;
 		data.routes[1].component = () => <controller.component {...controller.componentData}/>;
+		data.params['metaData'] = JSON.stringify(controller.metaData);
 		data.params['notFound'] = controller.notFound.toString();
 		data.params['responseStatus'] = responseStatus ? responseStatus.toString() : controller.responseStatus.toString();
 

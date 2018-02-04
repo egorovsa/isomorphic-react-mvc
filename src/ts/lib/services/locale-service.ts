@@ -1,25 +1,25 @@
-import {StorageService} from "../../lib/services/storage-service";
 import {LocaleStore} from "../stores/locale";
 import Language = LocaleStore.Language;
 import CONFIG from "../../config/config";
+import {StorageService} from "./storage-service";
 
 class Service {
-	public getCurrentLang(): string {
-		let storageLang = JSON.parse(StorageService.cookie.get('language'));
+	private serverLang: string;
 
-		if (!storageLang) {
-			return this.checkExistLocales(this.detectUserLang());
+	public setServerLanguage(headerLanguages: string[], cookieLang?: string): void {
+		if (cookieLang) {
+			this.serverLang = cookieLang;
+		} else if (headerLanguages.length > 0) {
+			this.serverLang = headerLanguages[0];
 		}
-
-		return storageLang.value || CONFIG.defaultLanguage;
 	}
 
 	public checkExistLocales(browserLang: string): string {
 		let exist: string = CONFIG.defaultLanguage;
 
 		CONFIG.languages.forEach((lang: Language) => {
-			if (browserLang.indexOf(lang.value) > -1) {
-				exist = lang.value;
+			if (browserLang.indexOf(lang.name) > -1) {
+				exist = lang.name;
 			}
 		});
 
@@ -27,15 +27,27 @@ class Service {
 	}
 
 	public detectUserLang() {
-		if (typeof global === 'object') {
-			return CONFIG.defaultLanguage;
-		} else {
+		if (typeof window === 'object') {
 			if (navigator.languages != undefined) {
 				return navigator.languages[0];
 			} else {
 				return navigator.language;
 			}
 		}
+	}
+
+	public getCurrentLang(): string {
+		if (this.serverLang) {
+			return this.checkExistLocales(this.serverLang);
+		}
+
+		const storageLang = StorageService.cookie.get('language');
+
+		if (!storageLang) {
+			return this.checkExistLocales(this.detectUserLang());
+		}
+
+		return this.checkExistLocales(storageLang)
 	}
 }
 

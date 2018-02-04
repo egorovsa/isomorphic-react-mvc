@@ -9,6 +9,7 @@ import {AppRouter} from "../router";
 import {InitialStateUtils} from "../services/initial-state-utils";
 import {MetaData} from "../controllers/controller";
 import CONFIG from "../../config/config";
+import {LocaleService} from "../services/locale-service";
 
 const headHtml = require("../../../hbs/index/head-part.hbs");
 const footerHtml = require("../../../hbs/index/footer-part.hbs");
@@ -84,6 +85,8 @@ export class RenderServerSide {
 	}
 
 	static getServerHtml(req: express.Request, res: express.Response, nextState: any, initialStateInstance: InitialStateUtils): void {
+		const cookies = req.cookies;
+		LocaleService.setServerLanguage(req.acceptsLanguages(), cookies.language);
 		initialStateInstance.setData('serverUserAgent', req.headers['user-agent']);
 		const stream = renderToNodeStream(createElement(RouterContext, nextState));
 		const metaData: MetaData = JSON.parse(nextState.params['metaData']);

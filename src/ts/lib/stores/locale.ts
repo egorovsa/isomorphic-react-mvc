@@ -2,7 +2,7 @@ import {Store} from "react-stores";
 
 export namespace LocaleStore {
 	export interface Language {
-		value: string,
+		name: string,
 		title: string
 	}
 

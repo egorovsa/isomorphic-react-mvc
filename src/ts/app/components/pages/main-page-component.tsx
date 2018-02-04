@@ -5,7 +5,7 @@ import {PagesStore} from "../../stores/pages";
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco} from 'react-syntax-highlighter/dist/styles/hljs';
-import {SimplePageComponent} from "./simple-page-component";
+import {UII18nText} from "../../../lib/components/ui-i18n-component";
 
 export interface Props {
 
@@ -34,7 +34,9 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 			<div>
 				<div className="container">
 					<div className="page-content">
-						<h1>Overview</h1>
+						<h1>
+							<UII18nText id={"OVERVIEW"}/>
+						</h1>
 
 						<div className="list-item">
 							<a href="https://github.com/egorovsa/react-isomorphic-boilerplate">View on the GitHub</a>

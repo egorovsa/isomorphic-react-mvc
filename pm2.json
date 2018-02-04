@@ -3,7 +3,11 @@
 		{
 			"name": "React isomorphic framework",
 			"script": "./dist/server/server.js",
-			"watch": false
+			"watch": false,
+			"env": {
+				"PRODUCTION": true,
+				"PORT": "4002"
+			}
 		}
 	]
 }

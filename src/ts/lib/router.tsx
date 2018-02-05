@@ -5,11 +5,15 @@ import {AppStore} from "./stores/app";
 import {CommonStore} from "../app/stores/common";
 import {ControllersList} from "../app/controllers/controllers-list";
 import {RouteUtils} from "./services/route-utils";
-import {AppController} from "../app/controllers/app-controller";
 import {InitialStateUtils} from "./services/initial-state-utils";
+import {I18nextService} from "./services/i18n-service";
+import {Controller} from "./controllers/controller";
 
 export class AppRouter {
+	public i18n: I18nextService;
+
 	constructor(readonly initialStateInstance: InitialStateUtils) {
+		this.i18n = new I18nextService(this.initialStateInstance)
 	}
 
 	public router() {
@@ -39,14 +43,13 @@ export class AppRouter {
 					this.mainProcess(data).then(() => {
 						next();
 					});
-				}}
-				/>
+				}}/>
 			</Route>
 		);
 	};
 
 	private async mainProcess(data: RouterState) {
-		const controllers = new ControllersList(data, this.initialStateInstance);
+		const controllers = new ControllersList(data, this.initialStateInstance, this.i18n);
 		const parsedParams = RouteUtils.parseParams(controllers, data);
 
 		if (!parsedParams.controller) {
@@ -54,7 +57,7 @@ export class AppRouter {
 			parsedParams.action = 'index';
 		}
 
-		let controller: AppController = controllers.getController(parsedParams.controller);
+		let controller: Controller = controllers.getController(parsedParams.controller);
 
 		try {
 			await controller.beforeFilter(...parsedParams.params);
@@ -69,9 +72,11 @@ export class AppRouter {
 		return this.responseData(data, controller);
 	}
 
-	private responseData(data: RouterState, controller: AppController, responseStatus?: number) {
+	private responseData(data: RouterState, controller: Controller, responseStatus?: number) {
+		controller.layout.defaultProps = {...controller.componentData};
+		controller.component.defaultProps = {...controller.componentData};
 		data.routes[0].component = controller.layout;
-		data.routes[1].component = () => <controller.component {...controller.componentData}/>;
+		data.routes[1].component = controller.component;
 		data.params['metaData'] = JSON.stringify(controller.metaData);
 		data.params['notFound'] = controller.notFound.toString();
 		data.params['responseStatus'] = responseStatus ? responseStatus.toString() : controller.responseStatus.toString();

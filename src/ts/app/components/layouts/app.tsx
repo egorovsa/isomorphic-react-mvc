@@ -6,11 +6,14 @@ import {PagesStore} from "../../stores/pages";
 import {FooterComponent} from "../ui/common/footer";
 import {UIScrollToTop} from "../ui/scroll-to-top";
 import {SideNavComponent} from "../ui/common/sidenav";
+import {PropTypes} from 'prop-types';
+import {I18nextService} from "../../../lib/services/i18n-service";
 
 const NotificationContainer = require('react-notifications').NotificationContainer;
 
 export interface Props {
-
+	i18n: I18nextService,
+	test: string
 }
 
 export interface State {
@@ -28,6 +31,16 @@ export class AppComponent extends StoreComponent<Props, State, StoresState> {
 			common: CommonStore.store,
 			pages: PagesStore.store
 		});
+	}
+
+	static childContextTypes = {
+		i18n: PropTypes.object
+	};
+
+	getChildContext() {
+		return {
+			i18n: this.props.i18n
+		};
 	}
 
 	state: State = {
@@ -72,6 +85,7 @@ export class AppComponent extends StoreComponent<Props, State, StoresState> {
 				/>
 
 				<HeaderComponent
+					i18n={this.props.i18n}
 					mainPage={this.stores.common.state.mainPage}
 					headMenu={this.stores.common.state.mainMenu}
 					scrollTop={this.state.scrollTop}

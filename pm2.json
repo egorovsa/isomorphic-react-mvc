@@ -5,7 +5,7 @@
 			"script": "./dist/server/server.js",
 			"watch": false,
 			"env": {
-				"PRODUCTION": true,
+				"DEVELOP": false,
 				"PORT": "4002"
 			}
 		}

@@ -6,7 +6,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco} from 'react-syntax-highlighter/dist/styles/hljs';
 
 export interface Props {
-	params?: any
+	test: string
 }
 
 export interface State {
@@ -25,10 +25,12 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 	}
 
 	public render() {
+		console.log(this.props.test);
+
 		return (
 			<div className="container">
 				<div className="page-content">
-					<h1>Creating to simple page{this.props.params}</h1>
+					<h1>Creating to simple page {this.props.test}</h1>
 					<span className="list-item">Open PagesController</span>
 					<SyntaxHighlighter language='javascript' style={docco}>
 						{"/ts/app/controllers/page-controller.tsx "}
@@ -59,7 +61,7 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 							'\t\t\ttitle: "some SEO title",\n' +
 							'\t\t\tdescription: "some SEO description",\n' +
 							'\t\t\tkeywords: "some SEO keywords"\n' +
-							'\t\t});'+
+							'\t\t});' +
 							'\n' +
 							'\t}' +
 							'\n' +
@@ -108,7 +110,7 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 							'\t\t}\n' +
 							'\n' +
 							'\t\tthis.hideMainLoading();\n' +
-							'\t}'+
+							'\t}' +
 							'\n' +
 							'\n' +
 							'}'

@@ -5,7 +5,7 @@ import {renderToString} from 'react-dom/server';
 import cookieParser = require('cookie-parser');
 import CONFIG from "../config/config";
 
-const production = !!process.env.PRODUCTION;
+const production = !process.env.DEVELOP;
 const app = express();
 const PORT = process.env.PORT || CONFIG.PRODUCTION_PORT;
 
@@ -15,6 +15,7 @@ if (CONFIG.GZIP_BY_EXPRESS) {
 }
 
 if (!production) {
+	console.log('SERVER DEVELOPMENT MODE');
 	require('source-map-support').install();
 }
 

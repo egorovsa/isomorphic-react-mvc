@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Store, StoreComponent} from "react-stores";
 import {LocaleStore} from "../stores/locale";
-import {I18nService} from "../services/i18n-service";
+import {PropTypes} from "prop-types";
 
 export interface Props {
 	id: string,
@@ -23,10 +23,15 @@ export class UII18nText extends StoreComponent<Props, State, StoresState> {
 		});
 	}
 
+	static contextTypes = {
+		i18n: PropTypes.object
+	};
+
+
 	state: State = {};
 
 	private createMarkup() {
-		return {__html: I18nService.translate(this.props.id, this.props.data)};
+		return {__html: this.context.i18n.translate(this.props.id, this.props.data)};
 	}
 
 	public render() {

@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {CommonStore} from "../../stores/common";
 import {NavComponent} from "./nav";
-import {I18nService} from "../../../lib/services/i18n-service";
+import {I18nextService} from "../../../lib/services/i18n-service";
+import {PropTypes} from 'prop-types';
 
 export interface Props {
+	i18n: I18nextService,
 	mainPage: boolean,
 	headMenu: any[],
 	scrollTop: number,
@@ -21,7 +23,7 @@ export class HeaderComponent extends React.Component<Props, State> {
 
 	render() {
 		return (
-			<header className="header">
+			<header className={"header"}>
 				<div
 					className={this.props.mainPage ? "container main-page-header" : "container main-page-header header-simple"}>
 					<div className="main-head">
@@ -48,13 +50,13 @@ export class HeaderComponent extends React.Component<Props, State> {
 
 						<span className="desktop-menu lang-selection">
 							<a href="javascript:void(0);" onClick={() => {
-								I18nService.changeLanguage('en', true);
+								this.props.i18n.changeLanguage('en', true);
 							}}>
 								En
 							</a>
 
 							<a href="javascript:void(0);" onClick={() => {
-								I18nService.changeLanguage('ru', true);
+								this.props.i18n.changeLanguage('ru', true);
 							}}>
 								Ru
 							</a>

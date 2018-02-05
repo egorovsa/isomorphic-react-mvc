@@ -1,15 +1,28 @@
-import * as i18next from 'i18next';
-import {LocaleService} from "./locale-service";
-import {TranslationFunction} from "i18next";
 import CONFIG from "../../config/config";
-import {ApiEndpoints} from "../../app/api/app-api";
+import * as i18next from 'i18next';
+import {TranslationFunction} from "i18next";
 import {LocaleStore} from "../stores/locale";
+import {LocaleService} from "./locale-service";
 import {StorageService} from "./storage-service";
+import {ApiEndpoints} from "../../app/api/app-api";
 import {InitialStateUtils} from "./initial-state-utils";
 
-class Service {
+export class I18nextService {
 	private t: TranslationFunction;
 	private currentLang: string;
+	private serverLang: string;
+
+	constructor(readonly initialStateInstance: InitialStateUtils) {
+
+	}
+
+	public setServerLanguage(headerLanguages: string[], cookieLang?: string): void {
+		if (cookieLang) {
+			this.serverLang = cookieLang;
+		} else if (headerLanguages.length > 0) {
+			this.serverLang = headerLanguages[0];
+		}
+	}
 
 	public async init(lng, translation: any) {
 		let resourceObj = {};
@@ -48,7 +61,7 @@ class Service {
 			StorageService.cookie.set('language', lng);
 		}
 
-		const AppApi = new ApiEndpoints(new InitialStateUtils());
+		const AppApi = new ApiEndpoints(this.initialStateInstance);
 
 		try {
 			const translations = await AppApi.locales.getLocaleByLocale(lng);
@@ -66,7 +79,7 @@ class Service {
 	}
 
 	public async initService() {
-		this.currentLang = LocaleService.getCurrentLang();
+		this.currentLang = LocaleService.getCurrentLang(this.serverLang);
 
 		try {
 			await this.changeLanguage(this.currentLang);
@@ -75,5 +88,3 @@ class Service {
 		}
 	}
 }
-
-export const I18nService = new Service();

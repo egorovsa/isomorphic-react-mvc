@@ -47,6 +47,13 @@ http://localhost:4002
 
 4002 is default port, you might change in in config file
 
+!DO NOT FORGET to change API_URL and SITE_URL property in config.ts if you are going to run it in some server
+
+```
+/src/config/config.ts
+```
+
+
 ## Creating to simple page
 
 When you do a request to for instance : http://yourSite.com/pages/simple/param1/param2

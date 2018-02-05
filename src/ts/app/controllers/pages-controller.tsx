@@ -32,12 +32,14 @@ export class PagesController extends AppController {
 		this.component = SimplePageComponent;
 
 		this.set({
-			params: test
+			test: test
 		});
 
 		this.setMetaData({
 			title: 'How to create a simple page'
-		})
+		});
+
+		return false;
 	}
 
 	public async index(slug) {

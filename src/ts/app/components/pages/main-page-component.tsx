@@ -6,9 +6,11 @@ import {PagesStore} from "../../stores/pages";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco} from 'react-syntax-highlighter/dist/styles/hljs';
 import {UII18nText} from "../../../lib/components/ui-i18n-component";
+import {I18nextService} from "../../../lib/services/i18n-service";
 
 export interface Props {
-
+	i18n?: I18nextService,
+	test: string
 }
 
 export interface State {

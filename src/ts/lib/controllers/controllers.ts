@@ -3,6 +3,7 @@ import {PagesController} from "../../app/controllers/pages-controller";
 import {PageNotFoundController} from "./page-not-found-controller";
 import {Controller} from "./controller";
 import {InitialStateUtils} from "../services/initial-state-utils";
+import {I18nextService} from "../services/i18n-service";
 
 interface ControllerInterface {
 	name: string,
@@ -12,7 +13,7 @@ interface ControllerInterface {
 export class Controllers {
 	public controllers: ControllerInterface[] = [];
 
-	constructor(private data: RouterState, private initialStateInstance: InitialStateUtils) {
+	constructor(private data: RouterState, private initialStateInstance: InitialStateUtils, private i18n: I18nextService) {
 		this.setController('pages', PagesController);
 		this.setController('pageNotFound', PageNotFoundController);
 	}
@@ -48,7 +49,7 @@ export class Controllers {
 			if (controller.name === name) {
 				foundController = new controller.controller(this.data);
 				foundController.initAppApi(this.initialStateInstance);
-
+				foundController.initAppI18n(this.i18n);
 			}
 		});
 

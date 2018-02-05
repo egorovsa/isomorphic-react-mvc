@@ -4,16 +4,6 @@ import CONFIG from "../../config/config";
 import {StorageService} from "./storage-service";
 
 class Service {
-	private serverLang: string;
-
-	public setServerLanguage(headerLanguages: string[], cookieLang?: string): void {
-		if (cookieLang) {
-			this.serverLang = cookieLang;
-		} else if (headerLanguages.length > 0) {
-			this.serverLang = headerLanguages[0];
-		}
-	}
-
 	public checkExistLocales(browserLang: string): string {
 		let exist: string = CONFIG.defaultLanguage;
 
@@ -36,9 +26,9 @@ class Service {
 		}
 	}
 
-	public getCurrentLang(): string {
-		if (this.serverLang) {
-			return this.checkExistLocales(this.serverLang);
+	public getCurrentLang(serverLang: string): string {
+		if (serverLang) {
+			return this.checkExistLocales(serverLang);
 		}
 
 		const storageLang = StorageService.cookie.get('language');

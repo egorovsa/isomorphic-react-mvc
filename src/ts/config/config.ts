@@ -18,7 +18,7 @@ const config = {
 	NOT_FOUND_TITLE: 'Страница не найдена',
 	KEYWORDS: 'Isomorphic react ts',
 	DESCRIPTION: 'Isomorphic react ts',
-	SITE_URL: '/',
+	SITE_URL: 'http://localhost:4002/',
 	API_URL: 'http://localhost:4002/',
 	DEV_SITE_URL: '/',
 	DEV_API_URL: '/',
@@ -31,7 +31,7 @@ const config = {
 	languages: require('../../../languages.json'),
 };
 
-if (global && global["developmentMode"]) {
+if (typeof window === 'object' && window["developmentMode"]) {
 	config.SITE_URL = config.DEV_SITE_URL;
 	config.API_URL = config.DEV_API_URL;
 }

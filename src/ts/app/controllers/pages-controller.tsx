@@ -6,6 +6,7 @@ import {MainPageComponent} from "../components/pages/main-page-component";
 import {SimplePageComponent} from "../components/pages/simple-page-component";
 import {ViewPageComponent} from "../components/pages/view-page-component";
 import CONFIG from "../../config/config";
+import {ControllersComponent} from "../components/pages/controllers-component";
 
 export class PagesController extends AppController {
 	constructor(data) {
@@ -17,6 +18,14 @@ export class PagesController extends AppController {
 
 		this.setMetaData({
 			title: CONFIG.TITLE
+		})
+	}
+
+	public async controllers() {
+		this.component = ControllersComponent;
+
+		this.setMetaData({
+			title: 'Controllers'
 		})
 	}
 

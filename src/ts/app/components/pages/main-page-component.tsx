@@ -44,7 +44,7 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 							<a href="https://github.com/egorovsa/react-isomorphic-boilerplate">View on the GitHub</a>
 						</div>
 
-						<div className="list-item">
+						<div className="list-item light">
 							This is a simple React isomorphic framework to make a simple websites with React
 							technologies.
 							<br/>
@@ -77,7 +77,7 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 							}
 						</SyntaxHighlighter>
 
-						<div className="list-item">
+						<div className="list-item light">
 							After that just open http://localhost:3000 in your favorite browser
 						</div>
 
@@ -98,7 +98,7 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 							}
 						</SyntaxHighlighter>
 
-						<div className="list-item">
+						<div className="list-item light">
 							Than you may run:
 						</div>
 
@@ -112,14 +112,14 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 							}
 						</SyntaxHighlighter>
 
-						<div className="list-item">
+						<div className="list-item light">
 							and open your browser http://localhost:4002 where
 							4002 is default server port, you might change in in config file
 						</div>
 
 						<h1>How it works</h1>
 
-						<div className="list-item">
+						<div className="list-item light">
 							When you do a request to for instance : <span
 							className="inner-highlight">http://yourSite.com/pages/simple/param1/param2</span>
 							<br/>

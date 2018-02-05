@@ -31,11 +31,11 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 			<div className="container">
 				<div className="page-content">
 					<h1>Creating to simple page {this.props.test}</h1>
-					<span className="list-item">Open PagesController</span>
+					<span className="list-item light">Open PagesController</span>
 					<SyntaxHighlighter language='javascript' style={docco}>
 						{"/ts/app/controllers/page-controller.tsx "}
 					</SyntaxHighlighter>
-					<span className="list-item">and create a new method</span>
+					<span className="list-item light">and create a new method</span>
 
 					<h2>Sync methods:</h2>
 					<SyntaxHighlighter language='javascript' style={docco}>
@@ -69,7 +69,7 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 							'\n'
 						}
 					</SyntaxHighlighter>
-					<span className="list-item">By the way firstParam and secondParam went from the url "/pages/simple/1/a/param"</span>
+					<span className="list-item light">By the way firstParam and secondParam went from the url "/pages/simple/1/a/param"</span>
 
 					<h2>Async methods:</h2>
 					<SyntaxHighlighter language='javascript' style={docco}>
@@ -117,7 +117,7 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 						}
 					</SyntaxHighlighter>
 
-					<span className="list-item">
+					<span className="list-item light">
 						Then you have to make a View part for the method <br/>
 						just make a simple react component
 					</span>

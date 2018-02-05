@@ -11,6 +11,14 @@ export interface MetaData {
 	description?: string
 }
 
+export interface ControllerRequest {
+	location: Location
+	query: { [key: string]: string }
+	hash: string
+	search: string
+	pathname: string
+}
+
 export class Controller {
 	constructor(public data) {
 		this.data = data;
@@ -24,6 +32,15 @@ export class Controller {
 		this.notFound = false;
 		this.responseStatus = 200;
 		this.componentData = {};
+
+		this.request = {
+			location: data.location,
+			query: data.location.query,
+			hash: data.location.hash,
+			search: data.location.search,
+			pathname: data.location.pathname
+		};
+
 		this.metaData = {
 			title: CONFIG.TITLE,
 			keywords: CONFIG.KEYWORDS,
@@ -31,6 +48,7 @@ export class Controller {
 		}
 	}
 
+	public request: ControllerRequest;
 	public location;
 	public query;
 	public hash;

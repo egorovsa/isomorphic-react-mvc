@@ -5,7 +5,7 @@ import {PagesStore} from "../../stores/pages";
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco} from 'react-syntax-highlighter/dist/styles/hljs';
-import {UII18nText} from "../../../lib/components/ui-i18n-component";
+import {UII18nText} from "../../../lib/view/ui-i18n-component";
 import {I18nextService} from "../../../lib/services/i18n-service";
 
 export interface Props {
@@ -15,8 +15,7 @@ export interface Props {
 export interface State {
 }
 
-
-export class ControllersComponent extends React.Component<Props, State> {
+export class ControllersExplanations extends React.Component<Props, State> {
 	public render() {
 		return (
 			<div>
@@ -25,7 +24,6 @@ export class ControllersComponent extends React.Component<Props, State> {
 						<h1>
 							<UII18nText id={"Controllers"}/>
 						</h1>
-
 
 						<div className="list-item light">
 							Controllers are the ‘C’ in MVC. After routing has been applied and the correct controller

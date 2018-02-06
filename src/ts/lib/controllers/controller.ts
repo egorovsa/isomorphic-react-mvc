@@ -28,7 +28,7 @@ export class Controller {
 		this.search = data.location.search;
 		this.pathname = data.location.pathname;
 		this.layout = CONFIG.DEFAULT_LAYOUT_COMPONENT;
-		this.component = CONFIG.DEFAULT_COMPONENT;
+		this.component = null;
 		this.notFound = false;
 		this.responseStatus = 200;
 		this.componentData = {};

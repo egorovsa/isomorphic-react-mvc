@@ -1,12 +1,11 @@
 import * as React from "react";
-import {PagesComponent} from "../components/pages/pages-component";
+import {PagesComponent} from "../view/pages/pages-component";
 import {AppController} from "./app-controller";
 import {UtilsService} from "../services/utils-service";
-import {MainPageComponent} from "../components/pages/main-page-component";
-import {SimplePageComponent} from "../components/pages/simple-page-component";
-import {ViewPageComponent} from "../components/pages/view-page-component";
+import {MainPageComponent} from "../view/pages/main-page-component";
+import {SimplePageComponent} from "../view/pages/simple-page-component";
+import {ViewPageComponent} from "../view/pages/view-page-component";
 import CONFIG from "../../config/config";
-import {ControllersComponent} from "../components/pages/controllers-component";
 
 export class PagesController extends AppController {
 	constructor(data) {
@@ -21,9 +20,7 @@ export class PagesController extends AppController {
 		})
 	}
 
-	public async controllers() {
-		this.component = ControllersComponent;
-
+	public async controllersExplanations() {
 		this.setMetaData({
 			title: 'Controllers'
 		})

@@ -1,6 +1,6 @@
-import {AppComponent} from "../app/components/layouts/app";
-import {PageNotFoundComponent} from "../lib/components/page-not-found";
-import {AppLoadingComponent} from "../lib/components/app-loading-component";
+import {AppComponent} from "../app/view/layouts/app";
+import {PageNotFoundComponent} from "../lib/view/page-not-found";
+import {AppLoadingComponent} from "../lib/view/app-loading-component";
 import {CUSTOM_ROUTES} from './routes';
 import {USER_AGENT_BLOCK} from "./user-agent-blocks";
 

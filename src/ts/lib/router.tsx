@@ -8,6 +8,7 @@ import {RouteUtils} from "./services/route-utils";
 import {InitialStateUtils} from "./services/initial-state-utils";
 import {I18nextService} from "./services/i18n-service";
 import {Controller} from "./controllers/controller";
+import {ActionComponentNotFound} from "./view/not-found-action-component";
 
 export class AppRouter {
 	public i18n: I18nextService;
@@ -49,7 +50,7 @@ export class AppRouter {
 	};
 
 	private async mainProcess(data: RouterState) {
-		const controllers = new ControllersList(data, this.initialStateInstance, this.i18n);
+		const controllers: ControllersList = new ControllersList(data, this.initialStateInstance, this.i18n);
 		const parsedParams = RouteUtils.parseParams(controllers, data);
 
 		if (!parsedParams.controller) {
@@ -58,6 +59,7 @@ export class AppRouter {
 		}
 
 		let controller: Controller = controllers.getController(parsedParams.controller);
+
 
 		try {
 			await controller.beforeFilter(...parsedParams.params);
@@ -69,6 +71,7 @@ export class AppRouter {
 		}
 
 		await controller[parsedParams.action](...parsedParams.params);
+		this.findControllerViewComponent(controller, parsedParams.controller, parsedParams.action);
 		return this.responseData(data, controller);
 	}
 
@@ -82,5 +85,32 @@ export class AppRouter {
 		data.params['responseStatus'] = responseStatus ? responseStatus.toString() : controller.responseStatus.toString();
 
 		return data;
+	}
+
+	private findControllerViewComponent(controller: Controller, controllerName: string, actionName: string): void {
+		if (!controller.component) {
+			try {
+				const component = require('../app/view/' + controllerName + '/' + this.camelCaseToDash(actionName) + '.tsx');
+				const nameOfComponent = this.capitalizeFirstLetter(actionName);
+				console.log(component, nameOfComponent);
+
+				if (component[nameOfComponent]) {
+					controller.component = component[nameOfComponent];
+				} else {
+					controller.component = ActionComponentNotFound;
+				}
+			} catch (e) {
+				console.log(e);
+				controller.component = CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT;
+			}
+		}
+	}
+
+	private capitalizeFirstLetter(string: string): string {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+
+	private camelCaseToDash(str: string): string {
+		return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
 	}
 }

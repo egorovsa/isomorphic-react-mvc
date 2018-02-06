@@ -88,6 +88,44 @@ export class ControllersExplanations extends React.Component<Props, State> {
 							}
 						</SyntaxHighlighter>
 
+						<h1>The Controllers List</h1>
+
+						<div className="list-item light">
+							Each new controller has to be appended to <b>ControllersList</b> class. <br/>
+							ReactMVC has to know about all controllers you have
+						</div>
+
+						<SyntaxHighlighter language='bash' style={docco}>
+							{
+								'/src/ts/app/controllers/controllers-list.ts'
+							}
+						</SyntaxHighlighter>
+
+						<div className="list-item light danger">
+							Each new controller has to be appended to <b>ControllersList</b> class. <br/>
+							ReactMVC has to know about all controllers you have. <br/>
+						</div>
+
+						<div className="list-item light">
+							For instance: You have created ShopController and you have to append it to controllers list.<br/>
+							Using Controllers method <b>setController</b> append name and definition of your controller.
+						</div>
+
+						<SyntaxHighlighter language='bash' style={docco}>
+							{
+								'import {ShopController} from "./shop-controller";\n' +
+								'\n' +
+								'export class ControllersList extends Controllers {\n' +
+								'\tconstructor(data: RouterState, initialStateInstance: InitialStateUtils, i18n: I18nextService) {\n' +
+								'\t\tsuper(data, initialStateInstance, i18n);\n' +
+								'\n' +
+								'\t\t this.setController(\'shop\', ShopController);\n' +
+								'\t}\n' +
+								'}'
+							}
+						</SyntaxHighlighter>
+
+
 						<h1>Request parameters</h1>
 
 						<div className="list-item light">
@@ -142,7 +180,8 @@ export class ControllersExplanations extends React.Component<Props, State> {
 						</div>
 
 						<div className="list-item light">
-							Controller actions generally use set() to create a props that View component uses to render the
+							Controller actions generally use set() to create a props that View component uses to render
+							the
 							view. Because of the conventions that ReactMVC uses, you don’t need to create and render the
 							view manually. Instead, once a controller action has completed, ReactMVC will handle
 							rendering and delivering the View.

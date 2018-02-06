@@ -10,12 +10,12 @@
 	},
 	{
 		"id": "1",
-		"name": "Simple page",
-		"slug": "simple",
-		"seo_title": "seo_title",
-		"seo_description": "seo_description",
-		"seo_keywords": "seo_keywords",
-		"content": "content"
+		"name": "Controllers",
+		"slug": "controllersExplanations",
+		"seo_title": "seo_title2",
+		"seo_description": "seo_description2",
+		"seo_keywords": "seo_keywords2",
+		"content": "<h1>Controllers</h1> <span class=\"list-item\">Under construction documentations</span>"
 	},
 	{
 		"id": "2",
@@ -37,11 +37,11 @@
 	},
 	{
 		"id": "4",
-		"name": "Controllers",
-		"slug": "controllersExplanations",
-		"seo_title": "seo_title2",
-		"seo_description": "seo_description2",
-		"seo_keywords": "seo_keywords2",
-		"content": "<h1>Controllers</h1> <span class=\"list-item\">Under construction documentations</span>"
+		"name": "Simple page",
+		"slug": "simple",
+		"seo_title": "seo_title",
+		"seo_description": "seo_description",
+		"seo_keywords": "seo_keywords",
+		"content": "content"
 	}
 ]

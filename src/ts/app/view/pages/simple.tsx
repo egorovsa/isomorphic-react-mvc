@@ -17,7 +17,7 @@ export interface StoresState {
 	pages: Store<PagesStore.State>
 }
 
-export class SimplePageComponent extends StoreComponent<Props, State, StoresState> {
+export class Simple extends StoreComponent<Props, State, StoresState> {
 	constructor() {
 		super({
 			pages: PagesStore.store
@@ -31,10 +31,11 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 			<div className="container">
 				<div className="page-content">
 					<h1>Creating to simple page {this.props.test}</h1>
-					<span className="list-item light">Open PagesController</span>
+					<span className="list-item light">Open pages controller</span>
 					<SyntaxHighlighter language='javascript' style={docco}>
-						{"/ts/app/controllers/page-controller.tsx "}
+						{"/ts/app/controllers/pages-controller.ts"}
 					</SyntaxHighlighter>
+
 					<span className="list-item light">and create a new method</span>
 
 					<h2>Sync methods:</h2>
@@ -42,15 +43,13 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 						{
 							'import * as React from "react";\n' +
 							'import {AppController} from "./app-controller";\n' +
-							'import {SimplePageComponent} from "../components/pages/simple-component";\n' +
 							'\n' +
 							'export class PagesController extends AppController {\n' +
 							'\tconstructor(data) {\n' +
 							'\t\tsuper(data);\n' +
 							'\t}\n' +
 							'\n' +
-							'\tpublic simple(test) {\n' +
-							'\t\tthis.component = SimplePageComponent;\n' +
+							'\tpublic index(test) {\n' +
 							'\n' +
 							'\t\tthis.set({\n' +
 							'\t\t\tparams: test\n' +
@@ -76,7 +75,6 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 						{
 							'import * as React from "react";\n' +
 							'import {AppController} from "./app-controller";\n' +
-							'import {PagesComponent} from "../components/pages/pages-component";\n' +
 							'\n' +
 							'export class PagesController extends AppController {\n' +
 							'\tconstructor(data) {\n' +
@@ -84,11 +82,9 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 							'\t}\n' +
 							'\n' +
 							'\tpublic async index(slug) {\n' +
-							'\t\tUtilsService.scrollToTop();\n' +
 							'\t\tthis.showMainLoading();\n' +
 							'\n' +
 							'\t\tif (slug) {\n' +
-							'\t\t\tthis.component = PagesComponent;\n' +
 							'\n' +
 							'\t\t\ttry {\n' +
 							'\t\t\t\tconst page = await AppApi.pages.getPageDataBySlug(slug);\n' +
@@ -118,8 +114,19 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 					</SyntaxHighlighter>
 
 					<span className="list-item light">
-						Then you have to make a View part for the method <br/>
-						just make a simple react component
+						Then you have to make a View part for the method, just make a simple react component<br/>
+						According to our conventions the view file has to has the same name as action with capitalized first letter,<br/>
+						and the path of the view file:
+					</span>
+
+					<SyntaxHighlighter language='javascript' style={docco}>
+						{
+							'/ts/app/view/pages/index.tsx'
+						}
+					</SyntaxHighlighter>
+
+					<span className="list-item light">
+						Where pages is the name of controller and index the name of action
 					</span>
 
 					<SyntaxHighlighter language='javascript' style={docco}>
@@ -135,7 +142,7 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 							'\n' +
 							'}\n' +
 							'\n' +
-							'export class PagesComponent extends React.Component<Props, State> {\n' +
+							'export class Index extends React.Component<Props, State> {\n' +
 							'\tpublic render() {\n' +
 							'\t\treturn (\n' +
 							'\t\t\t<div className="container pages-container">\n' +
@@ -147,6 +154,7 @@ export class SimplePageComponent extends StoreComponent<Props, State, StoresStat
 							'}'
 						}
 					</SyntaxHighlighter>
+
 				</div>
 			</div>
 		);

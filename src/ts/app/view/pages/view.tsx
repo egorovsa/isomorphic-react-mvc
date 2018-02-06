@@ -10,15 +10,15 @@ export interface State {
 
 }
 
-export class ViewPageComponent extends React.Component<Props, State> {
+export class View extends React.Component<Props, State> {
 	public render() {
 		return (
 			<div className="container">
 				<div className="page-content">
 					<h1>Creating to simple view layer as a React component</h1>
-					<span className="list-item">Open pages-component.tsx </span>
+					<span className="list-item">Open index.tsx </span>
 					<SyntaxHighlighter language='javascript' style={docco}>
-						{"/ts/app/component/pages/pages-component.tsx "}
+						{"/ts/app/view/pages/index.tsx"}
 					</SyntaxHighlighter>
 
 					<span className="list-item">and put the example there</span>
@@ -36,7 +36,7 @@ export class ViewPageComponent extends React.Component<Props, State> {
 							'\n' +
 							'}\n' +
 							'\n' +
-							'export class PagesComponent extends React.Component<Props, State> {\n' +
+							'export class Index extends React.Component<Props, State> {\n' +
 							'\tpublic render() {\n' +
 							'\t\treturn (\n' +
 							'\t\t\t<div className="container pages-container">\n' +

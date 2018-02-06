@@ -12,14 +12,18 @@ export interface State {
 export class PageNotFoundComponent extends React.Component<Props, State> {
 	render() {
 		return (
-			<div className="container page-not-found">
-				<div className="page-404">
-					404
-				</div>
-				<div className="description">
-					Page not found
-				</div>
+			<div className="main-content-section">
+				<div className="container">
+					<div className="page-content">
+						<div className="page-404">
+							404
+						</div>
+						<div className="description">
+							Page not found
+						</div>
 
+					</div>
+				</div>
 			</div>
 		);
 	}

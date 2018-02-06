@@ -1,8 +1,4 @@
 import * as React from 'react';
-import {Store, StoreComponent} from "react-stores";
-import {CommonStore} from "../../stores/common";
-import {PagesStore} from "../../stores/pages";
-
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {docco} from 'react-syntax-highlighter/dist/styles/hljs';
 import {UII18nText} from "../../../lib/view/ui-i18n-component";
@@ -109,7 +105,89 @@ export class ControllersExplanations extends React.Component<Props, State> {
 							remove some boilerplate code you would otherwise need to write.
 						</div>
 
-						<h1>To be continued...</h1>
+						<div className="list-item light">
+							By convention, ReactMVC renders a view with an inflected version of the action name.
+							For instance SomeController might contain the view(),
+							share(), and searching() actions. The controller contains:
+						</div>
+
+						<SyntaxHighlighter language='bash' style={docco}>
+							{
+								'import {AppController} from "./app-controller";\n' +
+								'\n' +
+								'export class SomeController extends AppController {\n' +
+								'\tconstructor(data) {\n' +
+								'\t\tsuper(data);\n' +
+								'\t}\n' +
+								'\n' +
+								'\tpublic view($id) {\n' +
+								'\t\t//action logic goes here..\n' +
+								'\t}\n' +
+								'\n' +
+								'\tpublic share($customerId, $recipeId) {\n' +
+								'\t\t//action logic goes here..\n' +
+								'\t}\n' +
+								'\n' +
+								'\tpublic searching($query) {\n' +
+								'\t\t//action logic goes here..\n' +
+								'\t}\n' +
+								'}'
+							}
+						</SyntaxHighlighter>
+						<div className="list-item light">
+							The view files for these actions would be /ts/app/view/some/view.tsx,
+							/ts/app/view/some/share.tsx, and /ts/app/view/some/searching.tsx. The conventional view file
+							name
+							is the lowercased and underscored version of the action name.
+						</div>
+
+						<div className="list-item light">
+							Controller actions generally use set() to create a props that View component uses to render the
+							view. Because of the conventions that ReactMVC uses, you don’t need to create and render the
+							view manually. Instead, once a controller action has completed, ReactMVC will handle
+							rendering and delivering the View.
+						</div>
+
+						<SyntaxHighlighter language='bash' style={docco}>
+							{
+								'public searching($query) {\n' +
+								'\t//action logic goes here..\n' +
+								'\tthis.set({\n' +
+								'\t\tfoo:"bar"\n' +
+								'\t})\n' +
+								'}\n'
+							}
+						</SyntaxHighlighter>
+
+						<div className="list-item light">
+							If for some reason you’d like to skip the default behavior, both of the following techniques
+							will bypass the default view rendering behavior.
+						</div>
+
+						<SyntaxHighlighter language='bash' style={docco}>
+							{
+								'import {MainPageComponent} from "../view/pages/main-page-component";\n' +
+								'//...\n' +
+								'//...\n' +
+								'\tpublic async main() {\n' +
+								'\t\tthis.component = MainPageComponent;\n' +
+								'\n' +
+								'\t\tthis.setMetaData({\n' +
+								'\t\t\ttitle: "Page title here"\n' +
+								'\t\t\tdescription: "Page description"\n' +
+								'\t\t\tkeywords: "Page keywords"\n' +
+								'\t\t})\n' +
+								'\t}'
+							}
+						</SyntaxHighlighter>
+
+						<div className="list-item light"></div>
+
+						<h1>Controller Methods</h1>
+
+						<div className="list-item light">
+							To be continued...
+						</div>
 					</div>
 				</div>
 			</div>

@@ -89,19 +89,25 @@ export class AppRouter {
 
 	private findControllerViewComponent(controller: Controller, controllerName: string, actionName: string): void {
 		if (!controller.component) {
+			const nameOfComponent = this.capitalizeFirstLetter(actionName);
+
+			const notFoundData = {
+				nameOfComponent: nameOfComponent,
+				controllerName: controllerName,
+				actionName: actionName,
+				viewPath: '../app/view/' + controllerName + '/' + this.camelCaseToDash(actionName) + '.tsx'
+			};
+
 			try {
 				const component = require('../app/view/' + controllerName + '/' + this.camelCaseToDash(actionName) + '.tsx');
-				const nameOfComponent = this.capitalizeFirstLetter(actionName);
-				console.log(component, nameOfComponent);
 
 				if (component[nameOfComponent]) {
 					controller.component = component[nameOfComponent];
 				} else {
-					controller.component = ActionComponentNotFound;
+					controller.component = () => <ActionComponentNotFound {...notFoundData}/>;
 				}
 			} catch (e) {
-				console.log(e);
-				controller.component = CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT;
+				controller.component = () => <ActionComponentNotFound {...notFoundData}/>;
 			}
 		}
 	}

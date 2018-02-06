@@ -21,7 +21,7 @@ export interface StoresState {
 	pages: Store<PagesStore.State>
 }
 
-export class MainPageComponent extends StoreComponent<Props, State, StoresState> {
+export class Main extends StoreComponent<Props, State, StoresState> {
 	constructor() {
 		super({
 			common: CommonStore.store,
@@ -131,7 +131,7 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 						</div>
 
 						<SyntaxHighlighter language='javascript' style={docco}>
-							{"/ts/app/controllers/page-controller.tsx "}
+							{"/ts/app/controllers/pages-controller.ts"}
 						</SyntaxHighlighter>
 
 						<SyntaxHighlighter language='javascript' style={docco}>
@@ -149,7 +149,7 @@ export class MainPageComponent extends StoreComponent<Props, State, StoresState>
 								'\t\tthis.component = SimplePageComponent;\n' +
 								'\n' +
 								'\t\tthis.set({\n' +
-								'\t\t\tparams: test\n' +
+								'\t\t\tfoo: "bar"\n' +
 								'\t\t});\n' +
 								'\n' +
 								'\n' +

@@ -9,7 +9,7 @@ export interface State {
 
 }
 
-export class PagesComponent extends React.Component<Props, State> {
+export class Index extends React.Component<Props, State> {
 	public render() {
 		return (
 			<div className="container pages-container">

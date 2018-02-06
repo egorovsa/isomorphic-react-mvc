@@ -1,10 +1,6 @@
 import * as React from "react";
-import {PagesComponent} from "../view/pages/pages-component";
 import {AppController} from "./app-controller";
 import {UtilsService} from "../services/utils-service";
-import {MainPageComponent} from "../view/pages/main-page-component";
-import {SimplePageComponent} from "../view/pages/simple-page-component";
-import {ViewPageComponent} from "../view/pages/view-page-component";
 import CONFIG from "../../config/config";
 
 export class PagesController extends AppController {
@@ -13,8 +9,6 @@ export class PagesController extends AppController {
 	}
 
 	public async main() {
-		this.component = MainPageComponent;
-
 		this.setMetaData({
 			title: CONFIG.TITLE
 		})
@@ -27,16 +21,12 @@ export class PagesController extends AppController {
 	}
 
 	public async view() {
-		this.component = ViewPageComponent;
-
 		this.setMetaData({
 			title: 'Creating view layer'
 		});
 	}
 
-	public async simple(test) {
-		this.component = SimplePageComponent;
-
+	public simple(test) {
 		this.set({
 			test: test
 		});
@@ -44,8 +34,6 @@ export class PagesController extends AppController {
 		this.setMetaData({
 			title: 'How to create a simple page'
 		});
-
-		return false;
 	}
 
 	public async index(slug) {
@@ -53,8 +41,6 @@ export class PagesController extends AppController {
 		this.showMainLoading();
 
 		if (slug) {
-			this.component = PagesComponent;
-
 			try {
 				const page = await this.apiRequest.pages.getPageDataBySlug(slug);
 

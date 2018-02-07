@@ -1,6 +1,6 @@
 import * as React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {docco} from 'react-syntax-highlighter/dist/styles/hljs';
+import {vs2015} from 'react-syntax-highlighter/dist/styles/hljs';
 import {UII18nText} from "../../../lib/view/ui-i18n-component";
 import {I18nextService} from "../../../lib/services/i18n-service";
 
@@ -53,7 +53,7 @@ export class ControllersExplanations extends React.Component<Props, State> {
 							AppController is defined in /ts/app/controllers/app-controller.ts as follows:
 						</div>
 
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'import {Controller} from "../../lib/controllers/controller";\n' +
 								'import {CommonStore} from "../stores/common";\n' +
@@ -80,7 +80,7 @@ export class ControllersExplanations extends React.Component<Props, State> {
 							results:
 						</div>
 
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'public async beforeFilter(data?: any): Promise<any> {\n' +
 								'\tawait super.beforeFilter(data);\n' +
@@ -95,7 +95,7 @@ export class ControllersExplanations extends React.Component<Props, State> {
 							ReactMVC has to know about all controllers you have
 						</div>
 
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'/src/ts/app/controllers/controllers-list.ts'
 							}
@@ -111,7 +111,7 @@ export class ControllersExplanations extends React.Component<Props, State> {
 							Using Controllers method <b>setController</b> append name and definition of your controller.
 						</div>
 
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'import {ShopController} from "./shop-controller";\n' +
 								'\n' +
@@ -149,7 +149,7 @@ export class ControllersExplanations extends React.Component<Props, State> {
 							share(), and searching() actions. The controller contains:
 						</div>
 
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'import {AppController} from "./app-controller";\n' +
 								'\n' +
@@ -187,7 +187,7 @@ export class ControllersExplanations extends React.Component<Props, State> {
 							rendering and delivering the View.
 						</div>
 
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'public searching($query) {\n' +
 								'\t//action logic goes here..\n' +
@@ -203,7 +203,7 @@ export class ControllersExplanations extends React.Component<Props, State> {
 							will bypass the default view rendering behavior.
 						</div>
 
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'import {MainPageComponent} from "../view/pages/main-page-component";\n' +
 								'//...\n' +

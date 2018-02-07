@@ -2,9 +2,8 @@ import * as React from 'react';
 import {Store, StoreComponent} from "react-stores";
 import {CommonStore} from "../../stores/common";
 import {PagesStore} from "../../stores/pages";
-
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {docco} from 'react-syntax-highlighter/dist/styles/hljs';
+import {vs2015} from 'react-syntax-highlighter/dist/styles/hljs';
 import {UII18nText} from "../../../lib/view/ui-i18n-component";
 import {I18nextService} from "../../../lib/services/i18n-service";
 
@@ -55,7 +54,7 @@ export class Main extends StoreComponent<Props, State, StoresState> {
 						<h1>How to install and start</h1>
 
 						<h3>With Yarn</h3>
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'//Install packages\n' +
 								'$ yarn\n' +
@@ -67,7 +66,7 @@ export class Main extends StoreComponent<Props, State, StoresState> {
 						<br/><br/>
 
 						<h3>With npm</h3>
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'//Install packages\n' +
 								'$ npm i\n' +
@@ -84,7 +83,7 @@ export class Main extends StoreComponent<Props, State, StoresState> {
 						<h1>How to build</h1>
 
 						<h3>With Yarn</h3>
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'$ yarn build\n'
 							}
@@ -92,7 +91,7 @@ export class Main extends StoreComponent<Props, State, StoresState> {
 						<br/><br/>
 
 						<h3>With npm</h3>
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'$ npm run build\n'
 							}
@@ -102,7 +101,7 @@ export class Main extends StoreComponent<Props, State, StoresState> {
 							Than you may run:
 						</div>
 
-						<SyntaxHighlighter language='bash' style={docco}>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'$ node dist/server/server.js\n' +
 								'\n' +
@@ -130,11 +129,11 @@ export class Main extends StoreComponent<Props, State, StoresState> {
 							At the time your url params will be available like the arguments of the method.
 						</div>
 
-						<SyntaxHighlighter language='javascript' style={docco}>
+						<SyntaxHighlighter language='javascript' style={vs2015}>
 							{"/ts/app/controllers/pages-controller.ts"}
 						</SyntaxHighlighter>
 
-						<SyntaxHighlighter language='javascript' style={docco}>
+						<SyntaxHighlighter language='javascript' style={vs2015}>
 							{
 								'import * as React from "react";\n' +
 								'import {AppController} from "./app-controller";\n' +

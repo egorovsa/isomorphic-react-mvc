@@ -3,7 +3,7 @@ import {Store, StoreComponent} from "react-stores";
 import {PagesStore} from "../../stores/pages";
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {docco} from 'react-syntax-highlighter/dist/styles/hljs';
+import {vs2015} from 'react-syntax-highlighter/dist/styles/hljs';
 
 export interface Props {
 	test: string
@@ -32,14 +32,14 @@ export class Simple extends StoreComponent<Props, State, StoresState> {
 				<div className="page-content">
 					<h1>Creating to simple page {this.props.test}</h1>
 					<span className="list-item light">Open pages controller</span>
-					<SyntaxHighlighter language='javascript' style={docco}>
+					<SyntaxHighlighter language='typescript' style={vs2015}>
 						{"/ts/app/controllers/pages-controller.ts"}
 					</SyntaxHighlighter>
 
 					<span className="list-item light">and create a new method</span>
 
 					<h2>Sync methods:</h2>
-					<SyntaxHighlighter language='javascript' style={docco}>
+					<SyntaxHighlighter language='typescript' style={vs2015}>
 						{
 							'import * as React from "react";\n' +
 							'import {AppController} from "./app-controller";\n' +
@@ -71,7 +71,7 @@ export class Simple extends StoreComponent<Props, State, StoresState> {
 					<span className="list-item light">By the way firstParam and secondParam went from the url "/pages/simple/1/a/param"</span>
 
 					<h2>Async methods:</h2>
-					<SyntaxHighlighter language='javascript' style={docco}>
+					<SyntaxHighlighter language='typescript' style={vs2015}>
 						{
 							'import * as React from "react";\n' +
 							'import {AppController} from "./app-controller";\n' +
@@ -119,7 +119,7 @@ export class Simple extends StoreComponent<Props, State, StoresState> {
 						and the path of the view file:
 					</span>
 
-					<SyntaxHighlighter language='javascript' style={docco}>
+					<SyntaxHighlighter language='typescript' style={vs2015}>
 						{
 							'/ts/app/view/pages/index.tsx'
 						}
@@ -129,7 +129,7 @@ export class Simple extends StoreComponent<Props, State, StoresState> {
 						Where pages is the name of controller and index the name of action
 					</span>
 
-					<SyntaxHighlighter language='javascript' style={docco}>
+					<SyntaxHighlighter language='typescript' style={vs2015}>
 						{
 							'import * as React from \'react\';\n' +
 							'import {PagesStore} from "../../stores/pages";\n' +

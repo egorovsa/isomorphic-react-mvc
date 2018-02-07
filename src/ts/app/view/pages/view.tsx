@@ -1,6 +1,6 @@
 import * as React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import {docco} from 'react-syntax-highlighter/dist/styles/hljs';
+import {vs2015} from 'react-syntax-highlighter/dist/styles/hljs';
 
 export interface Props {
 	params?: any
@@ -17,13 +17,13 @@ export class View extends React.Component<Props, State> {
 				<div className="page-content">
 					<h1>Creating to simple view layer as a React component</h1>
 					<span className="list-item">Open index.tsx </span>
-					<SyntaxHighlighter language='javascript' style={docco}>
+					<SyntaxHighlighter language='typescript' style={vs2015}>
 						{"/ts/app/view/pages/index.tsx"}
 					</SyntaxHighlighter>
 
 					<span className="list-item">and put the example there</span>
 
-					<SyntaxHighlighter language='javascript' style={docco}>
+					<SyntaxHighlighter language='typescript' style={vs2015}>
 						{
 							'import * as React from \'react\';\n' +
 							'import {PagesStore} from "../../stores/pages";\n' +

@@ -14,6 +14,7 @@
 		"declarationFiles": false,
 		"removeComments": false,
 		"diagnostics": true,
+		"experimentalDecorators": true,
 		"lib": [
 			"dom",
 			"es6"

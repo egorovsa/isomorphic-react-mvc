@@ -6,10 +6,8 @@ import {Store, StoreComponent} from "react-stores";
 import '../../styl/style.styl';
 import './services/polyfills/object-assign';
 import './services/polyfills/promise';
-
-import {InitialStateUtils} from "./services/initial-state-utils";
-
-let routing = new AppRouter(new InitialStateUtils);
+import {initialStateInstance} from "./services/initial-state-utils";
+import {I18nextService} from "./services/i18n-service";
 
 export interface StoresState {
 	app: Store<AppStore.State>
@@ -21,7 +19,7 @@ class MainComponent extends StoreComponent<any, any, StoresState> {
 			app: AppStore.store
 		});
 	}
-	
+
 	public render() {
 		return React.createElement(this.stores.app.state.appLoadingComponent, {active: this.stores.app.state.appLoading})
 	}
@@ -29,10 +27,10 @@ class MainComponent extends StoreComponent<any, any, StoresState> {
 
 window.onload = () => {
 	ReactDOM.hydrate(
-		<div>
-			<MainComponent/>
-			{routing.router()}
-		</div>,
+		<>
+		<MainComponent/>
+		{AppRouter.router(new I18nextService(initialStateInstance), initialStateInstance)}
+		</>,
 		document.getElementById('app')
 	);
 };

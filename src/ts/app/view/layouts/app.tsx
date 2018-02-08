@@ -12,8 +12,10 @@ import {I18nextService} from "../../../lib/services/i18n-service";
 const NotificationContainer = require('react-notifications').NotificationContainer;
 
 export interface Props {
+	server: boolean,
 	i18n: I18nextService,
-	test: string
+	test: string,
+	fetch:any
 }
 
 export interface State {
@@ -33,14 +35,8 @@ export class AppComponent extends StoreComponent<Props, State, StoresState> {
 		});
 	}
 
-	static childContextTypes = {
-		i18n: PropTypes.object
-	};
+	componentWillMount() {
 
-	getChildContext() {
-		return {
-			i18n: this.props.i18n
-		};
 	}
 
 	state: State = {
@@ -65,14 +61,16 @@ export class AppComponent extends StoreComponent<Props, State, StoresState> {
 	}
 
 	storeComponentWillUnmount() {
-		window.removeEventListener("resize", this.updateDimensions);
-		window.removeEventListener("scroll", this.updateScrollTop);
+		if (!this.props.server) {
+			window.removeEventListener("resize", this.updateDimensions);
+			window.removeEventListener("scroll", this.updateScrollTop);
+		}
 	}
 
 	render() {
 		return (
 			<div>
-				{!this.stores.common.state.server && <NotificationContainer/>}
+				{!this.props.server && <NotificationContainer/>}
 
 				<SideNavComponent
 					active={this.stores.common.state.sideNav}

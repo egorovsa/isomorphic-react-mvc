@@ -13,7 +13,7 @@ interface ControllerInterface {
 export class Controllers {
 	public controllers: ControllerInterface[] = [];
 
-	constructor(private data: RouterState, private initialStateInstance: InitialStateUtils, private i18n: I18nextService) {
+	constructor(private data: RouterState, private initialStateInstance: InitialStateUtils, private i18n: I18nextService, private server: boolean) {
 		this.setController('pages', PagesController);
 		this.setController('pageNotFound', PageNotFoundController);
 	}
@@ -50,6 +50,7 @@ export class Controllers {
 				foundController = new controller.controller(this.data);
 				foundController.initAppApi(this.initialStateInstance);
 				foundController.initAppI18n(this.i18n);
+				foundController.setServerState(this.server);
 			}
 		});
 

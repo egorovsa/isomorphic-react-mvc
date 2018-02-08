@@ -90,7 +90,7 @@ export class ControllersExplanations extends React.Component<Props, State> {
 
 						<h1>The Controllers List</h1>
 
-						<div className="list-item light">
+						<div className="list-item light danger">
 							Each new controller has to be appended to <b>ControllersList</b> class. <br/>
 							ReactMVC has to know about all controllers you have
 						</div>
@@ -101,10 +101,6 @@ export class ControllersExplanations extends React.Component<Props, State> {
 							}
 						</SyntaxHighlighter>
 
-						<div className="list-item light danger">
-							Each new controller has to be appended to <b>ControllersList</b> class. <br/>
-							ReactMVC has to know about all controllers you have. <br/>
-						</div>
 
 						<div className="list-item light">
 							For instance: You have created ShopController and you have to append it to controllers list.<br/>
@@ -158,15 +154,15 @@ export class ControllersExplanations extends React.Component<Props, State> {
 								'\t\tsuper(data);\n' +
 								'\t}\n' +
 								'\n' +
-								'\tpublic view($id) {\n' +
+								'\tpublic view(id) {\n' +
 								'\t\t//action logic goes here..\n' +
 								'\t}\n' +
 								'\n' +
-								'\tpublic share($customerId, $recipeId) {\n' +
+								'\tpublic share(customerId, recipeId) {\n' +
 								'\t\t//action logic goes here..\n' +
 								'\t}\n' +
 								'\n' +
-								'\tpublic searching($query) {\n' +
+								'\tpublic searching(query) {\n' +
 								'\t\t//action logic goes here..\n' +
 								'\t}\n' +
 								'}'

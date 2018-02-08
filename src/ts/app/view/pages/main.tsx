@@ -1,11 +1,9 @@
 import * as React from 'react';
-import {Store, StoreComponent} from "react-stores";
-import {CommonStore} from "../../stores/common";
-import {PagesStore} from "../../stores/pages";
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {vs2015} from 'react-syntax-highlighter/dist/styles/hljs';
 import {UII18nText} from "../../../lib/view/ui-i18n-component";
 import {I18nextService} from "../../../lib/services/i18n-service";
+import {Link} from "react-router";
 
 export interface Props {
 	i18n?: I18nextService,
@@ -15,22 +13,8 @@ export interface Props {
 export interface State {
 }
 
-export interface StoresState {
-	common: Store<CommonStore.State>,
-	pages: Store<PagesStore.State>
-}
-
-export class Main extends StoreComponent<Props, State, StoresState> {
-	constructor() {
-		super({
-			common: CommonStore.store,
-			pages: PagesStore.store
-		});
-	}
-
+export class Main extends React.Component<Props, State> {
 	public render() {
-
-
 		return (
 			<div>
 				<div className="container">
@@ -119,14 +103,12 @@ export class Main extends StoreComponent<Props, State, StoresState> {
 						<h1>How it works</h1>
 
 						<div className="list-item light">
-							When you do a request to for instance : <span
-							className="inner-highlight">http://yourSite.com/pages/simple/param1/param2</span>
-							<br/>
-							It means that you have to have a public method is named as <span
-							className="inner-highlight">simple</span> in a the <span
-							className="inner-highlight">PagesController</span>.
-							<br/>
-							At the time your url params will be available like the arguments of the method.
+							When a request is made to a ReactMVC application, for instance : <span
+							className="inner-highlight">http://yourSite.com/pages/simple/param1/param2</span>, App’s
+							Router class use Routes
+							Configuration to find and create the correct controller. The request data is encapsulated in
+							a request object. ReactMVC puts all of the important request information into the
+							this->request property.
 						</div>
 
 						<SyntaxHighlighter language='javascript' style={vs2015}>
@@ -164,6 +146,11 @@ export class Main extends StoreComponent<Props, State, StoresState> {
 								'\n'
 							}
 						</SyntaxHighlighter>
+
+						<div className="list-item light">
+							Take a look the
+							<Link to={"/pages/controllersExplanations"}> controller explanation.</Link>
+						</div>
 					</div>
 				</div>
 			</div>

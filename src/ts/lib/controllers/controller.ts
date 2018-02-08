@@ -62,16 +62,25 @@ export class Controller {
 	public apiRequest: ApiEndpoints;
 	public metaData: MetaData;
 	public i18n: I18nextService;
+	public server: boolean;
 
 	public initAppApi(initialStateInstance: InitialStateUtils) {
 		this.apiRequest = new ApiEndpoints(initialStateInstance);
 	}
 
-	public initAppI18n(i18n: I18nextService) {
+	public initAppI18n(i18n: I18nextService): void {
 		this.i18n = i18n;
 
 		this.set({
 			i18n: i18n
+		});
+	}
+
+	public setServerState(server: boolean): void {
+		this.server = server;
+
+		this.set({
+			server: server
 		});
 	}
 

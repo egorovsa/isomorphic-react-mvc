@@ -27,7 +27,6 @@ export class UII18nText extends StoreComponent<Props, State, StoresState> {
 		i18n: PropTypes.object
 	};
 
-
 	state: State = {};
 
 	private createMarkup() {

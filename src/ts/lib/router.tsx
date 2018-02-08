@@ -2,46 +2,42 @@ import * as React from 'react';
 import CONFIG from "../config/config";
 import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-router';
 import {AppStore} from "./stores/app";
-import {CommonStore} from "../app/stores/common";
 import {ControllersList} from "../app/controllers/controllers-list";
 import {RouteUtils} from "./services/route-utils";
 import {InitialStateUtils} from "./services/initial-state-utils";
 import {I18nextService} from "./services/i18n-service";
 import {Controller} from "./controllers/controller";
 import {ActionComponentNotFound} from "./view/not-found-action-component";
+import {PropTypes} from 'prop-types';
+import {ContextWrapper} from "./view/context-wrapper";
 
 export class AppRouter {
-	public i18n: I18nextService;
-
-	constructor(readonly initialStateInstance: InitialStateUtils) {
-		this.i18n = new I18nextService(this.initialStateInstance)
-	}
-
-	public router() {
+	public static router(i18n: I18nextService, initialStateInstance: InitialStateUtils) {
 		return (
-			<Router history={browserHistory}>
-				<Route path="/page_not_found" component={CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT} onEnter={() => {
-					AppStore.store.setState({
-						appLoading: false
-					} as AppStore.State);
-				}}/>
+			<ContextWrapper
+				i18n={i18n}
+				initialStateInstance={initialStateInstance}
+			>
+				<Router history={browserHistory}>
+					<Route path="/page_not_found" component={CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT} onEnter={() => {
+						AppStore.store.setState({
+							appLoading: false
+						} as AppStore.State);
+					}}/>
 
-				{this.mainRoute(false)}
-			</Router>
+					{this.mainRoute(i18n, initialStateInstance, false)}
+				</Router>
+			</ContextWrapper>
 		)
 	}
 
-	public mainRoute = (server?: boolean): JSX.Element => {
-		CommonStore.store.setState({
-			server: server
-		} as CommonStore.State);
-
+	public static mainRoute(i18n: I18nextService, initialStateInstance: InitialStateUtils, server?: boolean): JSX.Element {
 		let paramsPath: string = RouteUtils.makeParamsPath();
 
 		return (
 			<Route path={paramsPath}>
 				<IndexRoute onEnter={(data: RouterState, replace, next) => {
-					this.mainProcess(data).then(() => {
+					this.mainProcess(data, i18n, initialStateInstance, server).then(() => {
 						next();
 					});
 				}}/>
@@ -49,8 +45,8 @@ export class AppRouter {
 		);
 	};
 
-	private async mainProcess(data: RouterState) {
-		const controllers: ControllersList = new ControllersList(data, this.initialStateInstance, this.i18n);
+	public static async mainProcess(data: RouterState, i18n: I18nextService, initialStateInstance: InitialStateUtils, server?: boolean) {
+		let controllers: ControllersList = new ControllersList(data, initialStateInstance, i18n, server);
 		const parsedParams = RouteUtils.parseParams(controllers, data);
 
 		if (!parsedParams.controller) {
@@ -59,7 +55,6 @@ export class AppRouter {
 		}
 
 		let controller: Controller = controllers.getController(parsedParams.controller);
-
 
 		try {
 			await controller.beforeFilter(...parsedParams.params);
@@ -75,7 +70,7 @@ export class AppRouter {
 		return this.responseData(data, controller);
 	}
 
-	private responseData(data: RouterState, controller: Controller, responseStatus?: number) {
+	public static responseData(data: RouterState, controller: Controller, responseStatus?: number) {
 		controller.layout.defaultProps = {...controller.componentData};
 		controller.component.defaultProps = {...controller.componentData};
 		data.routes[0].component = controller.layout;
@@ -83,11 +78,10 @@ export class AppRouter {
 		data.params['metaData'] = JSON.stringify(controller.metaData);
 		data.params['notFound'] = controller.notFound.toString();
 		data.params['responseStatus'] = responseStatus ? responseStatus.toString() : controller.responseStatus.toString();
-
 		return data;
 	}
 
-	private findControllerViewComponent(controller: Controller, controllerName: string, actionName: string): void {
+	public static findControllerViewComponent(controller: Controller, controllerName: string, actionName: string): void {
 		if (!controller.component) {
 			const nameOfComponent = this.capitalizeFirstLetter(actionName);
 
@@ -112,11 +106,11 @@ export class AppRouter {
 		}
 	}
 
-	private capitalizeFirstLetter(string: string): string {
+	public static capitalizeFirstLetter(string: string): string {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 
-	private camelCaseToDash(str: string): string {
+	public static camelCaseToDash(str: string): string {
 		return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
 	}
 }

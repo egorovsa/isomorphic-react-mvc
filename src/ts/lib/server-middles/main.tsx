@@ -1,3 +1,4 @@
+import * as React from 'react';
 import * as path from "path";
 import * as express from "express";
 import * as serialize from "serialize-javascript";
@@ -8,7 +9,10 @@ import {createElement} from "react";
 import {AppRouter} from "../router";
 import {InitialStateUtils} from "../services/initial-state-utils";
 import {MetaData} from "../controllers/controller";
+import {I18nextService} from "../services/i18n-service";
 import CONFIG from "../../config/config";
+import {PropTypes} from 'prop-types';
+import {ContextWrapper} from "../view/context-wrapper";
 
 const headHtml = require("../../../hbs/index/head-part.hbs");
 const footerHtml = require("../../../hbs/index/footer-part.hbs");
@@ -49,11 +53,11 @@ export class RenderServerSide {
 	}
 
 	static render(req: express.Request, res: express.Response): express.Response | void {
-		const initialStateInstance = new InitialStateUtils();
-		const router: AppRouter = new AppRouter(initialStateInstance);
-		const routes = router.mainRoute(true);
 		const cookies = req.cookies;
-		router.i18n.setServerLanguage(req.acceptsLanguages(), cookies.language);
+		const initialStateInstance = new InitialStateUtils();
+		let i18n = new I18nextService(initialStateInstance);
+		i18n.setServerLanguage(req.acceptsLanguages(), cookies.language);
+		let routes = AppRouter.mainRoute(i18n, initialStateInstance, true);
 
 		match({routes, location: req.url}, (error, nextLocation, nextState) => {
 			if (!error && nextState && nextState['params']) {
@@ -76,7 +80,9 @@ export class RenderServerSide {
 						'Connection': 'close'
 					});
 
-					this.getServerHtml(req, res, nextState, initialStateInstance);
+					this.getServerHtml(req, res, nextState, initialStateInstance, i18n);
+					routes = null;
+					i18n = null;
 				} else {
 					return this.get404(req, res);
 				}
@@ -86,9 +92,18 @@ export class RenderServerSide {
 		});
 	}
 
-	static getServerHtml(req: express.Request, res: express.Response, nextState: any, initialStateInstance: InitialStateUtils): void {
-		const stream = renderToNodeStream(createElement(RouterContext, nextState));
+	static getServerHtml(req: express.Request, res: express.Response, nextState: any, initialStateInstance: InitialStateUtils, i18n: I18nextService): void {
 		const metaData: MetaData = JSON.parse(nextState.params['metaData']);
+
+		const stream = renderToNodeStream(
+			<ContextWrapper
+				i18n={i18n}
+				initialStateInstance={initialStateInstance}
+			>
+				{createElement(RouterContext, nextState)}
+			</ContextWrapper>
+		);
+
 		initialStateInstance.setData('serverUserAgent', req.headers['user-agent']);
 
 		res.write(headHtml({

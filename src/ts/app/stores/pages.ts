@@ -1,4 +1,3 @@
-// store.ts
 import {Store} from "react-stores";
 
 export namespace PagesStore {

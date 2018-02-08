@@ -23,3 +23,5 @@ export class InitialStateUtils {
 		this.initialState = null;
 	}
 }
+
+export const initialStateInstance = new InitialStateUtils();

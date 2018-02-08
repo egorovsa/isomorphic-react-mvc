@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from "react";
 import * as path from "path";
 import * as express from "express";
 import * as serialize from "serialize-javascript";
-import {renderToString, renderToNodeStream} from 'react-dom/server';
+import {renderToString, renderToNodeStream} from "react-dom/server";
 import {match, RouterContext} from "react-router";
 import {readdirSync} from "fs";
 import {createElement} from "react";
@@ -10,7 +10,7 @@ import {AppRouter} from "../router";
 import {InitialStateUtils} from "../services/initial-state-utils";
 import {MetaData} from "../controllers/controller";
 import {I18nextService} from "../services/i18n-service";
-import {PropTypes} from 'prop-types';
+import {PropTypes} from "prop-types";
 import {ContextWrapper} from "../view/context-wrapper";
 import CONFIG from "../../config/config";
 
@@ -20,15 +20,15 @@ const footerHtml = require("../../../hbs/index/footer-part.hbs");
 export class RenderServerSide {
 
 	static responseHeader = {
-		'Content-Type': 'text/html',
-		'Connection': 'close'
+		"Content-Type": "text/html",
+		"Connection": "close"
 	};
 
 	static userAgentHandler(req: express.Request, res: express.Response, next: express.NextFunction): express.Response | void {
-		const userAgent = req.headers['user-agent'];
+		const userAgent = req.headers["user-agent"];
 
 		if (userAgent) {
-			for (let item in CONFIG.USER_AGENT_BLOCK) {
+			for (const item in CONFIG.USER_AGENT_BLOCK) {
 				let uaBlock = CONFIG.USER_AGENT_BLOCK[item];
 
 				if (uaBlock.userAgent && userAgent.indexOf(uaBlock.userAgent) > -1) {
@@ -115,9 +115,9 @@ export class RenderServerSide {
 
 		stream.pipe(res, {end: false});
 
-		stream.on('end', () => {
+		stream.on("end", () => {
 			res.write(footerHtml({
-				initialState: '<script>window["_INITIAL_STATE_"] = ' + serialize(initialStateInstance.initialState, {isJSON: true}) + '</script>',
+				initialState: "<script>window[\"_INITIAL_STATE_\"] = " + serialize(initialStateInstance.initialState, {isJSON: true}) + "</script>",
 				appVersion: CONFIG.APP_VERSION,
 				vendorVersion: CONFIG.VENDOR_VERSION,
 				server: true

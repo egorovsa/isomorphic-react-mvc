@@ -35,7 +35,10 @@ export class UII18nText extends StoreComponent<Props, State, StoresState> {
 
 	public render() {
 		return (
-			<span dangerouslySetInnerHTML={this.createMarkup()} className={this.props.className}></span>
+			<span
+				dangerouslySetInnerHTML={this.createMarkup()}
+				className={this.props.className}
+			/>
 		);
 	}
 }

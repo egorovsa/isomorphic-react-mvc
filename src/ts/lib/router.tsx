@@ -19,11 +19,15 @@ export class AppRouter {
 				initialStateInstance={initialStateInstance}
 			>
 				<Router history={browserHistory}>
-					<Route path="/page_not_found" component={CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT} onEnter={() => {
-						AppStore.store.setState({
-							appLoading: false
-						} as AppStore.State);
-					}}/>
+					<Route
+						path="/page_not_found"
+						component={CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT}
+						onEnter={() => {
+							AppStore.store.setState({
+								appLoading: false
+							} as AppStore.State);
+						}}
+					/>
 
 					{this.mainRoute(i18n, initialStateInstance, false)}
 				</Router>
@@ -36,11 +40,13 @@ export class AppRouter {
 
 		return (
 			<Route path={paramsPath}>
-				<IndexRoute onEnter={(data: RouterState, replace, next) => {
-					this.mainProcess(data, i18n, initialStateInstance, server).then(() => {
-						next();
-					});
-				}}/>
+				<IndexRoute
+					onEnter={(data: RouterState, replace, next) => {
+						this.mainProcess(data, i18n, initialStateInstance, server).then(() => {
+							next();
+						});
+					}}
+				/>
 			</Route>
 		);
 	};
@@ -106,8 +112,8 @@ export class AppRouter {
 		}
 	}
 
-	public static capitalizeFirstLetter(string: string): string {
-		return string.charAt(0).toUpperCase() + string.slice(1);
+	public static capitalizeFirstLetter(text: string): string {
+		return text.charAt(0).toUpperCase() + text.slice(1);
 	}
 
 	public static camelCaseToDash(str: string): string {

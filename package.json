@@ -44,6 +44,7 @@
 		"typescript": "^2.6.2",
 		"webpack": "^3.5.4",
 		"webpack-dev-server": "^2.7.1",
+		"tslint": "^5.9.1",
 		"webpack-node-externals": "^1.6.0"
 	},
 	"dependencies": {

@@ -10,9 +10,9 @@ import {AppRouter} from "../router";
 import {InitialStateUtils} from "../services/initial-state-utils";
 import {MetaData} from "../controllers/controller";
 import {I18nextService} from "../services/i18n-service";
-import CONFIG from "../../config/config";
 import {PropTypes} from 'prop-types';
 import {ContextWrapper} from "../view/context-wrapper";
+import CONFIG from "../../config/config";
 
 const headHtml = require("../../../hbs/index/head-part.hbs");
 const footerHtml = require("../../../hbs/index/footer-part.hbs");

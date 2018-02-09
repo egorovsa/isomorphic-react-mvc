@@ -4,6 +4,7 @@ import {PageNotFoundController} from "./page-not-found-controller";
 import {Controller} from "./controller";
 import {InitialStateUtils} from "../services/initial-state-utils";
 import {I18nextService} from "../services/i18n-service";
+import {StoresList} from "../../app/stores/stores";
 
 interface ControllerInterface {
 	name: string,
@@ -13,7 +14,7 @@ interface ControllerInterface {
 export class Controllers {
 	public controllers: ControllerInterface[] = [];
 
-	constructor(private data: RouterState, private initialStateInstance: InitialStateUtils, private i18n: I18nextService, private server: boolean) {
+	constructor(private data: RouterState, private initialStateInstance: InitialStateUtils, private i18n: I18nextService, private stores: StoresList, private server: boolean) {
 		this.setController('pages', PagesController);
 		this.setController('pageNotFound', PageNotFoundController);
 	}
@@ -51,6 +52,7 @@ export class Controllers {
 				foundController.initAppApi(this.initialStateInstance);
 				foundController.initAppI18n(this.i18n);
 				foundController.setServerState(this.server);
+				foundController.setStores(this.stores);
 			}
 		});
 

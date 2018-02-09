@@ -8,6 +8,8 @@ import {UIScrollToTop} from "../ui/scroll-to-top";
 import {SideNavComponent} from "../ui/common/sidenav";
 import {PropTypes} from 'prop-types';
 import {I18nextService} from "../../../lib/services/i18n-service";
+import {contextToProps, setContext} from "../../../lib/decorators/context";
+import {StoresList} from "../../stores/stores";
 
 const NotificationContainer = require('react-notifications').NotificationContainer;
 
@@ -15,36 +17,40 @@ export interface Props {
 	server: boolean,
 	i18n: I18nextService,
 	test: string,
-	fetch:any
+	fetch: any,
+	stores: StoresList
 }
 
 export interface State {
-	scrollTop: number
+	scrollTop: number,
+	commonStore: CommonStore.State,
+	pagesStore: PagesStore.State
 }
 
-export interface StoresState {
-	common: Store<CommonStore.State>
-	pages: Store<PagesStore.State>
-}
+@contextToProps
+export class AppComponent extends React.Component<Props, State> {
+	state: State = {
+		scrollTop: 0,
+		commonStore: this.props.stores.common.state,
+		pagesStore: this.props.stores.pages.state,
+	};
 
-export class AppComponent extends StoreComponent<Props, State, StoresState> {
-	constructor() {
-		super({
-			common: CommonStore.store,
-			pages: PagesStore.store
+	componentWillMount() {
+		this.props.stores.common.on('all', (storeState: CommonStore.State) => {
+			this.setState({
+				commonStore: storeState
+			})
+		});
+
+		this.props.stores.pages.on('all', (storeState: PagesStore.State) => {
+			this.setState({
+				pagesStore: storeState
+			})
 		});
 	}
 
-	componentWillMount() {
-
-	}
-
-	state: State = {
-		scrollTop: 0
-	};
-
 	private updateDimensions = (e) => {
-		this.stores.common.setState({
+		this.props.stores.common.setState({
 			windowSize: e.target.innerWidth
 		} as CommonStore.State);
 	};
@@ -55,12 +61,12 @@ export class AppComponent extends StoreComponent<Props, State, StoresState> {
 		});
 	};
 
-	storeComponentDidMount() {
+	componentDidMount() {
 		window.addEventListener("resize", this.updateDimensions);
 		window.addEventListener("scroll", this.updateScrollTop);
 	}
 
-	storeComponentWillUnmount() {
+	componentWillUnmount() {
 		if (!this.props.server) {
 			window.removeEventListener("resize", this.updateDimensions);
 			window.removeEventListener("scroll", this.updateScrollTop);
@@ -73,19 +79,18 @@ export class AppComponent extends StoreComponent<Props, State, StoresState> {
 				{!this.props.server && <NotificationContainer/>}
 
 				<SideNavComponent
-					active={this.stores.common.state.sideNav}
-					headMenu={this.stores.common.state.mainMenu}
+					active={this.state.commonStore.sideNav}
+					headMenu={this.state.commonStore.mainMenu}
 					close={() => {
-						this.stores.common.setState({
+						this.props.stores.common.setState({
 							sideNav: false
 						} as CommonStore.State);
 					}}
 				/>
 
 				<HeaderComponent
-					i18n={this.props.i18n}
-					mainPage={this.stores.common.state.mainPage}
-					headMenu={this.stores.common.state.mainMenu}
+					mainPage={this.state.commonStore.mainPage}
+					headMenu={this.state.commonStore.mainMenu}
 					scrollTop={this.state.scrollTop}
 				/>
 
@@ -95,7 +100,7 @@ export class AppComponent extends StoreComponent<Props, State, StoresState> {
 
 				<FooterComponent
 					mainPage={false}
-					mainMenu={this.stores.pages.state.mainMenu}
+					mainMenu={this.props.stores.pages.state.mainMenu}
 				/>
 
 				<UIScrollToTop currentScroll={this.state.scrollTop}/>

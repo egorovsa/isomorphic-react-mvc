@@ -1,22 +1,25 @@
 import * as React from 'react';
 import {CommonStore} from "../../stores/common";
 import {NavComponent} from "./nav";
-import {I18nextService} from "../../../lib/services/i18n-service";
 import {PropTypes} from 'prop-types';
+import {contextToProps} from "../../../lib/decorators/context";
+import {I18nextService} from "../../../lib/services/i18n-service";
+import {StoresList} from "../../stores/stores";
 
 export interface Props {
-	i18n: I18nextService,
 	mainPage: boolean,
 	headMenu: any[],
 	scrollTop: number,
+	i18n?: I18nextService,
+	stores?: StoresList
 }
 
 export interface State {
 
 }
 
+@contextToProps
 export class HeaderComponent extends React.Component<Props, State> {
-
 	static defaultProps = {
 		staticData: {}
 	};
@@ -37,11 +40,16 @@ export class HeaderComponent extends React.Component<Props, State> {
 
 					<div className="main-menu">
 						<div className="mobile-menu">
-							<a href="javascript:void(0);" onClick={() => {
-								CommonStore.store.setState({
-									sideNav: true
-								} as CommonStore.State);
-							}}>Side menu</a>
+							<a
+								href="javascript:void(0);"
+								onClick={() => {
+									this.props.stores.common.setState({
+										sideNav: true
+									} as CommonStore.State);
+								}}
+							>
+								Side menu
+							</a>
 						</div>
 
 						<NavComponent headMenu={this.props.headMenu}/>
@@ -49,15 +57,21 @@ export class HeaderComponent extends React.Component<Props, State> {
 						<div className="grow"/>
 
 						<span className="desktop-menu lang-selection">
-							<a href="javascript:void(0);" onClick={() => {
-								this.props.i18n.changeLanguage('en', true);
-							}}>
+							<a
+								href="javascript:void(0);"
+								onClick={() => {
+									this.props.i18n.changeLanguage('en', true);
+								}}
+							>
 								En
 							</a>
 
-							<a href="javascript:void(0);" onClick={() => {
-								this.props.i18n.changeLanguage('ru', true);
-							}}>
+							<a
+								href="javascript:void(0);"
+								onClick={() => {
+									this.props.i18n.changeLanguage('ru', true);
+								}}
+							>
 								Ru
 							</a>
 						</span>

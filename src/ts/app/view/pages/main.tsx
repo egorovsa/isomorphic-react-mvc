@@ -4,6 +4,7 @@ import {vs2015} from 'react-syntax-highlighter/dist/styles/hljs';
 import {UII18nText} from "../../../lib/view/ui-i18n-component";
 import {I18nextService} from "../../../lib/services/i18n-service";
 import {Link} from "react-router";
+import {StoreEventType} from "react-stores";
 
 export interface Props {
 	i18n?: I18nextService,

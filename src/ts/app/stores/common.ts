@@ -14,7 +14,7 @@ export namespace CommonStore {
 		scrollTop: number
 	}
 
-	let initialState: State = {
+	export const initialState: State = {
 		windowSize: typeof window === 'object' ? window.innerWidth : 1000,
 		mainMenu: [],
 		mainPage: true,
@@ -26,6 +26,4 @@ export namespace CommonStore {
 		mapHeader: '',
 		scrollTop: 0
 	};
-
-	export let store: Store<State> = new Store<State>(initialState);
 }

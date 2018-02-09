@@ -15,6 +15,7 @@
 		"removeComments": false,
 		"diagnostics": true,
 		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
 		"lib": [
 			"dom",
 			"es6"

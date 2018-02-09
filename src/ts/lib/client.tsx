@@ -8,6 +8,7 @@ import './services/polyfills/object-assign';
 import './services/polyfills/promise';
 import {initialStateInstance} from "./services/initial-state-utils";
 import {I18nextService} from "./services/i18n-service";
+import {StoresList} from "../app/stores/stores";
 
 export interface StoresState {
 	app: Store<AppStore.State>
@@ -26,10 +27,13 @@ class MainComponent extends StoreComponent<any, any, StoresState> {
 }
 
 window.onload = () => {
+	const stores: StoresList = new StoresList();
+	const router: AppRouter = new AppRouter(initialStateInstance, new I18nextService(stores.locale, initialStateInstance), stores);
+
 	ReactDOM.hydrate(
 		<>
 		<MainComponent/>
-		{AppRouter.router(new I18nextService(initialStateInstance), initialStateInstance)}
+		{router.router()}
 		</>,
 		document.getElementById('app')
 	);

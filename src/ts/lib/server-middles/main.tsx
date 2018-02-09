@@ -7,12 +7,13 @@ import {match, RouterContext} from "react-router";
 import {readdirSync} from "fs";
 import {createElement} from "react";
 import {AppRouter} from "../router";
-import {InitialStateUtils} from "../services/initial-state-utils";
+import {initialStateInstance, InitialStateUtils} from "../services/initial-state-utils";
 import {MetaData} from "../controllers/controller";
 import {I18nextService} from "../services/i18n-service";
 import {PropTypes} from "prop-types";
 import {ContextWrapper} from "../view/context-wrapper";
 import CONFIG from "../../config/config";
+import {StoresList} from "../../app/stores/stores";
 
 const headHtml = require("../../../hbs/index/head-part.hbs");
 const footerHtml = require("../../../hbs/index/footer-part.hbs");
@@ -55,9 +56,11 @@ export class RenderServerSide {
 	static render(req: express.Request, res: express.Response): express.Response | void {
 		const cookies = req.cookies;
 		const initialStateInstance = new InitialStateUtils();
-		let i18n = new I18nextService(initialStateInstance);
+		const stores: StoresList = new StoresList();
+		const i18n = new I18nextService(stores.locale, initialStateInstance);
+		const router: AppRouter = new AppRouter(initialStateInstance, i18n, stores);
+		const routes = router.mainRoute(true);
 		i18n.setServerLanguage(req.acceptsLanguages(), cookies.language);
-		let routes = AppRouter.mainRoute(i18n, initialStateInstance, true);
 
 		match({routes, location: req.url}, (error, nextLocation, nextState) => {
 			if (!error && nextState && nextState['params']) {
@@ -80,9 +83,7 @@ export class RenderServerSide {
 						'Connection': 'close'
 					});
 
-					this.getServerHtml(req, res, nextState, initialStateInstance, i18n);
-					routes = null;
-					i18n = null;
+					this.getServerHtml(req, res, nextState, initialStateInstance, i18n, stores);
 				} else {
 					return this.get404(req, res);
 				}
@@ -92,13 +93,14 @@ export class RenderServerSide {
 		});
 	}
 
-	static getServerHtml(req: express.Request, res: express.Response, nextState: any, initialStateInstance: InitialStateUtils, i18n: I18nextService): void {
+	static getServerHtml(req: express.Request, res: express.Response, nextState: any, initialStateInstance: InitialStateUtils, i18n: I18nextService, stores: StoresList): void {
 		const metaData: MetaData = JSON.parse(nextState.params['metaData']);
 
 		const stream = renderToNodeStream(
 			<ContextWrapper
 				i18n={i18n}
 				initialStateInstance={initialStateInstance}
+				stores={stores}
 			>
 				{createElement(RouterContext, nextState)}
 			</ContextWrapper>

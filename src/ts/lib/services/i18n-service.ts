@@ -6,13 +6,14 @@ import {LocaleService} from "./locale-service";
 import {StorageService} from "./storage-service";
 import {ApiEndpoints} from "../../app/api/app-api";
 import {InitialStateUtils} from "./initial-state-utils";
+import {Store} from "react-stores";
 
 export class I18nextService {
 	private t: TranslationFunction;
 	private currentLang: string;
 	private serverLang: string;
 
-	constructor(readonly initialStateInstance: InitialStateUtils) {
+	constructor(readonly localeStore: Store<LocaleStore.State>, readonly initialStateInstance: InitialStateUtils) {
 
 	}
 
@@ -69,12 +70,11 @@ export class I18nextService {
 
 			translationsData[lng] = translations;
 			this.t = await this.init(lng, translationsData)  as TranslationFunction;
-
-			LocaleStore.store.setState({
+			this.localeStore.setState({
 				currentLang: lng
 			} as LocaleStore.State)
 		} catch (e) {
-			console.trace('ERROR', e);
+			// console.trace('ERROR', e);
 		}
 	}
 

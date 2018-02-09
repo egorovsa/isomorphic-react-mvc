@@ -4,19 +4,24 @@ import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-rout
 import {AppStore} from "./stores/app";
 import {ControllersList} from "../app/controllers/controllers-list";
 import {RouteUtils} from "./services/route-utils";
-import {InitialStateUtils} from "./services/initial-state-utils";
 import {I18nextService} from "./services/i18n-service";
 import {Controller} from "./controllers/controller";
 import {ActionComponentNotFound} from "./view/not-found-action-component";
 import {PropTypes} from 'prop-types';
 import {ContextWrapper} from "./view/context-wrapper";
+import {StoresList} from "../app/stores/stores";
+import {InitialStateUtils} from "./services/initial-state-utils";
 
 export class AppRouter {
-	public static router(i18n: I18nextService, initialStateInstance: InitialStateUtils) {
+	constructor(readonly initialStateInstance: InitialStateUtils, readonly i18n: I18nextService, readonly stores: StoresList) {
+	}
+
+	public router() {
 		return (
 			<ContextWrapper
-				i18n={i18n}
-				initialStateInstance={initialStateInstance}
+				i18n={this.i18n}
+				initialStateInstance={this.initialStateInstance}
+				stores={this.stores}
 			>
 				<Router history={browserHistory}>
 					<Route
@@ -29,20 +34,20 @@ export class AppRouter {
 						}}
 					/>
 
-					{this.mainRoute(i18n, initialStateInstance, false)}
+					{this.mainRoute(false)}
 				</Router>
 			</ContextWrapper>
 		)
 	}
 
-	public static mainRoute(i18n: I18nextService, initialStateInstance: InitialStateUtils, server?: boolean): JSX.Element {
+	public mainRoute(server?: boolean): JSX.Element {
 		let paramsPath: string = RouteUtils.makeParamsPath();
 
 		return (
 			<Route path={paramsPath}>
 				<IndexRoute
 					onEnter={(data: RouterState, replace, next) => {
-						this.mainProcess(data, i18n, initialStateInstance, server).then(() => {
+						this.mainProcess(data, server).then(() => {
 							next();
 						});
 					}}
@@ -51,8 +56,8 @@ export class AppRouter {
 		);
 	};
 
-	public static async mainProcess(data: RouterState, i18n: I18nextService, initialStateInstance: InitialStateUtils, server?: boolean) {
-		let controllers: ControllersList = new ControllersList(data, initialStateInstance, i18n, server);
+	public async mainProcess(data: RouterState, server?: boolean) {
+		let controllers: ControllersList = new ControllersList(data, this.initialStateInstance, this.i18n, this.stores, server);
 		const parsedParams = RouteUtils.parseParams(controllers, data);
 
 		if (!parsedParams.controller) {
@@ -76,7 +81,7 @@ export class AppRouter {
 		return this.responseData(data, controller);
 	}
 
-	public static responseData(data: RouterState, controller: Controller, responseStatus?: number) {
+	public responseData(data: RouterState, controller: Controller, responseStatus?: number) {
 		controller.layout.defaultProps = {...controller.componentData};
 		controller.component.defaultProps = {...controller.componentData};
 		data.routes[0].component = controller.layout;
@@ -87,7 +92,7 @@ export class AppRouter {
 		return data;
 	}
 
-	public static findControllerViewComponent(controller: Controller, controllerName: string, actionName: string): void {
+	public findControllerViewComponent(controller: Controller, controllerName: string, actionName: string): void {
 		if (!controller.component) {
 			const nameOfComponent = this.capitalizeFirstLetter(actionName);
 
@@ -112,11 +117,11 @@ export class AppRouter {
 		}
 	}
 
-	public static capitalizeFirstLetter(text: string): string {
+	public capitalizeFirstLetter(text: string): string {
 		return text.charAt(0).toUpperCase() + text.slice(1);
 	}
 
-	public static camelCaseToDash(str: string): string {
+	public camelCaseToDash(str: string): string {
 		return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
 	}
 }

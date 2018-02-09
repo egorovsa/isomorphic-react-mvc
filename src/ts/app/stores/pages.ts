@@ -23,7 +23,7 @@ export namespace PagesStore {
 		mainMenu: PagesMenu[]
 	}
 
-	let initialState: State = {
+	export const initialState: State = {
 		currentPage: {
 			id: 0,
 			name: '',
@@ -35,6 +35,4 @@ export namespace PagesStore {
 		},
 		mainMenu: []
 	};
-
-	export let store: Store<State> = new Store<State>(initialState);
 }

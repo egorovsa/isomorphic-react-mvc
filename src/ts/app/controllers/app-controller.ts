@@ -9,7 +9,7 @@ export class AppController extends Controller {
 	public async beforeFilter(data?: any): Promise<any> {
 		const pagesMenu = await this.apiRequest.pages.getPagesMenu();
 
-		CommonStore.store.setState({
+		this.stores.common.setState({
 			mainPage: false,
 			mainMenu: pagesMenu
 		} as CommonStore.State);

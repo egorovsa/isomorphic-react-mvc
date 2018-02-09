@@ -13,20 +13,8 @@ export interface State {
 
 }
 
-export interface StoresState {
-	pages: Store<PagesStore.State>
-}
-
-export class Simple extends StoreComponent<Props, State, StoresState> {
-	constructor() {
-		super({
-			pages: PagesStore.store
-		});
-	}
-
+export class Simple extends React.Component<Props, State> {
 	public render() {
-		console.log(this.props.test);
-
 		return (
 			<div className="container">
 				<div className="page-content">

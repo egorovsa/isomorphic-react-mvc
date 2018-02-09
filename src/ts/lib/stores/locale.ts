@@ -11,7 +11,7 @@ export namespace LocaleStore {
 		currentLang: string
 	}
 
-	const initialState: State = {
+	export const initialState: State = {
 		localesList: [],
 		currentLang: null
 	};

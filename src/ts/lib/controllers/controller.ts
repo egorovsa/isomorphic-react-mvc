@@ -4,6 +4,7 @@ import {AppStore} from "../stores/app";
 import {ApiEndpoints} from "../../app/api/app-api";
 import {InitialStateUtils} from "../services/initial-state-utils";
 import {I18nextService} from "../services/i18n-service";
+import {StoresList} from "../../app/stores/stores";
 
 export interface MetaData {
 	title: string,
@@ -62,6 +63,7 @@ export class Controller {
 	public apiRequest: ApiEndpoints;
 	public metaData: MetaData;
 	public i18n: I18nextService;
+	public stores: StoresList;
 	public server: boolean;
 
 	public initAppApi(initialStateInstance: InitialStateUtils) {
@@ -81,6 +83,14 @@ export class Controller {
 
 		this.set({
 			server: server
+		});
+	}
+
+	public setStores(stores: StoresList): void {
+		this.stores = stores;
+
+		this.set({
+			stores: stores
 		});
 	}
 

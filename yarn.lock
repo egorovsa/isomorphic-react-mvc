@@ -4550,9 +4550,9 @@ react-router@^3.0.5:
     prop-types "^15.5.6"
     warning "^3.0.0"
 
-react-stores@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/react-stores/-/react-stores-1.2.4.tgz#4fb72b4f19f23780883e85dd3f10ed6061ff9327"
+react-stores@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/react-stores/-/react-stores-1.2.5.tgz#d8a236f593e0069d93777f6a1daf726608f716aa"
   dependencies:
     clone "^2.1.1"
     react "^16.2.0"

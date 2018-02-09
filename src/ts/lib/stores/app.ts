@@ -9,7 +9,7 @@ export namespace AppStore {
 		appLoadingComponent: React.ComponentClass<any>,
 	}
 
-	let initialState: State = {
+	export const initialState: State = {
 		server: false,
 		appLoading: false,
 		appLoadingComponent: CONFIG.DEFAULT_LOADING_COMPONENT,

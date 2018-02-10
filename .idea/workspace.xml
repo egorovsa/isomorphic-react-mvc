@@ -2,32 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a17738a-b7a5-4aa3-a511-0b341c59c5fe" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ts/app/stores/stores.tsx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ts/lib/decorators/context.tsx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/ts/lib/stores/app-stores.tsx" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/ts/app/controllers/app-controller.ts" afterPath="$PROJECT_DIR$/src/ts/app/controllers/app-controller.ts" />
       <change beforePath="$PROJECT_DIR$/src/ts/app/controllers/controllers-list.ts" afterPath="$PROJECT_DIR$/src/ts/app/controllers/controllers-list.ts" />
       <change beforePath="$PROJECT_DIR$/src/ts/app/stores/common.ts" afterPath="$PROJECT_DIR$/src/ts/app/stores/common.ts" />
       <change beforePath="$PROJECT_DIR$/src/ts/app/stores/pages.ts" afterPath="$PROJECT_DIR$/src/ts/app/stores/pages.ts" />
+      <change beforePath="$PROJECT_DIR$/src/ts/app/stores/stores.tsx" afterPath="$PROJECT_DIR$/src/ts/app/stores/app-stores.tsx" />
       <change beforePath="$PROJECT_DIR$/src/ts/app/view/layouts/app.tsx" afterPath="$PROJECT_DIR$/src/ts/app/view/layouts/app.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/ts/app/view/pages/main.tsx" afterPath="$PROJECT_DIR$/src/ts/app/view/pages/main.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/ts/app/view/pages/simple.tsx" afterPath="$PROJECT_DIR$/src/ts/app/view/pages/simple.tsx" />
       <change beforePath="$PROJECT_DIR$/src/ts/app/view/ui/header.tsx" afterPath="$PROJECT_DIR$/src/ts/app/view/ui/header.tsx" />
       <change beforePath="$PROJECT_DIR$/src/ts/lib/client.tsx" afterPath="$PROJECT_DIR$/src/ts/lib/client.tsx" />
       <change beforePath="$PROJECT_DIR$/src/ts/lib/controllers/controller.ts" afterPath="$PROJECT_DIR$/src/ts/lib/controllers/controller.ts" />
       <change beforePath="$PROJECT_DIR$/src/ts/lib/controllers/controllers.ts" afterPath="$PROJECT_DIR$/src/ts/lib/controllers/controllers.ts" />
+      <change beforePath="$PROJECT_DIR$/src/ts/lib/decorators/context.tsx" afterPath="$PROJECT_DIR$/src/ts/lib/decorators/context.tsx" />
       <change beforePath="$PROJECT_DIR$/src/ts/lib/router.tsx" afterPath="$PROJECT_DIR$/src/ts/lib/router.tsx" />
       <change beforePath="$PROJECT_DIR$/src/ts/lib/server-middles/main.tsx" afterPath="$PROJECT_DIR$/src/ts/lib/server-middles/main.tsx" />
-      <change beforePath="$PROJECT_DIR$/src/ts/lib/services/i18n-service.ts" afterPath="$PROJECT_DIR$/src/ts/lib/services/i18n-service.ts" />
+      <change beforePath="$PROJECT_DIR$/src/ts/lib/stores/app-stores.tsx" afterPath="$PROJECT_DIR$/src/ts/lib/stores/stores.tsx" />
       <change beforePath="$PROJECT_DIR$/src/ts/lib/stores/app.ts" afterPath="$PROJECT_DIR$/src/ts/lib/stores/app.ts" />
       <change beforePath="$PROJECT_DIR$/src/ts/lib/stores/locale.ts" afterPath="$PROJECT_DIR$/src/ts/lib/stores/locale.ts" />
       <change beforePath="$PROJECT_DIR$/src/ts/lib/view/context-wrapper.tsx" afterPath="$PROJECT_DIR$/src/ts/lib/view/context-wrapper.tsx" />
       <change beforePath="$PROJECT_DIR$/src/ts/lib/view/ui-i18n-component.tsx" afterPath="$PROJECT_DIR$/src/ts/lib/view/ui-i18n-component.tsx" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" afterPath="$PROJECT_DIR$/tsconfig.json" />
-      <change beforePath="$PROJECT_DIR$/tslint.json" afterPath="$PROJECT_DIR$/tslint.json" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" afterPath="$PROJECT_DIR$/yarn.lock" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,112 +33,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="router.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ts/lib/router.tsx">
+      <file leaf-file-name="app.tsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ts/app/view/layouts/app.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="15" column="127" lean-forward="false" selection-start-line="15" selection-start-column="127" selection-end-line="15" selection-end-column="127" />
+            <state relative-caret-position="206">
+              <caret line="59" column="16" lean-forward="false" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="context.tsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ts/lib/decorators/context.tsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ts/lib/client.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="131" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app-controller.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ts/app/controllers/app-controller.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.tsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ts/lib/server-middles/main.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="76" column="63" lean-forward="true" selection-start-line="76" selection-start-column="63" selection-end-line="76" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="initial-state-utils.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ts/lib/services/initial-state-utils.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="context-wrapper.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ts/lib/view/context-wrapper.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="24" />
-              <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="28" />
-              <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="32" />
-              <caret line="23" column="65" lean-forward="false" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="65" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controllers-list.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ts/app/controllers/controllers-list.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="8" column="43" lean-forward="false" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controllers.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ts/lib/controllers/controllers.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controller.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ts/lib/controllers/controller.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="65" column="29" lean-forward="false" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="i18n-service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ts/lib/services/i18n-service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="77" column="9" lean-forward="true" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,13 +59,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>RenderServerSide</find>
       <find>initialStateInstance</find>
       <find>test</find>
       <find>server.js</find>
       <find>pageNotFound</find>
       <find>CommonStore</find>
-      <find>AppStore</find>
       <find>mainRoute</find>
       <find>common</find>
       <find>getCg</find>
@@ -186,6 +87,8 @@
       <find>on(</find>
       <find>i18n</find>
       <find>routes</find>
+      <find>decora</find>
+      <find>AppStore</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -194,9 +97,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ts/app/components/ui/header.tsx" />
-        <option value="$PROJECT_DIR$/src/ts/app/api/pages-api.ts" />
-        <option value="$PROJECT_DIR$/src/ts/config/config.ts" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/styl/main-page.styl" />
         <option value="$PROJECT_DIR$/src/ts/app/components/pages/simple-page-component.tsx" />
@@ -222,29 +122,32 @@
         <option value="$PROJECT_DIR$/src/ts/lib/server-middles/main.ts" />
         <option value="$PROJECT_DIR$/src/ts/app/view/pages/controllers-explanations.tsx" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/ts/lib/stores/app-stores.tsx" />
-        <option value="$PROJECT_DIR$/src/ts/lib/stores/app.ts" />
-        <option value="$PROJECT_DIR$/src/ts/lib/stores/locale.ts" />
-        <option value="$PROJECT_DIR$/src/ts/app/stores/stores.tsx" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
-        <option value="$PROJECT_DIR$/src/ts/lib/view/context-wrapper.tsx" />
         <option value="$PROJECT_DIR$/src/ts/app/view/pages/main.tsx" />
         <option value="$PROJECT_DIR$/tslint.json" />
-        <option value="$PROJECT_DIR$/src/ts/lib/view/ui-i18n-component.tsx" />
-        <option value="$PROJECT_DIR$/src/ts/lib/decorators/context.tsx" />
-        <option value="$PROJECT_DIR$/src/ts/app/view/layouts/app.tsx" />
-        <option value="$PROJECT_DIR$/src/ts/app/stores/common.ts" />
-        <option value="$PROJECT_DIR$/src/ts/app/stores/pages.ts" />
         <option value="$PROJECT_DIR$/src/ts/app/view/pages/simple.tsx" />
         <option value="$PROJECT_DIR$/src/ts/app/view/ui/header.tsx" />
         <option value="$PROJECT_DIR$/src/ts/app/controllers/controllers-list.ts" />
-        <option value="$PROJECT_DIR$/src/ts/lib/controllers/controllers.ts" />
-        <option value="$PROJECT_DIR$/src/ts/lib/controllers/controller.ts" />
-        <option value="$PROJECT_DIR$/src/ts/app/controllers/app-controller.ts" />
-        <option value="$PROJECT_DIR$/src/ts/lib/client.tsx" />
-        <option value="$PROJECT_DIR$/src/ts/lib/router.tsx" />
         <option value="$PROJECT_DIR$/src/ts/lib/services/i18n-service.ts" />
         <option value="$PROJECT_DIR$/src/ts/lib/server-middles/main.tsx" />
+        <option value="$PROJECT_DIR$/src/ts/lib/view/context-wrapper.tsx" />
+        <option value="$PROJECT_DIR$/src/ts/lib/controllers/controllers.ts" />
+        <option value="$PROJECT_DIR$/src/ts/lib/services/route-utils.ts" />
+        <option value="$PROJECT_DIR$/src/ts/lib/controllers/controller.ts" />
+        <option value="$PROJECT_DIR$/src/ts/app/controllers/app-controller.ts" />
+        <option value="$PROJECT_DIR$/src/ts/lib/router.tsx" />
+        <option value="$PROJECT_DIR$/src/ts/app/stores/stores.tsx" />
+        <option value="$PROJECT_DIR$/src/ts/lib/stores/app-stores.tsx" />
+        <option value="$PROJECT_DIR$/src/ts/app/stores/pages.ts" />
+        <option value="$PROJECT_DIR$/src/ts/lib/client.tsx" />
+        <option value="$PROJECT_DIR$/src/ts/lib/stores/locale.ts" />
+        <option value="$PROJECT_DIR$/src/ts/lib/stores/app.ts" />
+        <option value="$PROJECT_DIR$/src/ts/app/stores/common.ts" />
+        <option value="$PROJECT_DIR$/src/ts/app/stores/app-stores.tsx" />
+        <option value="$PROJECT_DIR$/src/ts/lib/view/ui-i18n-component.tsx" />
+        <option value="$PROJECT_DIR$/src/ts/lib/stores/stores.tsx" />
+        <option value="$PROJECT_DIR$/src/ts/lib/decorators/context.tsx" />
+        <option value="$PROJECT_DIR$/src/ts/app/view/layouts/app.tsx" />
       </list>
     </option>
   </component>
@@ -320,6 +223,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -344,68 +249,10 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ts" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="react-isomorphic-boilerplate" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-isomorphic-boilerplate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-isomorphic-boilerplate" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-isomorphic-boilerplate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="stores" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-isomorphic-boilerplate" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-isomorphic-boilerplate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-isomorphic-boilerplate" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-isomorphic-boilerplate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-isomorphic-boilerplate" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-isomorphic-boilerplate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-isomorphic-boilerplate" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-isomorphic-boilerplate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ts" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-isomorphic-boilerplate" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-isomorphic-boilerplate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ts" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="server-middles" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -413,7 +260,7 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="SearchEverywhereHistoryKey" value="i18n&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/services/i18n-service.ts&#10;router.&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/router.tsx&#10;header.&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/view/ui/header.tsx&#10;app-co&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/controllers/app-controller.ts&#10;tsli&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/tslint.json&#10;header&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/view/ui/header.tsx&#10;ui&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/view/ui-i18n-component.tsx&#10;Uii&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/view/ui-i18n-component.tsx&#10;UI&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/view/ui-i18n-component.tsx&#10;кщгеук&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/router.tsx&#10;app.tsx&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/view/layouts/app.tsx&#10;appCo&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/controllers/app-controller.ts&#10;rout&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/router.tsx&#10;main.ts&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/server-middles/main.ts&#10;AppRo&#9;null&#9;null&#10;I18NextS&#9;null&#9;null&#10;I18&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/services/i18n-service.ts&#10;api.ts&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/api/locales-api.ts&#10;i18nS&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/services/i18n-service.ts&#10;header.t&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/components/ui/header.tsx&#10;main-page&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/components/pages/main-page-component.tsx&#10;UII&#9;null&#9;null&#10;heade&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/components/ui/header.tsx&#10;main-&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/components/pages/main-page-component.tsx&#10;controller.ts&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/controllers/controller.ts&#10;main&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/server-middles/main.ts&#10;server.&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/server.ts&#10;controller.&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/controllers/controllers.ts&#10;utils&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/services/utils-service.ts&#10;pages-c&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/controllers/pages-controller.tsx&#10;app-c&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/controllers/app-controller.ts&#10;pages&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/api/pages-api.ts&#10;app&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/api/app-api.ts" />
+    <property name="SearchEverywhereHistoryKey" value="context&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/decorators/context.tsx&#10;client&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/client.tsx&#10;app-c&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/controllers/app-controller.ts&#10;i18&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/view/ui-i18n-component.tsx&#10;i18n&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/services/i18n-service.ts&#10;router.&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/router.tsx&#10;header.&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/view/ui/header.tsx&#10;app-co&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/controllers/app-controller.ts&#10;tsli&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/tslint.json&#10;header&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/view/ui/header.tsx&#10;ui&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/view/ui-i18n-component.tsx&#10;Uii&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/view/ui-i18n-component.tsx&#10;UI&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/view/ui-i18n-component.tsx&#10;кщгеук&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/router.tsx&#10;app.tsx&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/view/layouts/app.tsx&#10;appCo&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/controllers/app-controller.ts&#10;rout&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/router.tsx&#10;main.ts&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/server-middles/main.ts&#10;AppRo&#9;null&#9;null&#10;I18NextS&#9;null&#9;null&#10;I18&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/services/i18n-service.ts&#10;api.ts&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/api/locales-api.ts&#10;i18nS&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/services/i18n-service.ts&#10;header.t&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/components/ui/header.tsx&#10;main-page&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/components/pages/main-page-component.tsx&#10;UII&#9;null&#9;null&#10;heade&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/components/ui/header.tsx&#10;main-&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/components/pages/main-page-component.tsx&#10;controller.ts&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/controllers/controller.ts&#10;main&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/server-middles/main.ts&#10;server.&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/server.ts&#10;controller.&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/lib/controllers/controllers.ts&#10;utils&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/services/utils-service.ts&#10;pages-c&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/controllers/pages-controller.tsx&#10;pages&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/api/pages-api.ts&#10;app&#9;FILE&#9;file:///Users/esa/Work/react-isomorphic-boilerplate/src/ts/app/api/app-api.ts" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/node_modules/tslint" />
@@ -510,7 +357,8 @@
       <workItem from="1518027621013" duration="19595000" />
       <workItem from="1518104130409" duration="375000" />
       <workItem from="1518104902198" duration="324000" />
-      <workItem from="1518106136707" duration="23052000" />
+      <workItem from="1518106136707" duration="23309000" />
+      <workItem from="1518249829356" duration="11567000" />
     </task>
     <task id="LOCAL-00001" summary="fix server initial state&#10;change work with API">
       <created>1516382408155</created>
@@ -523,23 +371,23 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98731000" />
+    <option name="totallyTimeSpent" value="110555000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27958697" sideWeight="0.40453687" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24606581" sideWeight="0.3681592" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21279761" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21268657" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27958697" sideWeight="0.59546316" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24606581" sideWeight="0.6318408" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22098215" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26741293" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -568,55 +416,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ts/app/api/local-data/pages.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="38" column="16" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/view/page-not-found.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="50" lean-forward="true" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="119" column="43" lean-forward="false" selection-start-line="119" selection-start-column="43" selection-end-line="119" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.prod.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2400">
-          <caret line="120" column="28" lean-forward="false" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-syntax-highlighter/dist/styles/hljs/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/styl/style.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/app/api/locales-api.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/webroot/local-data/translations/en.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -638,27 +437,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/app/controllers/pages-controller.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="5" column="37" lean-forward="false" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ts/app/mobx/common-state.ts" />
     <entry file="file://$PROJECT_DIR$/src/ts/app/mobx/pages-state.ts" />
     <entry file="file://$PROJECT_DIR$/src/hbs/develop.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@types/react/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="308" column="12" lean-forward="false" selection-start-line="308" selection-start-column="12" selection-end-line="308" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -707,43 +491,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/stores/app.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/stores/locale.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-stores/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-stores/lib/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
           <caret line="151" column="36" lean-forward="true" selection-start-line="151" selection-start-column="36" selection-end-line="151" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -755,29 +506,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/stores/app-stores.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/app/stores/stores.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-stores/src/store.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
           <caret line="146" column="24" lean-forward="false" selection-start-line="146" selection-start-column="24" selection-end-line="146" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -801,43 +533,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="61" column="37" lean-forward="false" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/decorators/context.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/view/ui-i18n-component.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="35" column="11" lean-forward="false" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/app/stores/pages.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/app/stores/common.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -862,15 +557,15 @@
         <state relative-caret-position="600">
           <caret line="30" column="127" lean-forward="false" selection-start-line="30" selection-start-column="127" selection-end-line="30" selection-end-column="127" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/app/view/layouts/app.tsx">
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/server-middles/main.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+        <state relative-caret-position="1160">
+          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -885,83 +580,244 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ts/lib/view/context-wrapper.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="24" />
-          <caret line="16" column="28" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="28" />
-          <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="32" />
-          <caret line="23" column="65" lean-forward="false" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="65" />
+        <state relative-caret-position="240">
+          <caret line="12" column="72" lean-forward="false" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/app/controllers/controllers-list.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="43" lean-forward="false" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/controllers/controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="65" column="29" lean-forward="false" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/controllers/controllers.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/app/controllers/app-controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/router.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="15" column="127" lean-forward="false" selection-start-line="15" selection-start-column="127" selection-end-line="15" selection-end-column="127" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ts/lib/services/i18n-service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
+        <state relative-caret-position="1540">
           <caret line="77" column="9" lean-forward="true" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/client.tsx">
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/config/config.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/app/controllers/pages-controller.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/handlebars/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="75" column="14" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/services/route-utils.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="131" />
+          <caret line="78" column="48" lean-forward="false" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es6.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="13207" column="10" lean-forward="false" selection-start-line="13207" selection-start-column="10" selection-end-line="13207" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/history/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="56" column="12" lean-forward="false" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/react-router/node_modules/@types/history/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="36" column="17" lean-forward="false" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/react-router/lib/Router.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="2" lean-forward="true" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/app/controllers/controllers-list.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="4" column="44" lean-forward="true" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/controllers/controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="29" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#31#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/controllers/controllers.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="50" column="56" lean-forward="true" selection-start-line="50" selection-start-column="56" selection-end-line="50" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/router.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1074">
+          <caret line="102" column="39" lean-forward="true" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#31#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-stores/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="26" column="4" lean-forward="false" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/stores/locale.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/stores/app.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="10" lean-forward="false" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/app/stores/pages.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/app/stores/common.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="17" lean-forward="true" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/react/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="330" column="19" lean-forward="false" selection-start-line="330" selection-start-column="8" selection-end-line="330" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/app/controllers/app-controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/view/ui-i18n-component.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="22" column="63" lean-forward="false" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ts/lib/server-middles/main.tsx">
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/stores/stores.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="76" column="63" lean-forward="true" selection-start-line="76" selection-start-column="63" selection-end-line="76" selection-end-column="63" />
+        <state relative-caret-position="180">
+          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/app/stores/app-stores.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/client.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/lib/decorators/context.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ts/app/view/layouts/app.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="59" column="16" lean-forward="false" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
           <folding />
         </state>
       </provider>

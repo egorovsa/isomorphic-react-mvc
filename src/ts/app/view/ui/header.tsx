@@ -4,14 +4,14 @@ import {NavComponent} from "./nav";
 import {PropTypes} from 'prop-types';
 import {contextToProps} from "../../../lib/decorators/context";
 import {I18nextService} from "../../../lib/services/i18n-service";
-import {StoresList} from "../../stores/stores";
+import {AppStores} from "../../stores/app-stores";
 
 export interface Props {
 	mainPage: boolean,
 	headMenu: any[],
 	scrollTop: number,
 	i18n?: I18nextService,
-	stores?: StoresList
+	stores?: AppStores
 }
 
 export interface State {

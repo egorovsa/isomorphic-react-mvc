@@ -7,13 +7,13 @@ import {I18nextService} from "./services/i18n-service";
 import {Controller} from "./controllers/controller";
 import {ActionComponentNotFound} from "./view/not-found-action-component";
 import {ContextWrapper} from "./view/context-wrapper";
-import {StoresList} from "../app/stores/stores";
+import {AppStores} from "../app/stores/app-stores";
 import {InitialStateUtils} from "./services/initial-state-utils";
 import {AppStore} from "./stores/app";
 import {PropTypes} from 'prop-types';
 
 export class AppRouter {
-	constructor(readonly initialStateInstance: InitialStateUtils, readonly i18n: I18nextService, readonly stores: StoresList) {
+	constructor(readonly initialStateInstance: InitialStateUtils, readonly i18n: I18nextService, readonly stores: AppStores) {
 	}
 
 	public router() {
@@ -73,7 +73,6 @@ export class AppRouter {
 			controller = controllers.getController(CONFIG.DEFAULT_PAGE_NOT_FOUND_CONTROLLER);
 			parsed.actionName = 'index';
 			await controller[parsed.actionName](...parsed.params);
-
 			this.setResponseData(data, controller);
 		}
 

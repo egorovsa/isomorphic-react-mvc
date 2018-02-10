@@ -1,6 +1,6 @@
-import {Store} from "react-stores";
-
 export namespace CommonStore {
+	export const name: string = 'common';
+
 	export interface State {
 		windowSize: number,
 		mainMenu: any[],

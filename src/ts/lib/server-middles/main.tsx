@@ -13,7 +13,7 @@ import {I18nextService} from "../services/i18n-service";
 import {PropTypes} from "prop-types";
 import {ContextWrapper} from "../view/context-wrapper";
 import CONFIG from "../../config/config";
-import {StoresList} from "../../app/stores/stores";
+import {AppStores} from "../../app/stores/app-stores";
 
 const headHtml = require("../../../hbs/index/head-part.hbs");
 const footerHtml = require("../../../hbs/index/footer-part.hbs");
@@ -56,7 +56,7 @@ export class RenderServerSide {
 	static render(req: express.Request, res: express.Response): express.Response | void {
 		const cookies = req.cookies;
 		const initialStateInstance = new InitialStateUtils();
-		const stores: StoresList = new StoresList();
+		const stores: AppStores = new AppStores();
 		const i18n = new I18nextService(stores.locale, initialStateInstance);
 		const router: AppRouter = new AppRouter(initialStateInstance, i18n, stores);
 		const routes = router.mainRoute(true);
@@ -93,7 +93,7 @@ export class RenderServerSide {
 		});
 	}
 
-	static getServerHtml(req: express.Request, res: express.Response, nextState: any, initialStateInstance: InitialStateUtils, i18n: I18nextService, stores: StoresList): void {
+	static getServerHtml(req: express.Request, res: express.Response, nextState: any, initialStateInstance: InitialStateUtils, i18n: I18nextService, stores: AppStores): void {
 		const metaData: MetaData = JSON.parse(nextState.params['metaData']);
 
 		const stream = renderToNodeStream(

@@ -2,10 +2,10 @@ import {Store} from "react-stores";
 import {LocaleStore} from "./locale";
 import {AppStore} from "./app";
 
-export class AppStores {
+export class Stores {
 	constructor() {
-		this.locale = new Store<LocaleStore.State>(LocaleStore.initialState);
-		this.app = new Store<AppStore.State>(AppStore.initialState);
+		this.locale = new Store(LocaleStore.initialState);
+		this.app = new Store(AppStore.initialState);
 	}
 
 	public locale: Store<LocaleStore.State>;

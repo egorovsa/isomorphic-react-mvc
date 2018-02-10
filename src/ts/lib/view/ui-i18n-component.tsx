@@ -1,45 +1,28 @@
 import * as React from 'react';
 import {PropTypes} from "prop-types";
-import {contextToProps, setContext} from "../decorators/context";
-import {ContextProps} from "./context-wrapper";
+import {contextToProps, followStore, setContext} from "../decorators/context";
 import {I18nextService} from "../services/i18n-service";
-import {StoresList} from "../../app/stores/stores";
+import {AppStores} from "../../app/stores/app-stores";
 import {LocaleStore} from "../stores/locale";
-import {StoreEvent} from "react-stores";
+import {PagesStore} from "../../app/stores/pages";
 
 export interface Props {
 	id: string,
 	data?: any,
 	className?: string,
 	i18n?: I18nextService,
-	stores?: StoresList
+	stores?: AppStores
 }
 
 export interface State {
 	currentLang: string
 }
 
-@contextToProps
+@followStore(LocaleStore.name)
+@followStore(PagesStore.name)
 export class UII18nText extends React.Component<Props, State> {
-	// context: ContextProps;
-	private storeEvent: StoreEvent<LocaleStore.State> = null;
-
 	private createMarkup() {
 		return {__html: this.props.i18n.translate(this.props.id, this.props.data)};
-	}
-
-	componentWillMount() {
-		const localStore = this.props.stores.locale;
-
-		this.storeEvent = localStore.on('update', (storeState: LocaleStore.State) => {
-			this.setState({
-				currentLang: storeState.currentLang
-			});
-		});
-	}
-
-	componentWillUnmount() {
-		this.storeEvent.remove();
 	}
 
 	public render() {

@@ -2,12 +2,12 @@ import * as React from "react";
 import {PropTypes} from 'prop-types';
 import {I18nextService} from "../services/i18n-service";
 import {InitialStateUtils} from "../services/initial-state-utils";
-import {StoresList} from "../../app/stores/stores";
+import {AppStores} from "../../app/stores/app-stores";
 
 export interface ContextProps {
 	i18n: I18nextService,
 	initialStateInstance: InitialStateUtils
-	stores: StoresList
+	stores: AppStores
 }
 
 export class ContextWrapper extends React.Component<ContextProps, any> {

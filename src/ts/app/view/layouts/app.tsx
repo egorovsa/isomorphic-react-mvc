@@ -8,8 +8,8 @@ import {UIScrollToTop} from "../ui/scroll-to-top";
 import {SideNavComponent} from "../ui/common/sidenav";
 import {PropTypes} from 'prop-types';
 import {I18nextService} from "../../../lib/services/i18n-service";
-import {contextToProps, setContext} from "../../../lib/decorators/context";
-import {StoresList} from "../../stores/stores";
+import {contextToProps, followStore, setContext} from "../../../lib/decorators/context";
+import {AppStores} from "../../stores/app-stores";
 
 const NotificationContainer = require('react-notifications').NotificationContainer;
 
@@ -18,36 +18,19 @@ export interface Props {
 	i18n: I18nextService,
 	test: string,
 	fetch: any,
-	stores: StoresList
+	stores: AppStores
 }
 
 export interface State {
 	scrollTop: number,
-	commonStore: CommonStore.State,
-	pagesStore: PagesStore.State
 }
 
-@contextToProps
+@followStore(CommonStore.name)
+@followStore(PagesStore.name)
 export class AppComponent extends React.Component<Props, State> {
 	state: State = {
-		scrollTop: 0,
-		commonStore: this.props.stores.common.state,
-		pagesStore: this.props.stores.pages.state,
+		scrollTop: 0
 	};
-
-	componentWillMount() {
-		this.props.stores.common.on('all', (storeState: CommonStore.State) => {
-			this.setState({
-				commonStore: storeState
-			})
-		});
-
-		this.props.stores.pages.on('all', (storeState: PagesStore.State) => {
-			this.setState({
-				pagesStore: storeState
-			})
-		});
-	}
 
 	private updateDimensions = (e) => {
 		this.props.stores.common.setState({
@@ -79,8 +62,8 @@ export class AppComponent extends React.Component<Props, State> {
 				{!this.props.server && <NotificationContainer/>}
 
 				<SideNavComponent
-					active={this.state.commonStore.sideNav}
-					headMenu={this.state.commonStore.mainMenu}
+					active={this.props.stores.common.state.sideNav}
+					headMenu={this.props.stores.common.state.mainMenu}
 					close={() => {
 						this.props.stores.common.setState({
 							sideNav: false
@@ -89,8 +72,8 @@ export class AppComponent extends React.Component<Props, State> {
 				/>
 
 				<HeaderComponent
-					mainPage={this.state.commonStore.mainPage}
-					headMenu={this.state.commonStore.mainMenu}
+					mainPage={this.props.stores.common.state.mainPage}
+					headMenu={this.props.stores.common.state.mainMenu}
 					scrollTop={this.state.scrollTop}
 				/>
 

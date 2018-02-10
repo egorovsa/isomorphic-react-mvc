@@ -1,6 +1,6 @@
-import {Store} from "react-stores";
-
 export namespace PagesStore {
+	export const name: string = 'pages';
+
 	export interface Page {
 		id: number,
 		name: string,

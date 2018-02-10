@@ -1,6 +1,6 @@
-import {Store} from "react-stores";
-
 export namespace LocaleStore {
+	export const name: string = 'locale';
+
 	export interface Language {
 		name: string,
 		title: string
@@ -15,6 +15,4 @@ export namespace LocaleStore {
 		localesList: [],
 		currentLang: null
 	};
-
-	export let store: Store<State> = new Store<State>(initialState);
 }

@@ -4,7 +4,7 @@ import {AppStore} from "../stores/app";
 import {ApiEndpoints} from "../../app/api/app-api";
 import {InitialStateUtils} from "../services/initial-state-utils";
 import {I18nextService} from "../services/i18n-service";
-import {StoresList} from "../../app/stores/stores";
+import {AppStores} from "../../app/stores/app-stores";
 import {RouterState} from "react-router";
 import {Location} from 'history';
 
@@ -69,7 +69,7 @@ export class Controller {
 	public apiRequest: ApiEndpoints;
 	public metaData: MetaData;
 	public i18n: I18nextService;
-	public stores: StoresList;
+	public stores: AppStores;
 	public server: boolean;
 
 	public initAppApi(initialStateInstance: InitialStateUtils): void {
@@ -92,7 +92,7 @@ export class Controller {
 		});
 	}
 
-	public setStores(stores: StoresList): void {
+	public setStores(stores: AppStores): void {
 		this.stores = stores;
 
 		this.set({

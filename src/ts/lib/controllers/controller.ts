@@ -74,6 +74,10 @@ export class Controller {
 
 	public initAppApi(initialStateInstance: InitialStateUtils): void {
 		this.apiRequest = new ApiEndpoints(initialStateInstance);
+
+		this.set({
+			apiRequest: this.apiRequest
+		});
 	}
 
 	public initAppI18n(i18n: I18nextService): void {
@@ -94,10 +98,6 @@ export class Controller {
 
 	public setStores(stores: AppStores): void {
 		this.stores = stores;
-
-		this.set({
-			stores: stores
-		});
 	}
 
 	protected setMetaData(metaData: MetaData): void {
@@ -138,11 +138,17 @@ export class Controller {
 		this.hideMainLoading();
 		this.notFound = true;
 		this.responseStatus = 404;
-		this.component = CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT;
+		this.render(CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT);
 	}
 
 	protected set(data: { [id: string]: any }): void {
 		this.componentData = {...this.componentData, ...data};
+	}
+
+	protected render(component?: React.ComponentClass<any>): void {
+		if (component) {
+			this.component = component;
+		}
 	}
 
 	public async beforeFilter(...data: string[]): Promise<any> {

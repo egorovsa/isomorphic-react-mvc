@@ -20,11 +20,11 @@
 	{
 		"id": "2",
 		"name": "Stores",
-		"slug": "stores",
+		"slug": "storesUsage",
 		"seo_title": "Stores",
 		"seo_description": "Stores",
 		"seo_keywords": "Stores",
-		"content": "<h1>Stores</h1> <span class=\"list-item\">The boilerplate uses <a href=\"https://www.npmjs.com/package/react-stores\">React-stores</a> module. Please use documentation of this module</span>"
+		"content": "<h1>Stores</h1> The descibing of stores is under construction. Have a look some examples in src/ts/app/stores <br/> <span class=\"list-item\">The framework uses <a href=\"https://www.npmjs.com/package/react-stores\">React-stores</a> module. Please use documentation of this module</span>"
 	},
 	{
 		"id": "3",

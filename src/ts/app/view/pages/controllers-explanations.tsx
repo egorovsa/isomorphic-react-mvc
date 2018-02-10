@@ -59,13 +59,13 @@ export class ControllersExplanations extends React.Component<Props, State> {
 								'import {CommonStore} from "../stores/common";\n' +
 								'\n' +
 								'export class AppController extends Controller {\n' +
-								'\tconstructor(data) {\n' +
-								'\t\tsuper(data);\n' +
-								'\t}\n' +
+								'    constructor(data) {\n' +
+								'        super(data);\n' +
+								'    }\n' +
 								'\n' +
-								'\tpublic async beforeFilter(data?: any): Promise<any> {\n' +
-								'\t\tawait super.beforeFilter(data);\n' +
-								'\t}\n' +
+								'    public async beforeFilter(data?: any): Promise<any> {\n' +
+								'        await super.beforeFilter(data);\n' +
+								'    }\n' +
 								'}'
 							}
 						</SyntaxHighlighter>
@@ -83,7 +83,7 @@ export class ControllersExplanations extends React.Component<Props, State> {
 						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'public async beforeFilter(data?: any): Promise<any> {\n' +
-								'\tawait super.beforeFilter(data);\n' +
+								'    await super.beforeFilter(data);\n' +
 								'}'
 							}
 						</SyntaxHighlighter>
@@ -112,11 +112,11 @@ export class ControllersExplanations extends React.Component<Props, State> {
 								'import {ShopController} from "./shop-controller";\n' +
 								'\n' +
 								'export class ControllersList extends Controllers {\n' +
-								'\tconstructor(data: RouterState, initialStateInstance: InitialStateUtils, i18n: I18nextService) {\n' +
-								'\t\tsuper(data, initialStateInstance, i18n);\n' +
+								'    constructor(data: RouterState, initialStateInstance: InitialStateUtils, i18n: I18nextService) {\n' +
+								'        super(data, initialStateInstance, i18n);\n' +
 								'\n' +
-								'\t\t this.setController(\'shop\', ShopController);\n' +
-								'\t}\n' +
+								'        this.setController(\'shop\', ShopController);\n' +
+								'    }\n' +
 								'}'
 							}
 						</SyntaxHighlighter>
@@ -150,21 +150,21 @@ export class ControllersExplanations extends React.Component<Props, State> {
 								'import {AppController} from "./app-controller";\n' +
 								'\n' +
 								'export class SomeController extends AppController {\n' +
-								'\tconstructor(data) {\n' +
-								'\t\tsuper(data);\n' +
-								'\t}\n' +
+								'    constructor(data) {\n' +
+								'        super(data);\n' +
+								'    }\n' +
 								'\n' +
-								'\tpublic view(id) {\n' +
-								'\t\t//action logic goes here..\n' +
-								'\t}\n' +
+								'    public view(id) {\n' +
+								'        //action logic goes here..\n' +
+								'    }\n' +
 								'\n' +
-								'\tpublic share(customerId, recipeId) {\n' +
-								'\t\t//action logic goes here..\n' +
-								'\t}\n' +
+								'    public share(customerId, recipeId) {\n' +
+								'        //action logic goes here..\n' +
+								'    }\n' +
 								'\n' +
-								'\tpublic searching(query) {\n' +
-								'\t\t//action logic goes here..\n' +
-								'\t}\n' +
+								'    public searching(query) {\n' +
+								'        //action logic goes here..\n' +
+								'    }\n' +
 								'}'
 							}
 						</SyntaxHighlighter>
@@ -186,10 +186,10 @@ export class ControllersExplanations extends React.Component<Props, State> {
 						<SyntaxHighlighter language='typescript' style={vs2015}>
 							{
 								'public searching($query) {\n' +
-								'\t//action logic goes here..\n' +
-								'\tthis.set({\n' +
-								'\t\tfoo:"bar"\n' +
-								'\t})\n' +
+								'    //action logic goes here..\n' +
+								'    this.set({\n' +
+								'        foo:"bar"\n' +
+								'    })\n' +
 								'}\n'
 							}
 						</SyntaxHighlighter>
@@ -204,15 +204,15 @@ export class ControllersExplanations extends React.Component<Props, State> {
 								'import {MainPageComponent} from "../view/pages/main-page-component";\n' +
 								'//...\n' +
 								'//...\n' +
-								'\tpublic async main() {\n' +
-								'\t\tthis.component = MainPageComponent;\n' +
+								'    public async main() {\n' +
+								'        this.component = MainPageComponent;\n' +
 								'\n' +
-								'\t\tthis.setMetaData({\n' +
-								'\t\t\ttitle: "Page title here"\n' +
-								'\t\t\tdescription: "Page description"\n' +
-								'\t\t\tkeywords: "Page keywords"\n' +
-								'\t\t})\n' +
-								'\t}'
+								'        this.setMetaData({\n' +
+								'            title: "Page title here"\n' +
+								'            description: "Page description"\n' +
+								'            keywords: "Page keywords"\n' +
+								'        })\n' +
+								'    }'
 							}
 						</SyntaxHighlighter>
 
@@ -220,9 +220,165 @@ export class ControllersExplanations extends React.Component<Props, State> {
 
 						<h1>Controller Methods</h1>
 
+						<h3>Controller.set()</h3>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
+							{
+								'set(data: { [id: string]: any }): void'
+							}
+						</SyntaxHighlighter>
+
 						<div className="list-item light">
-							To be continued...
+							The set() method is the main way to send data from your controller to your view. Once you’ve
+							used set(), the variable can be accessed in your view:
 						</div>
+
+						<SyntaxHighlighter language='typescript' style={vs2015}>
+							{
+								'// First you pass data from the controller:\n' +
+								'this.set({\n' +
+								'    foo: "bar"\n' +
+								'})'
+							}
+						</SyntaxHighlighter>
+
+						<SyntaxHighlighter language='' style={vs2015}>
+							{
+								'// Then, in the view, you can utilize the data as React prop\n\n' +
+								'<div>{this.props.foo}</div>'
+							}
+						</SyntaxHighlighter>
+
+						<div className="list-item light"></div>
+						<h3>Controller.setMetaData()</h3>
+						<SyntaxHighlighter language='typescript' style={vs2015}>
+							{
+								'// MetaData interface\n' +
+								'export interface MetaData {\n' +
+								'    title: string,\n' +
+								'    keywords?: string,\n' +
+								'    description?: string\n' +
+								'}\n\n' +
+								'\n' +
+								'setMetaData(metaData: MetaData): void'
+							}
+						</SyntaxHighlighter>
+
+						<div className="list-item light">
+							The setMetaData() method is the same as set() the main way to send meta data like a title,
+							description and keywords from your controller to your view.
+						</div>
+
+						<SyntaxHighlighter language='typescript' style={vs2015}>
+							{
+								'this.setMetaData({\n' +
+								'    title: page.seo_title,\n' +
+								'    description: page.seo_description,\n' +
+								'    keywords: page.seo_keywords\n' +
+								'});'
+							}
+						</SyntaxHighlighter>
+
+						<div className="list-item light"></div>
+						<h3>Controller.render()</h3>
+
+						<SyntaxHighlighter language='typescript' style={vs2015}>
+							{
+								'render(component?: React.ComponentClass<any>): void'
+							}
+						</SyntaxHighlighter>
+
+						<div className="list-item light">
+							The render() method is automatically called at the end of each requested controller action.
+							This method performs all the view logic (using the data you’ve submitted using the set()
+							method), places the view inside its this.layout, and serves it back to the end user.
+						</div>
+
+						<SyntaxHighlighter language='typescript' style={vs2015}>
+							{
+								'import {MainPageComponent} from "../view/pages/main-page-component";\n\n' +
+								'' +
+								'//...\n' +
+								'//PagesController\n' +
+								'    public async main() {\n' +
+								'        this.render(MainPageComponent);\n' +
+								'    }'
+							}
+						</SyntaxHighlighter>
+
+						<div className="list-item light">
+							The default view file used by render is determined by convention. If the main() action of
+							the PagesController is requested, the view file in /ts/app/view/pages/main.tsx will be
+							rendered.
+						</div>
+
+						<div className="list-item light"></div>
+						<h3>Controller.pageNotFound()</h3>
+
+						<SyntaxHighlighter language='typescript' style={vs2015}>
+							pageNotFound(status: number = 404): void
+						</SyntaxHighlighter>
+
+						<div className="list-item light">
+							Use the method when you need to send page not found
+						</div>
+
+						<h1>Controller Utils</h1>
+
+						<SyntaxHighlighter language='typescript' style={vs2015}>
+							{
+								'// API request service\n' +
+								'// Look at the /ts/src/api/pages-api.ts example\n' +
+								'public apiRequest: ApiEndpoints;\n\n' +
+								'//Translations service\n' +
+								'//the main function is i18n.translate()\n' +
+								'public i18n: I18nextService;\n' +
+								'// use in your controller\n' +
+								'this.i18.translate("TRANSLATIONS_KEY", {foo:"bar"})\n\n' +
+								'//stores instance in your controllers\n' +
+								'public stores: AppStores;\n'
+							}
+						</SyntaxHighlighter>
+
+						<div className="list-item light">
+							The utils describing is under construction...
+						</div>
+
+						<h1>Controller Properties</h1>
+
+						<SyntaxHighlighter language='typescript' style={vs2015}>
+							{
+								'public request: ControllerRequest;\n' +
+								'public location: Location;\n' +
+								'public query: { [key: string]: string };\n' +
+								'public hash: string;\n' +
+								'public search: string;\n' +
+								'public pathname: string;\n' +
+								'public responseStatus: number;\n' +
+								'public notFound: boolean;\n' +
+								'public layout: React.ComponentClass<any>;\n' +
+								'public component: React.ComponentClass<any> | any;\n' +
+								'public componentData: { [id: string]: any };\n' +
+								'public metaData: MetaData;\n' +
+								'public server: boolean;'
+							}
+						</SyntaxHighlighter>
+
+						<h3>ControllerRequest properties</h3>
+
+						<SyntaxHighlighter language='typescript' style={vs2015}>
+							{
+								'export interface ControllerRequest {\n' +
+								'    location: Location\n' +
+								'    query: { [key: string]: string }\n' +
+								'    hash: string\n' +
+								'    search: string\n' +
+								'    pathname: string\n' +
+								'}\n' +
+								'\n' +
+								'//use inside the methods of your controllers\n' +
+								'console.log(this.request.query)'
+							}
+						</SyntaxHighlighter>
 					</div>
 				</div>
 			</div>

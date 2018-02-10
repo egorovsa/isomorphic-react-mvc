@@ -6,17 +6,6 @@ export class UtilsService {
 		}
 	}
 
-	static makeParamsPath(): string {
-		let params: string = '';
-
-		for (let i = 0; i < 20; i++) {
-			params += `(/:param${i})`;
-		}
-
-		return params;
-	}
-
-
 	// static isMobile() {
 	// 	let userAgent = InitialStateUtils.getDataByName('serverUserAgent');
 	//

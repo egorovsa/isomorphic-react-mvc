@@ -18,6 +18,7 @@ export interface State {
 	currentLang: string
 }
 
+@contextToProps
 @followStore(LocaleStore.name)
 @followStore(PagesStore.name)
 export class UII18nText extends React.Component<Props, State> {

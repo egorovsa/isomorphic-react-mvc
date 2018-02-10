@@ -2,6 +2,7 @@ import * as React from "react";
 import {AppController} from "./app-controller";
 import {UtilsService} from "../services/utils-service";
 import CONFIG from "../../config/config";
+import {ExampleStore} from "../stores/example";
 
 export class PagesController extends AppController {
 	constructor(data) {
@@ -26,7 +27,7 @@ export class PagesController extends AppController {
 		});
 	}
 
-	public simple(test) {
+	public simple(test: string) {
 		this.set({
 			test: test
 		});
@@ -36,7 +37,13 @@ export class PagesController extends AppController {
 		});
 	}
 
-	public async index(slug) {
+	public storesUsage() {
+		this.setMetaData({
+			title: 'Stores'
+		});
+	}
+
+	public async index(slug: string) {
 		UtilsService.scrollToTop();
 		this.showMainLoading();
 

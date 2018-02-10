@@ -18,7 +18,8 @@ export interface Props {
 	i18n: I18nextService,
 	test: string,
 	fetch: any,
-	stores: AppStores
+	common?: Store<CommonStore.State>
+	pages?: Store<PagesStore.State>
 }
 
 export interface State {
@@ -33,7 +34,7 @@ export class AppComponent extends React.Component<Props, State> {
 	};
 
 	private updateDimensions = (e) => {
-		this.props.stores.common.setState({
+		this.props.common.setState({
 			windowSize: e.target.innerWidth
 		} as CommonStore.State);
 	};
@@ -62,18 +63,18 @@ export class AppComponent extends React.Component<Props, State> {
 				{!this.props.server && <NotificationContainer/>}
 
 				<SideNavComponent
-					active={this.props.stores.common.state.sideNav}
-					headMenu={this.props.stores.common.state.mainMenu}
+					active={this.props.common.state.sideNav}
+					headMenu={this.props.common.state.mainMenu}
 					close={() => {
-						this.props.stores.common.setState({
+						this.props.common.setState({
 							sideNav: false
 						} as CommonStore.State);
 					}}
 				/>
 
 				<HeaderComponent
-					mainPage={this.props.stores.common.state.mainPage}
-					headMenu={this.props.stores.common.state.mainMenu}
+					mainPage={this.props.common.state.mainPage}
+					headMenu={this.props.common.state.mainMenu}
 					scrollTop={this.state.scrollTop}
 				/>
 
@@ -83,7 +84,7 @@ export class AppComponent extends React.Component<Props, State> {
 
 				<FooterComponent
 					mainPage={false}
-					mainMenu={this.props.stores.pages.state.mainMenu}
+					mainMenu={this.props.pages.state.mainMenu}
 				/>
 
 				<UIScrollToTop currentScroll={this.state.scrollTop}/>

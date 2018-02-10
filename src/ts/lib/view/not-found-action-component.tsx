@@ -42,14 +42,11 @@ export class ActionComponentNotFound extends React.Component<Props, State> {
 						<SyntaxHighlighter language='bash' style={docco}>
 							{
 								'import * as React from \'react\';\n' +
-								'import {I18nextService} from "../../../lib/services/i18n-service";\n' +
 								'\n' +
 								'export interface Props {\n' +
-								'\ti18n: I18nextService\n' +
 								'}\n' +
 								'\n' +
 								'export interface State {\n' +
-								'\n' +
 								'}\n' +
 								'\n' +
 								'export class ' + this.props.nameOfComponent + ' extends React.Component<Props, State> {\n' +

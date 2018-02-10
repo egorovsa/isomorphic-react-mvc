@@ -33,24 +33,24 @@ export class Simple extends React.Component<Props, State> {
 							'import {AppController} from "./app-controller";\n' +
 							'\n' +
 							'export class PagesController extends AppController {\n' +
-							'\tconstructor(data) {\n' +
-							'\t\tsuper(data);\n' +
-							'\t}\n' +
+							'    constructor(data) {\n' +
+							'        super(data);\n' +
+							'    }\n' +
 							'\n' +
-							'\tpublic index(test) {\n' +
+							'    public index(test) {\n' +
 							'\n' +
-							'\t\tthis.set({\n' +
-							'\t\t\tparams: test\n' +
-							'\t\t});\n' +
+							'        this.set({\n' +
+							'            params: test\n' +
+							'        });\n' +
 							'\n' +
 							'\n' +
-							'\t\tthis.setMetaData({\n' +
-							'\t\t\ttitle: "some SEO title",\n' +
-							'\t\t\tdescription: "some SEO description",\n' +
-							'\t\t\tkeywords: "some SEO keywords"\n' +
-							'\t\t});' +
+							'        this.setMetaData({\n' +
+							'            title: "some SEO title",\n' +
+							'            description: "some SEO description",\n' +
+							'            keywords: "some SEO keywords"\n' +
+							'        });' +
 							'\n' +
-							'\t}' +
+							'    }' +
 							'\n' +
 							'}' +
 							'\n'
@@ -65,36 +65,36 @@ export class Simple extends React.Component<Props, State> {
 							'import {AppController} from "./app-controller";\n' +
 							'\n' +
 							'export class PagesController extends AppController {\n' +
-							'\tconstructor(data) {\n' +
-							'\t\tsuper(data);\n' +
-							'\t}\n' +
+							'    constructor(data) {\n' +
+							'        super(data);\n' +
+							'    }\n' +
 							'\n' +
-							'\tpublic async index(slug) {\n' +
-							'\t\tthis.showMainLoading();\n' +
+							'    public async index(slug) {\n' +
+							'        this.showMainLoading();\n' +
 							'\n' +
-							'\t\tif (slug) {\n' +
+							'        if (slug) {\n' +
 							'\n' +
-							'\t\t\ttry {\n' +
-							'\t\t\t\tconst page = await AppApi.pages.getPageDataBySlug(slug);\n' +
+							'            try {\n' +
+							'                const page = await AppApi.pages.getPageDataBySlug(slug);\n' +
 							'\n' +
-							'\t\t\t\tthis.set({\n' +
-							'\t\t\t\t\tpage: page\n' +
-							'\t\t\t\t});\n' +
+							'                this.set({\n' +
+							'                    page: page\n' +
+							'                });\n' +
 							'\n' +
-							'\t\t\t\tthis.setMetaData({\n' +
-							'\t\t\t\t\ttitle: page.seo_title,\n' +
-							'\t\t\t\t\tdescription: page.seo_description,\n' +
-							'\t\t\t\t\tkeywords: page.seo_keywords\n' +
-							'\t\t\t\t});\n' +
-							'\t\t\t} catch (e) {\n' +
-							'\t\t\t\tthis.pageNotFound();\n' +
-							'\t\t\t}\n' +
-							'\t\t} else {\n' +
-							'\t\t\tthis.pageNotFound();\n' +
-							'\t\t}\n' +
+							'                this.setMetaData({\n' +
+							'                    title: page.seo_title,\n' +
+							'                    description: page.seo_description,\n' +
+							'                    keywords: page.seo_keywords\n' +
+							'                });\n' +
+							'            } catch (e) {\n' +
+							'                this.pageNotFound();\n' +
+							'            }\n' +
+							'        } else {\n' +
+							'            this.pageNotFound();\n' +
+							'        }\n' +
 							'\n' +
-							'\t\tthis.hideMainLoading();\n' +
-							'\t}' +
+							'        this.hideMainLoading();\n' +
+							'    }' +
 							'\n' +
 							'\n' +
 							'}'
@@ -123,7 +123,7 @@ export class Simple extends React.Component<Props, State> {
 							'import {PagesStore} from "../../stores/pages";\n' +
 							'\n' +
 							'export interface Props {\n' +
-							'\tpage: PagesStore.Page\n' +
+							'    page: PagesStore.Page\n' +
 							'}\n' +
 							'\n' +
 							'export interface State {\n' +
@@ -131,14 +131,14 @@ export class Simple extends React.Component<Props, State> {
 							'}\n' +
 							'\n' +
 							'export class Index extends React.Component<Props, State> {\n' +
-							'\tpublic render() {\n' +
-							'\t\treturn (\n' +
-							'\t\t\t<div className="container pages-container">\n' +
-							'\t\t\t\t<h1>{this.props.page.name}</h1>\n' +
-							'\t\t\t\t<div className="page-content" dangerouslySetInnerHTML={{__html: this.props.page.content}}></div>\n' +
-							'\t\t\t</div>\n' +
-							'\t\t);\n' +
-							'\t}\n' +
+							'    public render() {\n' +
+							'        return (\n' +
+							'            <div className="container pages-container">\n' +
+							'                <h1>{this.props.page.name}</h1>\n' +
+							'                <div className="page-content" dangerouslySetInnerHTML={{__html: this.props.page.content}}></div>\n' +
+							'            </div>\n' +
+							'        );\n' +
+							'    }\n' +
 							'}'
 						}
 					</SyntaxHighlighter>

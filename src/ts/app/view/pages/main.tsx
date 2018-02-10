@@ -123,25 +123,26 @@ export class Main extends React.Component<Props, State> {
 								'import {SimplePageComponent} from "../components/pages/simple-component";\n' +
 								'\n' +
 								'export class PagesController extends AppController {\n' +
-								'\tconstructor(data) {\n' +
-								'\t\tsuper(data);\n' +
-								'\t}\n' +
+								'    constructor(data) {\n' +
+								'        super(data);\n' +
+								'    }\n' +
 								'\n' +
-								'\tpublic async simple(test) {\n' +
-								'\t\tthis.component = SimplePageComponent;\n' +
+								'    public async simple(test) {\n' +
 								'\n' +
-								'\t\tthis.set({\n' +
-								'\t\t\tfoo: "bar"\n' +
-								'\t\t});\n' +
+								'        this.set({\n' +
+								'            foo: "bar"\n' +
+								'        });\n' +
 								'\n' +
 								'\n' +
-								'\t\tthis.setMetaData({\n' +
-								'\t\t\ttitle: "some SEO title",\n' +
-								'\t\t\tdescription: "some SEO description",\n' +
-								'\t\t\tkeywords: "some SEO keywords"\n' +
-								'\t\t});' +
+								'        this.setMetaData({\n' +
+								'            title: "some SEO title",\n' +
+								'            description: "some SEO description",\n' +
+								'            keywords: "some SEO keywords"\n' +
+								'        });' +
 								'\n' +
-								'\t}' +
+								'\n' +
+								'        this.render(SimplePageComponent);\n' +
+								'    }' +
 								'\n' +
 								'}' +
 								'\n'

@@ -1,14 +1,14 @@
 import {RouterState} from 'react-router';
 import {PagesController} from "../../app/controllers/pages-controller";
 import {PageNotFoundController} from "./page-not-found-controller";
-import {Controller} from "./controller";
+import {Controller, ControllerClass} from "./controller";
 import {InitialStateUtils} from "../services/initial-state-utils";
 import {I18nextService} from "../services/i18n-service";
 import {StoresList} from "../../app/stores/stores";
 
 interface ControllerInterface {
 	name: string,
-	controller: (data) => void
+	controller: ControllerClass
 }
 
 export class Controllers {
@@ -43,11 +43,11 @@ export class Controllers {
 		return isController;
 	}
 
-	public getController(name: string): Controller {
+	public getController(controllerName: string): Controller {
 		let foundController: Controller = null;
 
 		this.controllers.forEach((controller: ControllerInterface) => {
-			if (controller.name === name) {
+			if (controller.name === controllerName) {
 				foundController = new controller.controller(this.data);
 				foundController.initAppApi(this.initialStateInstance);
 				foundController.initAppI18n(this.i18n);
@@ -59,7 +59,7 @@ export class Controllers {
 		return foundController;
 	}
 
-	public setController(name: string, controller: any): void {
+	public setController(name: string, controller: ControllerClass): void {
 		this.controllers.push({
 			name: name,
 			controller: controller

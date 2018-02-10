@@ -5,6 +5,8 @@ import {ApiEndpoints} from "../../app/api/app-api";
 import {InitialStateUtils} from "../services/initial-state-utils";
 import {I18nextService} from "../services/i18n-service";
 import {StoresList} from "../../app/stores/stores";
+import {RouterState} from "react-router";
+import {Location} from 'history';
 
 export interface MetaData {
 	title: string,
@@ -20,12 +22,16 @@ export interface ControllerRequest {
 	pathname: string
 }
 
+export interface ControllerClass {
+	new (data: RouterState): Controller
+}
+
 export class Controller {
-	constructor(public data) {
+	constructor(public data: RouterState) {
 		this.data = data;
 		this.location = data.location;
 		this.query = data.location.query;
-		this.hash = data.location.hash;
+		this.hash = data.location['hash'];
 		this.search = data.location.search;
 		this.pathname = data.location.pathname;
 		this.layout = CONFIG.DEFAULT_LAYOUT_COMPONENT;
@@ -37,7 +43,7 @@ export class Controller {
 		this.request = {
 			location: data.location,
 			query: data.location.query,
-			hash: data.location.hash,
+			hash: data.location['hash'],
 			search: data.location.search,
 			pathname: data.location.pathname
 		};
@@ -50,11 +56,11 @@ export class Controller {
 	}
 
 	public request: ControllerRequest;
-	public location;
-	public query;
-	public hash;
-	public search;
-	public pathname;
+	public location: Location;
+	public query: { [key: string]: string };
+	public hash: string;
+	public search: string;
+	public pathname: string;
 	public responseStatus: number;
 	public notFound: boolean;
 	public layout: React.ComponentClass<any>;
@@ -66,7 +72,7 @@ export class Controller {
 	public stores: StoresList;
 	public server: boolean;
 
-	public initAppApi(initialStateInstance: InitialStateUtils) {
+	public initAppApi(initialStateInstance: InitialStateUtils): void {
 		this.apiRequest = new ApiEndpoints(initialStateInstance);
 	}
 
@@ -117,13 +123,13 @@ export class Controller {
 	}
 
 	protected hideMainLoading(): void {
-		AppStore.store.setState({
+		this.stores.app.setState({
 			appLoading: false
 		} as AppStore.State);
 	}
 
 	protected showMainLoading(): void {
-		AppStore.store.setState({
+		this.stores.app.setState({
 			appLoading: true
 		} as AppStore.State);
 	}
@@ -135,11 +141,11 @@ export class Controller {
 		this.component = CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT;
 	}
 
-	protected set(data: { [id: string]: any }) {
+	protected set(data: { [id: string]: any }): void {
 		this.componentData = {...this.componentData, ...data};
 	}
 
-	public async beforeFilter(...data): Promise<any> {
+	public async beforeFilter(...data: string[]): Promise<any> {
 		try {
 			await this.i18n.initService();
 			return true;

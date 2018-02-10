@@ -11,14 +11,13 @@ export interface ContextProps {
 }
 
 export class ContextWrapper extends React.Component<ContextProps, any> {
-
 	static childContextTypes = {
 		i18n: PropTypes.object,
 		initialStateInstance: PropTypes.object,
 		stores: PropTypes.object
 	};
 
-	getChildContext() {
+	public getChildContext() {
 		return {
 			i18n: this.props.i18n,
 			initialStateInstance: this.props.initialStateInstance,
@@ -26,7 +25,7 @@ export class ContextWrapper extends React.Component<ContextProps, any> {
 		};
 	}
 
-	render() {
+	public render() {
 		return (<>{this.props.children}</>);
 	}
 }

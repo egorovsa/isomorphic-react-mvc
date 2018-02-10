@@ -1,8 +1,9 @@
 import {Controller} from "../../lib/controllers/controller";
 import {CommonStore} from "../stores/common";
+import {RouterState} from "react-router";
 
 export class AppController extends Controller {
-	constructor(data) {
+	constructor(data: RouterState) {
 		super(data);
 	}
 

@@ -1,16 +1,16 @@
 import * as React from 'react';
 import CONFIG from "../config/config";
 import {Router, Route, IndexRoute, browserHistory, RouterState} from 'react-router';
-import {AppStore} from "./stores/app";
 import {ControllersList} from "../app/controllers/controllers-list";
-import {RouteUtils} from "./services/route-utils";
+import {ParsedParams, RouteUtils} from "./services/route-utils";
 import {I18nextService} from "./services/i18n-service";
 import {Controller} from "./controllers/controller";
 import {ActionComponentNotFound} from "./view/not-found-action-component";
-import {PropTypes} from 'prop-types';
 import {ContextWrapper} from "./view/context-wrapper";
 import {StoresList} from "../app/stores/stores";
 import {InitialStateUtils} from "./services/initial-state-utils";
+import {AppStore} from "./stores/app";
+import {PropTypes} from 'prop-types';
 
 export class AppRouter {
 	constructor(readonly initialStateInstance: InitialStateUtils, readonly i18n: I18nextService, readonly stores: StoresList) {
@@ -28,7 +28,7 @@ export class AppRouter {
 						path="/page_not_found"
 						component={CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT}
 						onEnter={() => {
-							AppStore.store.setState({
+							this.stores.app.setState({
 								appLoading: false
 							} as AppStore.State);
 						}}
@@ -58,38 +58,40 @@ export class AppRouter {
 
 	public async mainProcess(data: RouterState, server?: boolean) {
 		let controllers: ControllersList = new ControllersList(data, this.initialStateInstance, this.i18n, this.stores, server);
-		const parsedParams = RouteUtils.parseParams(controllers, data);
+		const parsed: ParsedParams = RouteUtils.parseParams(controllers, data);
 
-		if (!parsedParams.controller) {
-			parsedParams.controller = CONFIG.DEFAULT_PAGE_NOT_FOUND_CONTROLLER;
-			parsedParams.action = 'index';
+		if (!parsed.controllerName) {
+			parsed.controllerName = CONFIG.DEFAULT_PAGE_NOT_FOUND_CONTROLLER;
+			parsed.actionName = 'index';
 		}
 
-		let controller: Controller = controllers.getController(parsedParams.controller);
+		let controller: Controller = controllers.getController(parsed.controllerName);
 
 		try {
-			await controller.beforeFilter(...parsedParams.params);
+			await controller.beforeFilter(...parsed.params);
 		} catch (e) {
 			controller = controllers.getController(CONFIG.DEFAULT_PAGE_NOT_FOUND_CONTROLLER);
-			parsedParams.action = 'index';
-			await controller[parsedParams.action](...parsedParams.params);
-			return this.responseData(data, controller);
+			parsed.actionName = 'index';
+			await controller[parsed.actionName](...parsed.params);
+
+			this.setResponseData(data, controller);
 		}
 
-		await controller[parsedParams.action](...parsedParams.params);
-		this.findControllerViewComponent(controller, parsedParams.controller, parsedParams.action);
-		return this.responseData(data, controller);
+		await controller[parsed.actionName](...parsed.params);
+		this.findControllerViewComponent(controller, parsed.controllerName, parsed.actionName);
+		this.setResponseData(data, controller);
 	}
 
-	public responseData(data: RouterState, controller: Controller, responseStatus?: number) {
+	public setResponseData(data: RouterState, controller: Controller, responseStatus?: number): void {
 		controller.layout.defaultProps = {...controller.componentData};
 		controller.component.defaultProps = {...controller.componentData};
+
 		data.routes[0].component = controller.layout;
 		data.routes[1].component = controller.component;
+
 		data.params['metaData'] = JSON.stringify(controller.metaData);
 		data.params['notFound'] = controller.notFound.toString();
 		data.params['responseStatus'] = responseStatus ? responseStatus.toString() : controller.responseStatus.toString();
-		return data;
 	}
 
 	public findControllerViewComponent(controller: Controller, controllerName: string, actionName: string): void {

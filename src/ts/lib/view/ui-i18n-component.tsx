@@ -5,6 +5,7 @@ import {ContextProps} from "./context-wrapper";
 import {I18nextService} from "../services/i18n-service";
 import {StoresList} from "../../app/stores/stores";
 import {LocaleStore} from "../stores/locale";
+import {StoreEvent} from "react-stores";
 
 export interface Props {
 	id: string,
@@ -21,6 +22,7 @@ export interface State {
 @contextToProps
 export class UII18nText extends React.Component<Props, State> {
 	// context: ContextProps;
+	private storeEvent: StoreEvent<LocaleStore.State> = null;
 
 	private createMarkup() {
 		return {__html: this.props.i18n.translate(this.props.id, this.props.data)};
@@ -29,11 +31,15 @@ export class UII18nText extends React.Component<Props, State> {
 	componentWillMount() {
 		const localStore = this.props.stores.locale;
 
-		localStore.on('all', (storeState: LocaleStore.State) => {
+		this.storeEvent = localStore.on('update', (storeState: LocaleStore.State) => {
 			this.setState({
 				currentLang: storeState.currentLang
 			});
 		});
+	}
+
+	componentWillUnmount() {
+		this.storeEvent.remove();
 	}
 
 	public render() {

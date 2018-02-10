@@ -85,7 +85,7 @@ export class PagesController extends AppController {
 	}
 
 	public simple(test) {
-		this.component = SimplePageComponent;
+		this.render(SimplePageComponent);
 
 		this.set({
 			params: test
@@ -123,7 +123,7 @@ export class PagesController extends AppController {
 		this.showMainLoading();
 
 		if (slug) {
-			this.component = PagesComponent;
+			this.render(PagesComponent);
 
 			try {
 				const page = await AppApi.pages.getPageDataBySlug(slug);

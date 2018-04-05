@@ -1,15 +1,14 @@
 import * as React from 'react';
 import {HeaderComponent} from "../ui/header";
 import {CommonStore} from "../../stores/common";
-import {Store, StoreComponent} from "react-stores";
+import {Store} from "react-stores";
 import {PagesStore} from "../../stores/pages";
 import {FooterComponent} from "../ui/common/footer";
 import {UIScrollToTop} from "../ui/scroll-to-top";
 import {SideNavComponent} from "../ui/common/sidenav";
 import {PropTypes} from 'prop-types';
 import {I18nextService} from "../../../lib/services/i18n-service";
-import {contextToProps, followStore, setContext} from "../../../lib/decorators/context";
-import {AppStores} from "../../stores/app-stores";
+import {followStore} from "../../../lib/decorators/context";
 
 const NotificationContainer = require('react-notifications').NotificationContainer;
 

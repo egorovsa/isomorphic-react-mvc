@@ -1,6 +1,5 @@
 import {InitialStateUtils} from "../services/initial-state-utils";
-
-const fetch = require('isomorphic-fetch');
+import * as request from 'superagent';
 
 export class Api {
 
@@ -20,22 +19,22 @@ export class Api {
 				return existsData;
 			} else {
 				try {
-					const response = await  fetch(url);
-					const data = await response.json();
+					const response = await request.get(url);
 
-					if (data) {
-						this.initialStateInstance.setData(nameOfData, data);
+					if (response.body) {
+						this.initialStateInstance.setData(nameOfData, response.body);
 					}
 
-					return data;
+					return response.body;
 				} catch (e) {
 					return Promise.reject(e);
 				}
 			}
 		} else {
 			try {
-				const response = await  fetch(url);
-				return await response.json();
+				const response = await request.get(url);
+				return response.body;
+
 			} catch (e) {
 				return Promise.reject(e);
 			}

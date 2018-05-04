@@ -1,10 +1,12 @@
-import {StorageService} from "../services/storage-service";
-import {NotificationService, NotificationTypes} from "../services/notification-service";
-
-const Router = require('react-router');
+import {Store} from "react-stores";
+import {CommonStore} from "../stores/common";
 
 export class CommonAction {
-	static someAction() {
+	constructor(readonly store: Store<CommonStore.State>) {
+
+	}
+
+	public someAction() {
 
 	}
 }

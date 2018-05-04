@@ -7,6 +7,7 @@ import {I18nextService} from "../services/i18n-service";
 import {AppStores} from "../../app/stores/app-stores";
 import {RouterState} from "react-router";
 import {Location} from 'history';
+import {AppActions} from "../../app/actions/app-actions";
 
 export interface MetaData {
 	title: string,
@@ -69,6 +70,7 @@ export class Controller {
 	public apiRequest: ApiEndpoints;
 	public metaData: MetaData;
 	public i18n: I18nextService;
+	public appActions: AppActions;
 	public stores: AppStores;
 	public server: boolean;
 
@@ -82,18 +84,14 @@ export class Controller {
 
 	public initAppI18n(i18n: I18nextService): void {
 		this.i18n = i18n;
+	}
 
-		this.set({
-			i18n: i18n
-		});
+	public initAppActions(appActions: AppActions) {
+		this.appActions = appActions;
 	}
 
 	public setServerState(server: boolean): void {
 		this.server = server;
-
-		this.set({
-			server: server
-		});
 	}
 
 	public setStores(stores: AppStores): void {
@@ -134,11 +132,15 @@ export class Controller {
 		} as AppStore.State);
 	}
 
-	protected pageNotFound(status: number = 404): void {
+	protected pageNotFound(status: number = 404, message: string = ''): void {
 		this.hideMainLoading();
 		this.notFound = true;
 		this.responseStatus = 404;
 		this.render(CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT);
+
+		this.set({
+			pageNotFoundMessage: message
+		});
 	}
 
 	protected set(data: { [id: string]: any }): void {

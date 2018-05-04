@@ -5,16 +5,39 @@ import {Controller, ControllerClass} from "./controller";
 import {InitialStateUtils} from "../services/initial-state-utils";
 import {I18nextService} from "../services/i18n-service";
 import {AppStores} from "../../app/stores/app-stores";
+import {AppActions} from "../../app/actions/app-actions";
 
 interface ControllerInterface {
-	name: string,
+	name: string
 	controller: ControllerClass
+}
+
+export interface ControllersConstructor {
+	data: RouterState
+	initialStateInstance: InitialStateUtils,
+	i18n: I18nextService
+	stores: AppStores
+	appActions: AppActions
+	server: boolean
 }
 
 export class Controllers {
 	public controllers: ControllerInterface[] = [];
+	readonly data: RouterState;
+	readonly initialStateInstance: InitialStateUtils;
+	readonly i18n: I18nextService;
+	readonly stores: AppStores;
+	readonly appActions: AppActions;
+	readonly server: boolean;
 
-	constructor(private data: RouterState, private initialStateInstance: InitialStateUtils, private i18n: I18nextService, private stores: AppStores, private server: boolean) {
+	constructor(constructor: ControllersConstructor) {
+		this.data = constructor.data;
+		this.initialStateInstance = constructor.initialStateInstance;
+		this.i18n = constructor.i18n;
+		this.stores = constructor.stores;
+		this.server = constructor.server;
+		this.appActions = constructor.appActions;
+
 		this.setController('pages', PagesController);
 		this.setController('pageNotFound', PageNotFoundController);
 	}
@@ -51,6 +74,7 @@ export class Controllers {
 				foundController = new controller.controller(this.data);
 				foundController.initAppApi(this.initialStateInstance);
 				foundController.initAppI18n(this.i18n);
+				foundController.initAppActions(this.appActions);
 				foundController.setServerState(this.server);
 				foundController.setStores(this.stores);
 			}

@@ -11,7 +11,8 @@ export namespace CommonStore {
 		sideMap: boolean,
 		mapCords: string,
 		mapHeader: string,
-		scrollTop: number
+		scrollTop: number,
+		server: boolean
 	}
 
 	export const initialState: State = {
@@ -24,6 +25,7 @@ export namespace CommonStore {
 		sideMap: false,
 		mapCords: '',
 		mapHeader: '',
-		scrollTop: 0
+		scrollTop: 0,
+		server: false
 	};
 }

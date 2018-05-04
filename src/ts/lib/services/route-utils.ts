@@ -108,6 +108,12 @@ export class RouteUtils {
 		let paramsArray: string[] = [];
 
 		for (let key in params) {
+			let newKey = key.match(/(\d+)/ig)[0];
+			params[newKey] = params[key];
+			delete params[key];
+		}
+
+		for (let key in params) {
 			paramsArray.push(params[key]);
 		}
 

@@ -9,20 +9,30 @@ import {ActionComponentNotFound} from "./view/not-found-action-component";
 import {ContextWrapper} from "./view/context-wrapper";
 import {AppStores} from "../app/stores/app-stores";
 import {InitialStateUtils} from "./services/initial-state-utils";
-import {AppStore} from "./stores/app";
+import {AppActions} from "../app/actions/app-actions";
+import {ControllersConstructor} from "./controllers/controllers";
+import {createElement} from "react";
 import {PropTypes} from 'prop-types';
+import {AppStore} from "./stores/app";
+import {CommonStore} from "../app/stores/common";
 
 export class AppRouter {
 	constructor(readonly initialStateInstance: InitialStateUtils, readonly i18n: I18nextService, readonly stores: AppStores) {
+		this.appActions = new AppActions(stores);
 	}
 
-	public router() {
+	public appActions: AppActions;
+
+	public router(): JSX.Element {
 		return (
 			<ContextWrapper
 				i18n={this.i18n}
 				initialStateInstance={this.initialStateInstance}
 				stores={this.stores}
+				appActions={this.appActions}
+				server={false}
 			>
+				{createElement(CONFIG.DEFAULT_LOADING_COMPONENT, {})}
 				<Router history={browserHistory}>
 					<Route
 						path="/page_not_found"
@@ -40,7 +50,7 @@ export class AppRouter {
 		)
 	}
 
-	public mainRoute(server?: boolean): JSX.Element {
+	public mainRoute(server: boolean): JSX.Element {
 		let paramsPath: string = RouteUtils.makeParamsPath();
 
 		return (
@@ -56,8 +66,21 @@ export class AppRouter {
 		);
 	};
 
-	public async mainProcess(data: RouterState, server?: boolean) {
-		let controllers: ControllersList = new ControllersList(data, this.initialStateInstance, this.i18n, this.stores, server);
+	public async mainProcess(data: RouterState, server: boolean) {
+		this.stores.common.setState({
+			server: server
+		} as CommonStore.State);
+
+		const controllersListConstructor: ControllersConstructor = {
+			data: data,
+			initialStateInstance: this.initialStateInstance,
+			i18n: this.i18n,
+			server: server,
+			stores: this.stores,
+			appActions: this.appActions
+		};
+
+		let controllers: ControllersList = new ControllersList(controllersListConstructor);
 		const parsed: ParsedParams = RouteUtils.parseParams(controllers, data);
 
 		if (!parsed.controllerName) {

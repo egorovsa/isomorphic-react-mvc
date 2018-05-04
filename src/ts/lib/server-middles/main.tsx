@@ -7,13 +7,15 @@ import {match, RouterContext} from "react-router";
 import {readdirSync} from "fs";
 import {createElement} from "react";
 import {AppRouter} from "../router";
-import {initialStateInstance, InitialStateUtils} from "../services/initial-state-utils";
+import {InitialStateUtils} from "../services/initial-state-utils";
 import {MetaData} from "../controllers/controller";
 import {I18nextService} from "../services/i18n-service";
 import {PropTypes} from "prop-types";
 import {ContextWrapper} from "../view/context-wrapper";
 import CONFIG from "../../config/config";
 import {AppStores} from "../../app/stores/app-stores";
+import {AppActions} from "../../app/actions/app-actions";
+import {AppLoadingComponent} from "../view/app-loading-component";
 
 const headHtml = require("../../../hbs/index/head-part.hbs");
 const footerHtml = require("../../../hbs/index/footer-part.hbs");
@@ -60,6 +62,7 @@ export class RenderServerSide {
 		const i18n = new I18nextService(stores.locale, initialStateInstance);
 		const router: AppRouter = new AppRouter(initialStateInstance, i18n, stores);
 		const routes = router.mainRoute(true);
+
 		i18n.setServerLanguage(req.acceptsLanguages(), cookies.language);
 
 		match({routes, location: req.url}, (error, nextLocation, nextState) => {
@@ -101,7 +104,10 @@ export class RenderServerSide {
 				i18n={i18n}
 				initialStateInstance={initialStateInstance}
 				stores={stores}
+				appActions={new AppActions(stores)}
+				server={true}
 			>
+				{createElement(CONFIG.DEFAULT_LOADING_COMPONENT, {})}
 				{createElement(RouterContext, nextState)}
 			</ContextWrapper>
 		);
@@ -112,12 +118,16 @@ export class RenderServerSide {
 			title: metaData.title,
 			description: metaData.description,
 			keywords: metaData.keywords,
-			styleLink: '<link rel="stylesheet" href="/css/style.css">',
+			styleLink: '<link rel="stylesheet" href="/css/style.css?v=' + CONFIG.APP_VERSION + '">',
 		}));
 
 		stream.pipe(res, {end: false});
 
 		stream.on("end", () => {
+			if (process.env.DEVELOP) {
+				initialStateInstance.setData('serverDev', true);
+			}
+
 			res.write(footerHtml({
 				initialState: "<script>window[\"_INITIAL_STATE_\"] = " + serialize(initialStateInstance.initialState, {isJSON: true}) + "</script>",
 				appVersion: CONFIG.APP_VERSION,

@@ -7,12 +7,10 @@ export namespace AppStore {
 	export interface State {
 		server: boolean,
 		appLoading: boolean,
-		appLoadingComponent: React.ComponentClass<any>,
 	}
 
 	export const initialState: State = {
 		server: false,
 		appLoading: false,
-		appLoadingComponent: CONFIG.DEFAULT_LOADING_COMPONENT,
 	};
 }

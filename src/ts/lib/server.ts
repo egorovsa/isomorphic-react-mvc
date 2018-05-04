@@ -9,13 +9,14 @@ const production = !process.env.DEVELOP;
 const app = express();
 const PORT = process.env.PORT || CONFIG.PRODUCTION_PORT;
 
-if (CONFIG.GZIP_BY_EXPRESS) {
+if (CONFIG.GZIP_BY_EXPRESS && !production) {
 	const compression = require('compression');
 	app.use(compression());
 }
 
 if (!production) {
 	console.log('SERVER DEVELOPMENT MODE');
+	global['DEVELOP'] = true;
 	require('source-map-support').install();
 }
 

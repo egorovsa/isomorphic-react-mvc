@@ -74,7 +74,7 @@ export class I18nextService {
 				currentLang: lng
 			} as LocaleStore.State)
 		} catch (e) {
-			// console.trace('ERROR', e);
+			console.trace('ERROR', e);
 		}
 	}
 
@@ -82,7 +82,11 @@ export class I18nextService {
 		this.currentLang = LocaleService.getCurrentLang(this.serverLang);
 
 		try {
-			await this.changeLanguage(this.currentLang);
+			if (this.serverLang) {
+				await this.changeLanguage(this.currentLang);
+			} else {
+				this.changeLanguage(this.currentLang).then();
+			}
 		} catch (e) {
 			return e;
 		}

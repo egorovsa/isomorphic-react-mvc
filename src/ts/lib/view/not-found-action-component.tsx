@@ -1,6 +1,4 @@
 import * as React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import {docco} from 'react-syntax-highlighter/dist/styles/hljs';
 
 export interface Props {
 	nameOfComponent: string,
@@ -29,17 +27,17 @@ export class ActionComponentNotFound extends React.Component<Props, State> {
 							We are expected that you have a file:
 						</div>
 
-						<SyntaxHighlighter language='bash' style={docco}>
+						<div>
 							{
 								this.props.viewPath
 							}
-						</SyntaxHighlighter>
+						</div>
 
 						<div className="list-item light danger">
 							which contains view React component with name : <b>{this.props.nameOfComponent}</b>
 						</div>
 
-						<SyntaxHighlighter language='bash' style={docco}>
+						<div>
 							{
 								'import * as React from \'react\';\n' +
 								'\n' +
@@ -57,8 +55,7 @@ export class ActionComponentNotFound extends React.Component<Props, State> {
 								'\t}\n' +
 								'}'
 							}
-						</SyntaxHighlighter>
-
+						</div>
 					</div>
 				</div>
 

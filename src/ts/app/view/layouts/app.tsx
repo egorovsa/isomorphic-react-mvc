@@ -9,6 +9,7 @@ import {SideNavComponent} from "../ui/common/sidenav";
 import {PropTypes} from 'prop-types';
 import {I18nextService} from "../../../lib/services/i18n-service";
 import {followStore} from "../../../lib/decorators/context";
+import {Link} from "react-router";
 
 const NotificationContainer = require('react-notifications').NotificationContainer;
 
@@ -78,7 +79,16 @@ export class AppComponent extends React.Component<Props, State> {
 				/>
 
 				<section className="main-content-section">
-					{this.props.children}
+					<div className="container">
+						<div>
+							<div className="aside-menu">
+								<Link to="/">Overview</Link>
+							</div>
+						</div>
+						<div>
+							{this.props.children}
+						</div>
+					</div>
 				</section>
 
 				<FooterComponent

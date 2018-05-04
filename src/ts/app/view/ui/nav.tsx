@@ -24,7 +24,7 @@ export class NavComponent extends React.Component<Props, State> {
 						<Link key={i} to={link}>{item.name}</Link>
 					)
 				})}
-            </span>
+			</span>
 		);
 	}
 }

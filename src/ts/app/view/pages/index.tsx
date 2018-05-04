@@ -12,9 +12,7 @@ export interface State {
 export class Index extends React.Component<Props, State> {
 	public render() {
 		return (
-			<div className="container pages-container">
-				<div className="page-content" dangerouslySetInnerHTML={{__html: this.props.page.content}}></div>
-			</div>
+			<div className="page-content" dangerouslySetInnerHTML={{__html: this.props.page.content}}/>
 		);
 	}
 }

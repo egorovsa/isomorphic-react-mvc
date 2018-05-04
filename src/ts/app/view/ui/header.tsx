@@ -31,10 +31,10 @@ export class HeaderComponent extends React.Component<Props, State> {
 					className={this.props.mainPage ? "container main-page-header" : "container main-page-header header-simple"}>
 					<div className="main-head">
 						<h1>
-							<a href="#">Isomorphic React MVC Framework</a>
+							<a href="#">ReactMVC</a>
 						</h1>
 						<div className="description">
-							Tech: React, React-stores, TypeScript, Stylus, Webpack, Express
+							Isomorphic React Framework
 						</div>
 					</div>
 

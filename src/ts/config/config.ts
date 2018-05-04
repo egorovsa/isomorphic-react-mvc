@@ -5,6 +5,7 @@ import {PageNotFoundComponent} from "../lib/view/page-not-found";
 import {AppLoadingComponent} from "../lib/view/app-loading-component";
 
 const config = {
+	PRODUCTION: false,
 	PRODUCTION_PORT: 4002,
 	GZIP_BY_EXPRESS: false,
 	DEFAULT_CONTROLLER: 'pageNotFound',
@@ -15,7 +16,7 @@ const config = {
 	DEFAULT_PAGE_NOT_FOUND_CONTROLLER: 'pageNotFound',
 	DEFAULT_PAGE_NOT_FOUND_COMPONENT: PageNotFoundComponent,
 	TITLE: 'Isomorphic React MVC framework',
-	NOT_FOUND_TITLE: 'Страница не найдена - Интермаг33',
+	NOT_FOUND_TITLE: 'Page not found',
 	KEYWORDS: 'Isomorphic react ts',
 	DESCRIPTION: 'Isomorphic react ts',
 	// production site and API url
@@ -49,4 +50,3 @@ if (
 }
 
 export default config;
-

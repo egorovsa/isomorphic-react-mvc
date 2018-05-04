@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {AppRouter} from './router';
-import '../../styl/style.styl';
-import {initialStateInstance} from "./services/initial-state-utils";
-import {I18nextService} from "./services/i18n-service";
 import {AppStores} from "../app/stores/app-stores";
+import {AppRouter} from './router';
+import {I18nextService} from "./services/i18n-service";
+import {initialStateInstance} from "./services/initial-state-utils";
+import '../../styl/style.styl';
 
 const stores: AppStores = new AppStores();
 

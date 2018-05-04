@@ -1,5 +1,5 @@
-# react-isomorphic-boilerplate
-isomorphic React MVC framework
+# react-mvc
+Isomorphic React framework
 
 This is a simple React isomorphic framework to make simple websites with React technologies.
 
@@ -8,14 +8,14 @@ Demo site: ([Demo](http://isomorph-react.egorov.pw/))
 ## How to install and start
 
 ```
-//Install modules
+// Install modules
 yarn 
 
-//run dev
+// run dev
 
 yarn dev
 
-//or
+// or
 
 npm run dev
 ```
@@ -27,7 +27,7 @@ http://localhost:3000
 ```
 yarn build
 
-//or 
+// or 
 
 npm run build
 ```
@@ -37,7 +37,7 @@ and run server.js as
 ```
 node dist/server/server.js
 
-//or if you have pm2
+// or if you have pm2
 
 pm2 start pm2.json
 ```

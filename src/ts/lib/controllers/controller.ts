@@ -1,164 +1,164 @@
-import * as React from "react";
-import CONFIG from "../../config/config";
-import {AppStore} from "../stores/app";
-import {ApiEndpoints} from "../../app/api/app-api";
-import {InitialStateUtils} from "../services/initial-state-utils";
-import {I18nextService} from "../services/i18n-service";
-import {AppStores} from "../../app/stores/app-stores";
-import {RouterState} from "react-router";
-import {Location} from 'history';
-import {AppActions} from "../../app/actions/app-actions";
+import * as React from 'react';
+import CONFIG from '../../config/config';
+import { AppStore } from '../stores/app';
+import { ApiEndpoints } from '../../app/api/app-api';
+import { InitialStateUtils } from '../services/initial-state-utils';
+import { I18nextService } from '../services/i18n-service';
+import { AppStores } from '../../app/stores/app-stores';
+import { RouterState } from 'react-router';
+import { Location } from 'history';
+import { AppActions } from '../../app/actions/app-actions';
 
 export interface MetaData {
-	title: string,
-	keywords?: string,
-	description?: string
+    title: string;
+    keywords?: string;
+    description?: string;
 }
 
 export interface ControllerRequest {
-	location: Location
-	query: { [key: string]: string }
-	hash: string
-	search: string
-	pathname: string
+    location: Location;
+    query: { [key: string]: string };
+    hash: string;
+    search: string;
+    pathname: string;
 }
 
 export interface ControllerClass {
-	new (data: RouterState): Controller
+    new(data: RouterState): Controller;
 }
 
 export class Controller {
-	constructor(public data: RouterState) {
-		this.data = data;
-		this.location = data.location;
-		this.query = data.location.query;
-		this.hash = data.location['hash'];
-		this.search = data.location.search;
-		this.pathname = data.location.pathname;
-		this.layout = CONFIG.DEFAULT_LAYOUT_COMPONENT;
-		this.component = null;
-		this.notFound = false;
-		this.responseStatus = 200;
-		this.componentData = {};
+    public request: ControllerRequest;
+    public location: Location;
+    public query: { [key: string]: string };
+    public hash: string;
+    public search: string;
+    public pathname: string;
+    public responseStatus: number;
+    public notFound: boolean;
+    public layout: React.ComponentClass<any>;
+    public component: React.ComponentClass<any> | any;
+    public componentData: { [id: string]: any };
+    public apiRequest: ApiEndpoints;
+    public metaData: MetaData;
+    public i18n: I18nextService;
+    public appActions: AppActions;
+    public stores: AppStores;
+    public server: boolean;
 
-		this.request = {
-			location: data.location,
-			query: data.location.query,
-			hash: data.location['hash'],
-			search: data.location.search,
-			pathname: data.location.pathname
-		};
+    constructor(public data: RouterState) {
+        this.data = data;
+        this.location = data.location;
+        this.query = data.location.query;
+        this.hash = data.location['hash'];
+        this.search = data.location.search;
+        this.pathname = data.location.pathname;
+        this.layout = CONFIG.DEFAULT_LAYOUT_COMPONENT;
+        this.component = null;
+        this.notFound = false;
+        this.responseStatus = 200;
+        this.componentData = {};
 
-		this.metaData = {
-			title: CONFIG.TITLE,
-			keywords: CONFIG.KEYWORDS,
-			description: CONFIG.DESCRIPTION
-		}
-	}
+        this.request = {
+            location: data.location,
+            query: data.location.query,
+            hash: data.location['hash'],
+            search: data.location.search,
+            pathname: data.location.pathname
+        };
 
-	public request: ControllerRequest;
-	public location: Location;
-	public query: { [key: string]: string };
-	public hash: string;
-	public search: string;
-	public pathname: string;
-	public responseStatus: number;
-	public notFound: boolean;
-	public layout: React.ComponentClass<any>;
-	public component: React.ComponentClass<any> | any;
-	public componentData: { [id: string]: any };
-	public apiRequest: ApiEndpoints;
-	public metaData: MetaData;
-	public i18n: I18nextService;
-	public appActions: AppActions;
-	public stores: AppStores;
-	public server: boolean;
+        this.metaData = {
+            title: CONFIG.TITLE,
+            keywords: CONFIG.KEYWORDS,
+            description: CONFIG.DESCRIPTION
+        };
+    }
 
-	public initAppApi(initialStateInstance: InitialStateUtils): void {
-		this.apiRequest = new ApiEndpoints(initialStateInstance);
+    public initAppApi(initialStateInstance: InitialStateUtils): void {
+        this.apiRequest = new ApiEndpoints(initialStateInstance);
 
-		this.set({
-			apiRequest: this.apiRequest
-		});
-	}
+        this.set({
+            apiRequest: this.apiRequest
+        });
+    }
 
-	public initAppI18n(i18n: I18nextService): void {
-		this.i18n = i18n;
-	}
+    public initAppI18n(i18n: I18nextService): void {
+        this.i18n = i18n;
+    }
 
-	public initAppActions(appActions: AppActions) {
-		this.appActions = appActions;
-	}
+    public initAppActions(appActions: AppActions) {
+        this.appActions = appActions;
+    }
 
-	public setServerState(server: boolean): void {
-		this.server = server;
-	}
+    public setServerState(server: boolean): void {
+        this.server = server;
+    }
 
-	public setStores(stores: AppStores): void {
-		this.stores = stores;
-	}
+    public setStores(stores: AppStores): void {
+        this.stores = stores;
+    }
 
-	protected setMetaData(metaData: MetaData): void {
-		let newMetaData: MetaData = metaData;
+    protected setMetaData(metaData: MetaData): void {
+        let newMetaData: MetaData = metaData;
 
-		if (metaData.title) {
-			newMetaData.title = metaData.title;
+        if (metaData.title) {
+            newMetaData.title = metaData.title;
 
-			if (typeof document === 'object') {
-				document.title = metaData.title;
-			}
-		}
+            if (typeof document === 'object') {
+                document.title = metaData.title;
+            }
+        }
 
-		if (metaData.description) {
-			newMetaData.description = metaData.description
-		}
+        if (metaData.description) {
+            newMetaData.description = metaData.description;
+        }
 
-		if (metaData.keywords) {
-			newMetaData.keywords = metaData.keywords
-		}
+        if (metaData.keywords) {
+            newMetaData.keywords = metaData.keywords;
+        }
 
-		this.metaData = newMetaData;
-	}
+        this.metaData = newMetaData;
+    }
 
-	protected hideMainLoading(): void {
-		this.stores.app.setState({
-			appLoading: false
-		} as AppStore.State);
-	}
+    protected hideMainLoading(): void {
+        this.stores.app.setState({
+            appLoading: false
+        } as AppStore.State);
+    }
 
-	protected showMainLoading(): void {
-		this.stores.app.setState({
-			appLoading: true
-		} as AppStore.State);
-	}
+    protected showMainLoading(): void {
+        this.stores.app.setState({
+            appLoading: true
+        } as AppStore.State);
+    }
 
-	protected pageNotFound(status: number = 404, message: string = ''): void {
-		this.hideMainLoading();
-		this.notFound = true;
-		this.responseStatus = 404;
-		this.render(CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT);
+    protected pageNotFound(status: number = 404, message: string = ''): void {
+        this.hideMainLoading();
+        this.notFound = true;
+        this.responseStatus = 404;
+        this.render(CONFIG.DEFAULT_PAGE_NOT_FOUND_COMPONENT);
 
-		this.set({
-			pageNotFoundMessage: message
-		});
-	}
+        this.set({
+            pageNotFoundMessage: message
+        });
+    }
 
-	protected set(data: { [id: string]: any }): void {
-		this.componentData = {...this.componentData, ...data};
-	}
+    protected set(data: { [id: string]: any }): void {
+        this.componentData = {...this.componentData, ...data};
+    }
 
-	protected render(component?: React.ComponentClass<any>): void {
-		if (component) {
-			this.component = component;
-		}
-	}
+    protected render(component?: React.ComponentClass<any>): void {
+        if (component) {
+            this.component = component;
+        }
+    }
 
-	public async beforeFilter(...data: string[]): Promise<any> {
-		try {
-			await this.i18n.initService();
-			return true;
-		} catch (e) {
-			return e;
-		}
-	}
+    public async beforeFilter(...data: string[]): Promise<any> {
+        try {
+            await this.i18n.initService();
+            return true;
+        } catch (e) {
+            return e;
+        }
+    }
 }

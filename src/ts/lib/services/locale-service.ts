@@ -1,44 +1,44 @@
-import {LocaleStore} from "../stores/locale";
+import { LocaleStore } from '../stores/locale';
 import Language = LocaleStore.Language;
-import CONFIG from "../../config/config";
-import {StorageService} from "./storage-service";
+import CONFIG from '../../config/config';
+import { StorageService } from './storage-service';
 
 class Service {
-	public checkExistLocales(browserLang: string): string {
-		let exist: string = CONFIG.defaultLanguage;
+    static detectUserLang() {
+        if (typeof window === 'object') {
+            if (navigator.languages !== undefined) {
+                return navigator.languages[0];
+            } else {
+                return navigator.language;
+            }
+        }
+    }
 
-		CONFIG.languages.forEach((lang: Language) => {
-			if (browserLang.indexOf(lang.name) > -1) {
-				exist = lang.name;
-			}
-		});
+    public checkExistLocales(browserLang: string): string {
+        let exist: string = CONFIG.defaultLanguage;
 
-		return exist;
-	}
+        CONFIG.languages.forEach((lang: Language) => {
+            if (browserLang.indexOf(lang.name) > -1) {
+                exist = lang.name;
+            }
+        });
 
-	public detectUserLang() {
-		if (typeof window === 'object') {
-			if (navigator.languages != undefined) {
-				return navigator.languages[0];
-			} else {
-				return navigator.language;
-			}
-		}
-	}
+        return exist;
+    }
 
-	public getCurrentLang(serverLang: string): string {
-		if (serverLang) {
-			return this.checkExistLocales(serverLang);
-		}
+    public getCurrentLang(serverLang: string): string {
+        if (serverLang) {
+            return this.checkExistLocales(serverLang);
+        }
 
-		const storageLang = StorageService.cookie.get('language');
+        const storageLang = StorageService.cookie.get('language');
 
-		if (!storageLang) {
-			return this.checkExistLocales(this.detectUserLang());
-		}
+        if (!storageLang) {
+            return this.checkExistLocales(Service.detectUserLang());
+        }
 
-		return this.checkExistLocales(storageLang)
-	}
+        return this.checkExistLocales(storageLang);
+    }
 }
 
 export let LocaleService = new Service();

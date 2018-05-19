@@ -1,11 +1,11 @@
 export namespace ExampleStore {
-	export const name: string = 'example';
+    export const name: string = 'example';
 
-	export interface State {
-		counter: number
-	}
+    export interface State {
+        counter: number;
+    }
 
-	export const initialState: State = {
-		counter: 0
-	};
+    export const initialState: State = {
+        counter: 0
+    };
 }

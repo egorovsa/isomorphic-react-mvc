@@ -51,11 +51,11 @@ export class ActionComponentNotFound extends React.Component<Props, State> {
                                 '\n' +
                                 'export class ' + this.props.nameOfComponent + ' ' +
                                 'extends React.Component<Props, State> {\n' +
-                                '\tpublic render() {\n' +
-                                '\t\treturn (\n' +
-                                '\t\t\t<div>Component html</div>\n' +
-                                '\t\t);\n' +
-                                '\t}\n' +
+                                '    public render() {\n' +
+                                '        return (\n' +
+                                '            <div>Component html</div>\n' +
+                                '        );\n' +
+                                '    }\n' +
                                 '}'
                             }
                         </SyntaxHighlighter>

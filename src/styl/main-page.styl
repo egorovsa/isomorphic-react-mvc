@@ -2,8 +2,7 @@ body
 	background #070a0e;
 
 	.main-head
-		padding-top 25px
-		margin-bottom 25px
+		padding 25px
 		position relative
 		padding-left 70px
 		text-align center
@@ -28,6 +27,27 @@ body
 			background-size 100%
 			display inline-block
 
+	.aside-menu
+		.desktop-menu
+			& > a
+				display block
+				color #34aada
+				padding 0 10px
+				text-decoration none
+				font-size 16px
+				font-weight 400
+				margin-bottom 15px
+
+		.lang-selection
+			margin-bottom 20px
+
+			& > a
+				padding 0 20px
+				color #34aada
+				padding 0 10px
+				text-decoration none
+				display inline-block
+
 	.main-menu
 		display flex
 		background-color #2f3044
@@ -47,24 +67,6 @@ body
 		.grow
 			flex-grow 2
 
-		.desktop-menu
-			display flex
-			justify-content flex-start
-			align-items center
-			height 40px
-
-			& > a
-				display block
-				color #fff
-				padding 0 10px
-				text-decoration none
-
-			&.lang-selection
-				border-left 1px solid #ddd
-
-				& > a
-					padding 0 20px
-
 	.page-content
 		padding 15px
 		box-sizing border-box
@@ -73,6 +75,9 @@ body
 			font-size 23px
 			margin 30px 0
 			color #34aada
+
+			&:first-child
+				margin-top 0
 
 			&.danger
 				color #dd4f52
@@ -129,12 +134,14 @@ body
 			> div
 				.aside-menu
 					border-radius 5px
-					background-color #2f3044
+					background-color #fff
 					box-sizing border-box
 					padding 15px
+					font-size 14px
+					font-weight 400
 
 					> a
-						color #fff
+						color #34aada
 						text-decoration none
 
 				&:first-child

@@ -1,11 +1,8 @@
 import * as React from 'react';
-import { CommonStore } from '../../stores/common';
-import { NavComponent } from './nav';
 import { PropTypes } from 'prop-types';
 import { contextToProps } from '../../../lib/decorators/context';
 import { I18nextService } from '../../../lib/services/i18n-service';
 import { AppStores } from '../../stores/app-stores';
-import { StyleSheet, css } from 'aphrodite';
 
 export interface Props {
     mainPage: boolean;
@@ -36,44 +33,6 @@ export class HeaderComponent extends React.Component<Props> {
                             Isomorphic React Framework
                         </div>
                     </div>
-
-                    {/*<div className="main-menu">*/}
-                    {/*<div className="mobile-menu">*/}
-                    {/*<a*/}
-                    {/*href="javascript:void(0);"*/}
-                    {/*onClick={() => {*/}
-                    {/*this.props.stores.common.setState({*/}
-                    {/*sideNav: true*/}
-                    {/*} as CommonStore.State);*/}
-                    {/*}}*/}
-                    {/*>*/}
-                    {/*Side menu*/}
-                    {/*</a>*/}
-                    {/*</div>*/}
-
-                    {/*<NavComponent headMenu={this.props.headMenu}/>*/}
-
-                    {/*<div className="grow"/>*/}
-
-                    <div className="desktop-menu lang-selection">
-                        <a
-                            href="javascript:void(0);"
-                            onClick={() => {
-                                this.props.i18n.changeLanguage('en', true);
-                            }}
-                        >
-                            En
-                        </a>
-                        <a
-                            href="javascript:void(0);"
-                            onClick={() => {
-                                this.props.i18n.changeLanguage('ru', true);
-                            }}
-                        >
-                            Ru
-                        </a>
-                    </div>
-                    {/*</div>*/}
                 </div>
             </header>
         );

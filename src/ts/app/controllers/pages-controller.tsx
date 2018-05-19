@@ -1,76 +1,81 @@
-import * as React from "react";
-import {AppController} from "./app-controller";
-import {UtilsService} from "../services/utils-service";
-import CONFIG from "../../config/config";
-import {ExampleStore} from "../stores/example";
+import * as React from 'react';
+import { AppController } from './app-controller';
+import { UtilsService } from '../services/utils-service';
+import CONFIG from '../../config/config';
 
 export class PagesController extends AppController {
-	constructor(data) {
-		super(data);
-	}
+    constructor(data: any) {
+        super(data);
+    }
 
-	public async main() {
-		this.setMetaData({
-			title: CONFIG.TITLE
-		})
-	}
+    public async main() {
+        this.setMetaData({
+            title: CONFIG.TITLE
+        });
+    }
 
-	public async controllersExplanations() {
-		this.setMetaData({
-			title: 'Controllers'
-		})
-	}
+    public async controllersExplanations() {
+        this.setMetaData({
+            title: 'Controllers'
+        });
+    }
 
-	public async view() {
-		this.setMetaData({
-			title: 'Creating view layer'
-		});
-	}
+    public async controllersExplanations1() {
+        this.setMetaData({
+            title: 'Controllers'
+        });
+    }
 
-	public simple(test: string) {
-		this.set({
-			test: test
-		});
+    public async view() {
+        this.setMetaData({
+            title: 'Creating view layer'
+        });
+    }
 
-		this.setMetaData({
-			title: 'How to create a simple page'
-		});
-	}
+    public simple(test: string) {
+        this.set({
+            test: test
+        });
 
-	public storesUsage() {
-		this.setMetaData({
-			title: 'Stores'
-		});
-	}
+        this.setMetaData({
+            title: 'How to create a simple page'
+        });
+    }
 
-	public async index(slug: string) {
-		UtilsService.scrollToTop();
-		this.showMainLoading();
+    public storesUsage() {
+        this.setMetaData({
+            title: 'Stores'
+        });
+    }
 
-		if (slug) {
-			try {
-				const page = await this.apiRequest.pages.getPageDataBySlug(slug);
+    public async index(slug: string) {
+        UtilsService.scrollToTop();
+        this.showMainLoading();
 
-				this.set({
-					page: page
-				});
+        if (slug) {
+            try {
+                const page = await this.apiRequest.pages.getPageDataBySlug(slug);
 
-				this.setMetaData({
-					title: page.seo_title,
-					description: page.seo_description,
-					keywords: page.seo_keywords
-				});
-			} catch (e) {
-				this.pageNotFound();
-			}
-		} else {
-			this.pageNotFound();
-		}
+                this.set({
+                    page: page
+                });
 
-		this.hideMainLoading();
-	}
+                this.setMetaData({
+                    title: page.seo_title,
+                    description: page.seo_description,
+                    keywords: page.seo_keywords
+                });
+            } catch (e) {
+                this.pageNotFound();
+            }
+        } else {
+            this.pageNotFound();
+        }
 
-	public async beforeFilter(data) {
-		await super.beforeFilter(data);
-	}
+        this.hideMainLoading();
+    }
+
+    public async beforeFilter(data: any) {
+        await super.beforeFilter(data);
+    }
 }
